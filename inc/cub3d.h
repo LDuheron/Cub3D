@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 15:14:46 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:49:55 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,10 @@ char	*ft_read(int fd, char *remains);
 // ft_strdup.c
 char	**ft_split(char *s, char c);
 
-// ft_strjoin.c
+// ft_strdup.c
 char	*ft_strdup(char *src);
 
+// libft_utils.c // A RENOMMER
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);
