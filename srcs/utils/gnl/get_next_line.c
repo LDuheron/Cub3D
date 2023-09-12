@@ -6,11 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:36:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/02/25 22:56:04 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:24:57 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+# include "cub3d.h"
 
 char	*cut_before_end_line(char *remains, int end_line)
 {

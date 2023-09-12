@@ -6,9 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:29:28 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 14:33:32 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:25:04 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+# include "cub3d.h"
 
 char	*ft_strdup(char *src)
 {

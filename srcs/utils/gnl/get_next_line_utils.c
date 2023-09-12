@@ -6,11 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:39:19 by lduheron          #+#    #+#             */
-/*   Updated: 2023/02/25 18:40:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:24:48 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+# include "cub3d.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
