@@ -1,25 +1,59 @@
 NAME = cub3d
 
-SOURCES = ./src/main.c	\
+#############################################
+
+#############################################
+
+SRC_DIR     := srcs
+OBJ_DIR     := obj
+
+SRCS := main.c								\
+		parsing/parsing.c					\
+		utils/gnl/get_next_line_utils.c		\
+		utils/gnl/get_next_line.c			\
+		utils/libft/ft_strdup.c				\
+		utils/libft/split.c					\
+
+#############################################
+
+SRCS        := $(SRCS:%=$(SRC_DIR)/%)
+OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+#############################################
 
 CC = cc
+CFLAGS = -Wall -Werror -Wextra -g3
+CPPFLAGS    := -I inc
 
-CFLAGS = -Wall -Werror -Wextra -g
+#############################################
 
-OBJETS = $(SOURCES:.c=.o)
+RM          := rm -f
+MAKEFLAGS   += --no-print-directory
+DIR_DUP     = mkdir -p $(@D)
+
+#############################################
 
 all: $(NAME)
 
-$(NAME): $(OBJETS)
-		$(CC) $(CFLAGS) $(OBJETS) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) -o $(NAME) -L/usr/local/lib -I/usr/local/inc -lreadline
+	$(info CREATED $(NAME))
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(DIR_DUP)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 clean:
-		@rm -f $(OBJETS)
+	$(RM) $(OBJS)
 
 fclean: clean
-		@rm -f $(NAME)
+	$(RM) $(NAME)
 
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+#############################################
 
 .PHONY: all clean fclean re
 .SILENT:

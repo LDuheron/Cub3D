@@ -6,17 +6,16 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 14:23:54 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:20:46 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+# include "cub3d.h"
 
 void	init_parsing_data(t_parsing_data parsing)
 {
-	parsing->map = NULL;
-	parsing->cpt_line = 0;
-
+	parsing.map = NULL;
+	parsing.cpt_line = 0;
 }
 
 // GET_MAP : This function reads the input and stores
@@ -34,11 +33,11 @@ int	get_map(t_parsing_data parsing, char *argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_strjoin
+		ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	parsing->map = ft_split();
+	parsing.map = ft_split(line, '\0');
 	return (SUCCESS);
 }
 
