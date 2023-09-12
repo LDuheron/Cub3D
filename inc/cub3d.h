@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 15:49:55 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:24:57 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int		main(int argc, char **argv);
 //////////////////////////////////////////////////////////////////
 
 // Parsing.c
-void	init_parsing_data(t_parsing_data parsing);
-int		get_map(t_parsing_data parsing, char *argv);
+void	init_parsing_data(t_parsing_data *parsing);
+int		get_map(t_parsing_data *parsing, char *argv);
 int		parsing(char *map);
 
 
@@ -107,8 +107,8 @@ char	**ft_split(char *s, char c);
 char	*ft_strdup(char *src);
 
 // libft_utils.c // A RENOMMER
+char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *str);
-char	*ft_strchr(char *s, int c);
 
 #endif

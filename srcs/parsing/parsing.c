@@ -6,22 +6,57 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 15:20:46 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:34:14 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3d.h"
 
-void	init_parsing_data(t_parsing_data parsing)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	parsing.map = NULL;
-	parsing.cpt_line = 0;
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < (n - 1))
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+// A OPTI AVEC STRCMP
+int	check_extension(char *file)
+{
+	int	len;
+
+	len = ft_strlen(file) - 1;
+	if (len < 3)
+		return (0);
+	if (ft_strcmp())
+	if (file[len - 3] == '.')
+	{
+		if (file[len - 2] == 'c')
+		{
+			if (file[len - 1] == 'u')
+			{
+				if (file[len] == 'b')
+					return (1);
+			}
+		}
+	}
+	return (0);
+}
+
+void	init_parsing_data(t_parsing_data *parsing)
+{
+	parsing->map = NULL;
+	parsing->cpt_line = 0;
 }
 
 // GET_MAP : This function reads the input and stores
 // it in the parsing structure under the variable map.
 
-int	get_map(t_parsing_data parsing, char *argv)
+int	get_map(t_parsing_data *parsing, char *argv)
 {
 	char	*map_tmp;
 	char	*line;
@@ -30,14 +65,16 @@ int	get_map(t_parsing_data parsing, char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		return (ERROR);
+	map_tmp = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_strdup(line);
+		ft_strjoin(map_tmp, line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	parsing.map = ft_split(line, '\0');
+	parsing->map = ft_split(line, '\n');
+	free(map_tmp);
 	return (SUCCESS);
 }
 
@@ -50,8 +87,8 @@ int	parsing(char *argv)
 {
 	t_parsing_data	parsing;
 
-	init_parsing_data(parsing);
-	if (get_map(parsing, argv) == SUCCESS)
+	init_parsing_data(&parsing);
+	if (get_map(&parsing, argv) == SUCCESS)
 		return (SUCCESS);
 	return (ERROR);
 }
