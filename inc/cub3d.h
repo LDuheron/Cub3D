@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 12:25:33 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:35:05 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 # endif
 
 # define ERROR_MALLOC -3
-# define ERROR_SYNTAX -2
-# define ERROR_FD -1
+# define ERROR_FD -2
+# define ERROR_ARG -1
 # define ERROR 0
 # define SUCCESS 1
 
@@ -55,7 +55,9 @@
 
 typedef struct s_parsing_data
 {
+	char	**file;
 	char	**map;
+	char	**texture;
 	int		cpt_line;
 }	t_parsing_data;
 
@@ -76,11 +78,29 @@ int		main(int argc, char **argv);
 //																//
 //////////////////////////////////////////////////////////////////
 
+// Check_extension.c
+int		check_extension(char *file);
+
+// Get_and_sort_map.c
+int		retrieve_texture(t_parsing_data *parsing);
+int		sort_input_file(t_parsing_data *parsing);
+int		read_input_file(t_parsing_data *parsing, char *argv);
+
 // Parsing.c
 void	init_parsing_data(t_parsing_data *parsing);
-int		get_map(t_parsing_data *parsing, char *argv);
 int		parsing(char *map);
 
+//////////////////////////////////////////////////////////////////
+//																//
+//																//
+//                 	 	 IN UTILS DIR  	 		  	            //
+//																//
+//																//
+//////////////////////////////////////////////////////////////////
+
+// Error_management.c
+int		error_message(int code);
+void	ft_putstr_fd(char *s, int fd);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -88,11 +108,11 @@ int		parsing(char *map);
 //																//
 //////////////////////////////////////////////////////////////////
 
+// Get_next_line.c
 char	*get_next_line(int fd);
 char	*cut_after_end_line(char *remains, int end_line);
 char	*cut_before_end_line(char *remains, int end_line);
 char	*ft_read(int fd, char *remains);
-
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -100,20 +120,24 @@ char	*ft_read(int fd, char *remains);
 //																//
 //////////////////////////////////////////////////////////////////
 
-// ft_strdup.c
+// Ft_strdup.c
 char	**ft_split(char *s, char c);
 
-// ft_strdup.c
+// Ft_strdup.c
 char	*ft_strdup(char *src);
 
-// libft_utils.c // A RENOMMER
+// Libft_utils.c // A RENOMMER
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *str);
 
 
+//////////////////////////////////////////////////////////////////
 
-/// Debug_function.c
+// Debug_function.c
+void	free_tab(char **str);
 void	print_tab(char **tab);
+
+//////////////////////////////////////////////////////////////////
 
 #endif

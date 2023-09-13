@@ -8,12 +8,15 @@ SRC_DIR     := srcs
 OBJ_DIR     := obj
 
 SRCS := main.c								\
+		parsing/check_extension.c			\
+		parsing/get_and_sort_map.c			\
 		parsing/parsing.c					\
 		utils/gnl/get_next_line.c			\
 		utils/libft/ft_strdup.c				\
 		utils/libft/split.c					\
 		utils/libft/libft_utils.c			\
 		utils/debug_function.c				\
+		utils/error_management.c			\
 
 #############################################
 

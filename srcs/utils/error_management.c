@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 15:35:36 by lduheron         ###   ########.fr       */
+/*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
+/*   Updated: 2023/09/13 15:18:59 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (argc == 2)
-	{
-		parsing(argv[1]);
-	}
-	else
-		error_message(ERROR_ARG);
-	return (0);
+	if (!s || !fd)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
+
+int	error_message(int code)
+{
+	if (code == ERROR_ARG)
+		ft_putstr_fd("Error: Malloc failed.\n", 2);
+	else if (code == ERROR_FD)
+		ft_putstr_fd("Error: an error occured when opening fd\n", 2);
+	else if (code == ERROR_MALLOC)
+		ft_putstr_fd("Error: please insert 2 arguments.\n", 2);
+	return (ERROR);
 }

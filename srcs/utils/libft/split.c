@@ -6,11 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:21:28 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 15:25:12 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:32:48 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 int	wdcount(char const *s, char c)
 {
