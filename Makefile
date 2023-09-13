@@ -12,7 +12,8 @@ SRCS := main.c								\
 		utils/gnl/get_next_line.c			\
 		utils/libft/ft_strdup.c				\
 		utils/libft/split.c					\
-		utils/libft/libft_utils.c					\
+		utils/libft/libft_utils.c			\
+		utils/debug_function.c				\
 
 #############################################
 

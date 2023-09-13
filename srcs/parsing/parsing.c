@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 16:34:14 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:27:20 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_extension(char *file)
 	len = ft_strlen(file) - 1;
 	if (len < 3)
 		return (0);
-	if (ft_strcmp())
+	// if (ft_strcmp())
 	if (file[len - 3] == '.')
 	{
 		if (file[len - 2] == 'c')
@@ -60,6 +60,7 @@ int	get_map(t_parsing_data *parsing, char *argv)
 {
 	char	*map_tmp;
 	char	*line;
+	char	*backup;
 	int		fd;
 
 	fd = open(argv, O_RDONLY);
@@ -69,15 +70,16 @@ int	get_map(t_parsing_data *parsing, char *argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_strjoin(map_tmp, line);
+		backup = map_tmp;
+		map_tmp = ft_strjoin(backup, line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	parsing->map = ft_split(line, '\n');
+	parsing->map = ft_split(map_tmp, '\n');
 	free(map_tmp);
+	close(fd);
 	return (SUCCESS);
 }
-
 
 // PARSING : The parsing function retrieves the argument given 
 // by the user, copies it in the parsing_data structure through
@@ -89,6 +91,9 @@ int	parsing(char *argv)
 
 	init_parsing_data(&parsing);
 	if (get_map(&parsing, argv) == SUCCESS)
+	{
+		print_tab(parsing.map);
 		return (SUCCESS);
+	}
 	return (ERROR);
 }

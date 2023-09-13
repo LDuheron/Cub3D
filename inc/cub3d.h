@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/12 16:24:57 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:25:33 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,10 @@ char	*ft_strdup(char *src);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *str);
+
+
+
+/// Debug_function.c
+void	print_tab(char **tab);
 
 #endif
