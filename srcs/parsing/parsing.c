@@ -6,11 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 15:39:46 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:45:49 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 void	free_parsing_data(t_parsing_data *parsing)
 {

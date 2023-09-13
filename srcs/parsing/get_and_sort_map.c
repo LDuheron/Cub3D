@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:47:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 15:41:41 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:47:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	retrieve_texture(t_parsing_data *parsing)
 		parsing->texture[i] = parsing->map[i];
 		i++;
 	}
-	
 	// parsing->texture[i] = ft_strdup("\0");
 	// printf("\n");
 	// print_tab(parsing->texture);
@@ -69,7 +68,7 @@ int	sort_input_file(t_parsing_data *parsing)
 	return (SUCCESS);
 }
 
-// read_input_file : This function reads the input and stores
+// READ_INPUT_FILE : This function reads the input and stores
 // it in the parsing structure under the variable map.
 
 int	read_input_file(t_parsing_data *parsing, char *argv)
