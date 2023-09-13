@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 15:46:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:34:07 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@
 #  define BUFFER_SIZE 10
 # endif
 
-# define ERROR_MALLOC -3
-# define ERROR_FD -2
 # define ERROR_ARG -1
+# define ERROR_CHAR -2
+# define ERROR_MALLOC -3
+# define ERROR_FD -4
+
 # define ERROR 0
 # define SUCCESS 1
 
@@ -79,6 +81,7 @@ int		main(int argc, char **argv);
 //////////////////////////////////////////////////////////////////
 
 // Check_extension.c
+int		check_char(t_parsing_data *parsing); /////////////////////////////////////////////////////////////////////////////////////
 int		check_extension(char *file);
 
 // Get_and_sort_map.c

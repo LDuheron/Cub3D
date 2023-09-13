@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:47:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 15:47:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:35:04 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	sort_input_file(t_parsing_data *parsing)
 	// retrieve_texture(parsing);
 	// put map in map.
 	(void) parsing;
+	check_char(parsing);
 	return (SUCCESS);
 }
 
