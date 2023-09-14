@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/14 11:40:35 by cbernaze         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "mlx_int.h"
 
-int	main(int argc, char **argv)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	if (argc == 2)
-	{
-		parsing(argv[1]);
-		create_window();
-	}
-	else
-		error_message(ERROR_ARG);
-	return (0);
+	XCloseDisplay(xvar->display);
 }

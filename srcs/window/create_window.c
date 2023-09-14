@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/14 11:40:35 by cbernaze         ###   ########.fr       */
+/*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
+/*   Updated: 2023/09/14 11:44:21 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+int	create_window()
 {
-	if (argc == 2)
-	{
-		parsing(argv[1]);
-		create_window();
-	}
-	else
-		error_message(ERROR_ARG);
-	return (0);
+	t_data	data;
+
+	data.mlx_ptr = mlx_init();
 }

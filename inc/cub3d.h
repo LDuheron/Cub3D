@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 18:34:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:42:50 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,22 @@ typedef struct s_parsing_data
 	char	**texture;
 	int		cpt_line;
 }	t_parsing_data;
+
+typedef struct s_img
+{
+	void	*ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}			t_img;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img;
+}			t_data;
 
 //////////////////////////////////////////////////////////////////
 //																//
