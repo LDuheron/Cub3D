@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/14 11:42:50 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:18:17 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "../mlx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -157,5 +160,21 @@ void	free_tab(char **str);
 void	print_tab(char **tab);
 
 //////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////
+//																//
+//						  IN WINDOW DIR		      				//
+//																//
+//////////////////////////////////////////////////////////////////
+
+// create_window.c
+t_data	get_data_win();
+int		create_window();
+
+// events.c
+void	ft_exit(t_data *data);
+int		close_win_key(int keysym, t_data *data);
+int		close_win_mouse(t_data *data);
+int		handle_no_event(void *data);
 
 #endif
