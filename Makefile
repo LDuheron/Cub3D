@@ -9,6 +9,7 @@ OBJ_DIR     := obj
 
 SRCS := main.c								\
 		parsing/check_extension.c			\
+		parsing/is_something.c				\
 		parsing/parse_map.c					\
 		parsing/parse_texture.c				\
 		parsing/parsing.c					\

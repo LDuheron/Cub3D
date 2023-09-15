@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/15 14:49:33 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:30:11 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@
 #  define BUFFER_SIZE 10
 # endif
 
+// ERROR TEXTURE
+# define ERROR_T_INCOMPLETE_PATH -1
+# define ERROR_T_MISSING_PATH -2
+# define ERROR_T_MISSING_TEXTURE -3
+# define ERROR_T_WRONG_ORDER -4
+# define ERROR_TEXTURE -5
+
 # define ERROR_ARG -1
 # define ERROR_CHAR -2
 # define ERROR_MALLOC -3
@@ -46,6 +53,9 @@
 
 # define ERROR 0
 # define SUCCESS 1
+
+# define NOT_EMPTY 0
+# define EMPTY 1
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -81,8 +91,12 @@ int		main(int argc, char **argv);
 //////////////////////////////////////////////////////////////////
 
 // Check_extension.c
-int		check_char(t_parsing_data *parsing); //////////////////////////
 int		check_extension(char *file);
+
+// Is_something.c
+int		is_space(char c);
+int		is_empty_line(char *line);
+int		is_valid_char(t_parsing_data *parsing);
 
 // Parse_map.c
 
@@ -135,6 +149,8 @@ char	**ft_split(char *s, char c);
 char	*ft_strdup(char *src);
 
 // Libft_utils.c // A RENOMMER
+void	*ft_calloc(size_t nmemb, size_t size);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *str);

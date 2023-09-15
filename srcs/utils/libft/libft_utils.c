@@ -6,11 +6,42 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:39:19 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 13:07:11 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:33:10 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	*ft_memset(void *s, int value, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)s)[i] = ((unsigned char)value);
+		i++;
+	}
+	return (s);
+}
+
+static void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*buffer;
+
+	if (size > 0 && nmemb > SIZE_MAX / size)
+		return (NULL);
+	buffer = malloc(nmemb * size);
+	if (!(buffer))
+		return (NULL);
+	ft_bzero(buffer, nmemb * size);
+	return (buffer);
+}
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
