@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 18:34:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/15 14:49:33 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@
 typedef struct s_parsing_data
 {
 	char	**file;
-	char	**map;
 	char	**texture;
+	char	**map;
 	int		cpt_line;
 }	t_parsing_data;
 
@@ -81,17 +81,22 @@ int		main(int argc, char **argv);
 //////////////////////////////////////////////////////////////////
 
 // Check_extension.c
-int		check_char(t_parsing_data *parsing); /////////////////////////////////////////////////////////////////////////////////////
+int		check_char(t_parsing_data *parsing); //////////////////////////
 int		check_extension(char *file);
 
-// Get_and_sort_map.c
+// Parse_map.c
+
+// Parse_texture.c
 int		retrieve_texture(t_parsing_data *parsing);
-int		sort_input_file(t_parsing_data *parsing);
-int		read_input_file(t_parsing_data *parsing, char *argv);
 
 // Parsing.c
 void	init_parsing_data(t_parsing_data *parsing);
+void	free_parsing_data(t_parsing_data *parsing);
 int		parsing(char *map);
+
+// Read_input.c
+int		sort_input_file(t_parsing_data *parsing);
+int		read_input_file(t_parsing_data *parsing, char *argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -139,6 +144,7 @@ int		ft_strlen(char *str);
 // Debug_function.c
 void	free_tab(char **str);
 void	print_tab(char **tab);
+void	print_int(int **tab);
 
 //////////////////////////////////////////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:20:36 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 18:35:58 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:59:06 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	free_tab(char **str)
 	i = 0;
 	while (str[i])
 	{
+		printf("%s", str[i]); // DEBUG
 		free(str[i]);
 		i++;
 	}
@@ -71,7 +72,27 @@ void	free_tab(char **str)
 	str = NULL;
 }
 
-void	print_tab(char	**str)
+void	print_tab(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str && str[i])
+	{
+		j = 0;
+		while (str && str[i] && str[i][j])
+		{
+			printf("%c", str[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
+void	print_int_tab(int **str)
 {
 	int	i;
 	int	j;

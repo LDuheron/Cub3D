@@ -6,11 +6,19 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 15:45:49 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/15 14:52:52 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_parsing_data(t_parsing_data *parsing)
+{
+	parsing->file = NULL;
+	parsing->map = NULL;
+	parsing->texture = NULL;
+	parsing->cpt_line = 0;
+}
 
 void	free_parsing_data(t_parsing_data *parsing)
 {
@@ -20,14 +28,6 @@ void	free_parsing_data(t_parsing_data *parsing)
 		free_tab(parsing->map);
 	if (parsing->texture)
 		free_tab(parsing->texture);
-}
-
-void	init_parsing_data(t_parsing_data *parsing)
-{
-	parsing->file = NULL;
-	parsing->map = NULL;
-	parsing->texture = NULL;
-	parsing->cpt_line = 0;
 }
 
 // PARSING : The parsing function retrieves the argument given 

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:48:28 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/13 18:35:50 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:41:24 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	check_char(t_parsing_data *parsing)
 	}
 	return (SUCCESS);
 }
-
 
 // A OPTI AVEC STRCMP
 int	check_extension(char *file)

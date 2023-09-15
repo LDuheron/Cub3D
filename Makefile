@@ -9,8 +9,10 @@ OBJ_DIR     := obj
 
 SRCS := main.c								\
 		parsing/check_extension.c			\
-		parsing/get_and_sort_map.c			\
+		parsing/parse_map.c					\
+		parsing/parse_texture.c				\
 		parsing/parsing.c					\
+		parsing/read_input.c				\
 		utils/gnl/get_next_line.c			\
 		utils/libft/ft_strdup.c				\
 		utils/libft/split.c					\
