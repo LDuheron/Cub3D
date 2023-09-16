@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/15 19:30:11 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:05:12 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int		read_input_file(t_parsing_data *parsing, char *argv);
 
 // Error_management.c
 int		error_message(int code);
+int		error_texture_message(int code);
 void	ft_putstr_fd(char *s, int fd);
 
 //////////////////////////////////////////////////////////////////
@@ -142,14 +143,16 @@ char	*ft_read(int fd, char *remains);
 //																//
 //////////////////////////////////////////////////////////////////
 
+// Ft_calloc.c
+void	*ft_calloc(size_t nmemb, size_t size);
+
 // Ft_strdup.c
 char	**ft_split(char *s, char c);
 
 // Ft_strdup.c
 char	*ft_strdup(char *src);
 
-// Libft_utils.c // A RENOMMER
-void	*ft_calloc(size_t nmemb, size_t size);
+// Libft_utils.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
@@ -159,6 +162,7 @@ int		ft_strlen(char *str);
 
 // Debug_function.c
 void	free_tab(char **str);
+void	free_char_tab(char **tab);
 void	print_tab(char **tab);
 void	print_int(int **tab);
 

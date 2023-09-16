@@ -6,28 +6,44 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:20:36 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/14 18:59:06 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:06:09 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static void	free_char_tab(char **tab)
-// {
-// 	int	i;
+void	free_char_tab(char **tab)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (tab[i])
-// 	{
-// 		free(tab[i]);
-// 		i++;
-// 	}
-// 	if (tab)
-// 	{
-// 		free(tab);
-// 		tab = NULL;
-// 	}
-// }
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	if (tab)
+	{
+		free(tab);
+		tab = NULL;
+	}
+}
+
+void	free_tab(char **str)
+{
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	str = NULL;
+}
 
 // static void	free_int_tab(int **tab)
 // {
@@ -54,23 +70,6 @@
 // 		tab = NULL;
 // 	}
 // }
-
-void	free_tab(char **str)
-{
-	int	i;
-
-	if (!str)
-		return ;
-	i = 0;
-	while (str[i])
-	{
-		printf("%s", str[i]); // DEBUG
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	str = NULL;
-}
 
 void	print_tab(char **str)
 {

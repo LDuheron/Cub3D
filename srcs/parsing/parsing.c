@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/15 19:35:41 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:05:14 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	init_parsing_data(t_parsing_data *parsing)
 void	free_parsing_data(t_parsing_data *parsing)
 {
 	if (parsing->file)
-		free_tab(parsing->file);
+		free_char_tab(parsing->file);
 	if (parsing->map)
-		free_tab(parsing->map);
+		free_char_tab(parsing->map);
 	if (parsing->texture)
-		free_tab(parsing->texture);
+		free_char_tab(parsing->texture);
 }
 
 // PARSING : The parsing function retrieves the argument given 
@@ -48,5 +48,6 @@ int	parsing(char *argv)
 			return (SUCCESS);
 		}
 	}
+	free_parsing_data(&parsing);
 	return (ERROR);
 }

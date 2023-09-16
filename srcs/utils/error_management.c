@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/15 18:13:41 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:10:52 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	ft_putstr_fd(char *s, int fd)
 
 int	error_texture_message(int code)
 {
-	if (code == ERROR_T_INCOMPLETE_PATH)
+	if (code == ERROR_TEXTURE)
+		ft_putstr_fd("Please enter the texture in the correct order and without spaces in front of it.\n", 2);
+	else if (code == ERROR_T_INCOMPLETE_PATH)
 		ft_putstr_fd("Error: incomplete path.\n", 2);
 	else if (code == ERROR_T_MISSING_PATH)
 		ft_putstr_fd("Error: missing path.\n", 2);
