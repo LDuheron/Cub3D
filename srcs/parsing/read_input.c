@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:47:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/15 14:54:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:26:37 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 
 int	sort_input_file(t_parsing_data *parsing)
 {
-	retrieve_texture(parsing);
-	return (SUCCESS);
+	if (retrieve_texture(parsing) == SUCCESS)
+		if (is_valid_texture(parsing) == SUCCESS)
+			return (SUCCESS);
+	return (ERROR);
 }
 
 // READ_INPUT_FILE : This function reads the input and stores
@@ -35,8 +37,8 @@ int	read_input_file(t_parsing_data *parsing, char *argv)
 	char	*backup;
 	int		fd;
 
-	if (check_extension(argv) != SUCCESS)
-		return (ERROR);
+	if (check_extension(argv, ".cub") != SUCCESS)
+		return (error_message(ERROR_EXTENSION));
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		return (error_message(ERROR_FD));

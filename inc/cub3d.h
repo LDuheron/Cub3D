@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 18:05:12 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:01:30 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # endif
 
 // ERROR TEXTURE
+
+# define ERROR_EXTENSION -9
+
 # define ERROR_T_INCOMPLETE_PATH -1
 # define ERROR_T_MISSING_PATH -2
 # define ERROR_T_MISSING_TEXTURE -3
@@ -91,7 +94,8 @@ int		main(int argc, char **argv);
 //////////////////////////////////////////////////////////////////
 
 // Check_extension.c
-int		check_extension(char *file);
+// int		check_extension(char *file);
+int		check_extension(char *file, char *format);
 
 // Is_something.c
 int		is_space(char c);
@@ -101,6 +105,7 @@ int		is_valid_char(t_parsing_data *parsing);
 // Parse_map.c
 
 // Parse_texture.c
+int		is_valid_texture(t_parsing_data *parsing);
 int		retrieve_texture(t_parsing_data *parsing);
 
 // Parsing.c

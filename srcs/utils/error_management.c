@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 18:10:52 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:51:36 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	error_texture_message(int code)
 		ft_putstr_fd("Error: missing texture.\n", 2);
 	else if (code == ERROR_T_WRONG_ORDER)
 		ft_putstr_fd("Error: texture written in the wrong order.\n", 2);
+	else if (code == ERROR_EXTENSION)
+		ft_putstr_fd("Error: texture should be .xpm format.\n", 2);
 	return (ERROR);
 }
 
@@ -44,5 +46,7 @@ int	error_message(int code)
 		ft_putstr_fd("Error: an error occured when opening fd.\n", 2);
 	else if (code == ERROR_MALLOC)
 		ft_putstr_fd("Error: please insert 2 arguments.\n", 2);
+	else if (code == ERROR_EXTENSION)
+		ft_putstr_fd("Error: map should be .cub format.\n", 2);
 	return (ERROR);
 }

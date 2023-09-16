@@ -6,18 +6,40 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 18:08:02 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:25:23 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// while (parsing->file[i] && i < 5)
-// 	{
-// 		parsing->texture[i] = ft_strdup(parsing->file[i]);
-// 		i++;
-// 	}
-// 	parsing->texture[i] = NULL;
+static int	is_valid_path(char *path)
+{
+	int	len;
+	// int	fd;
+
+	len = ft_strlen(path);
+	if (check_extension(path, ".xpm") != SUCCESS)
+		return (error_texture_message(ERROR_EXTENSION));
+	// fd = open(path)
+	// if (fd < 0)
+	// else close
+	return (SUCCESS);
+}
+
+int	is_valid_texture(t_parsing_data *parsing)
+{
+	int	i;
+
+	i = 0;
+	while (parsing->texture[i])
+	{
+		printf("%s\n", parsing->texture[i]);
+		if (is_valid_path(parsing->texture[i]) == ERROR)
+			return (ERROR);
+		i++;
+	}
+	return (SUCCESS);
+}
 
 // EXTRACT_TEXTURE_PATH : This function extracts from file the paths of 
 // the textures.
@@ -67,7 +89,10 @@ int	retrieve_texture(t_parsing_data *parsing)
 		line = extract_texture_path(parsing, i, stat_i);
 		stat_i = line + 1;
 		if (line == ERROR_TEXTURE)
+		{
+			printf("DEBUG\n");
 			return (error_texture_message(line));
+		}
 		parsing->texture[i] = ft_strdup(parsing->file[line]);
 		i++;
 	}
