@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/17 15:34:23 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:02:12 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 static int	is_valid_path(char *path)
 {
 	int	len;
-	// int	fd;
+	int	fd;
 
 	len = ft_strlen(path);
 	if (check_extension(path, ".xpm") != SUCCESS)
 		return (error_texture_message(ERROR_EXTENSION));
-	// fd = open(path)
-	// if (fd < 0)
-	// else close
+	fd = open(path, O_RDONLY);
+	if (fd != 0)
+		return (error_texture_message(ERROR_T_OPEN));
+	if (close (fd) != 0)
+		return (error_message(ERROR_CLOSE));
 	return (SUCCESS);
 }
 

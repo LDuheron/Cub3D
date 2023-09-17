@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 20:01:30 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/17 16:33:32 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@
 # define ERROR_T_MISSING_TEXTURE -3
 # define ERROR_T_WRONG_ORDER -4
 # define ERROR_TEXTURE -5
+# define ERROR_T_OPEN -6
 
 # define ERROR_ARG -1
 # define ERROR_CHAR -2
-# define ERROR_MALLOC -3
-# define ERROR_FD -4
+# define ERROR_CLOSE -3
+# define ERROR_MALLOC -4
+# define ERROR_FD -5
 
 # define ERROR 0
 # define SUCCESS 1
@@ -151,11 +153,14 @@ char	*ft_read(int fd, char *remains);
 // Ft_calloc.c
 void	*ft_calloc(size_t nmemb, size_t size);
 
-// Ft_strdup.c
+// Ft_split.c
 char	**ft_split(char *s, char c);
 
 // Ft_strdup.c
 char	*ft_strdup(char *src);
+
+// Ft_substr.c
+char	*ft_substr(char *s, unsigned int start, size_t len);
 
 // Libft_utils.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
