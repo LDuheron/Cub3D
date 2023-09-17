@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 19:51:36 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:35:43 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	error_texture_message(int code)
 	else if (code == ERROR_T_WRONG_ORDER)
 		ft_putstr_fd("Error: texture written in the wrong order.\n", 2);
 	else if (code == ERROR_EXTENSION)
-		ft_putstr_fd("Error: texture should be .xpm format.\n", 2);
+		ft_putstr_fd("Error: all textures should be .xpm format.\n", 2);
 	return (ERROR);
 }
 

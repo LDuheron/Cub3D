@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 20:25:23 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:34:23 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ int	is_valid_texture(t_parsing_data *parsing)
 	int	i;
 
 	i = 0;
+	printf("\n -- is valid texture -- \n");
 	while (parsing->texture[i])
 	{
-		printf("%s\n", parsing->texture[i]);
+		// printf("%s\n", parsing->texture[i]);
 		if (is_valid_path(parsing->texture[i]) == ERROR)
 			return (ERROR);
 		i++;
 	}
+	printf("Exit with success is_valid_texture\n");
 	return (SUCCESS);
 }
 
@@ -46,6 +48,7 @@ int	is_valid_texture(t_parsing_data *parsing)
 // return la ligne d'ou extraire dans le file pour NO etc
 static int	extract_texture_path(t_parsing_data *parsing, int code, int i)
 {
+	// printf("%i : %s\n", code, parsing->file[i]); // DEBUG
 	while (parsing->file[i] && is_empty_line(parsing->file[i]) == EMPTY)
 		i++;
 	if (code == 0 && ft_strncmp(parsing->file[i], "NO", 2) == 0)
@@ -56,9 +59,9 @@ static int	extract_texture_path(t_parsing_data *parsing, int code, int i)
 		return (i);
 	else if (code == 3 && ft_strncmp(parsing->file[i], "SE", 2) == 0)
 		return (i);
-	else if (code == 4 && ft_strncmp(parsing->file[i], "F", 2) == 0)
+	else if (code == 4 && ft_strncmp(parsing->file[i], "F", 1) == 0)
 		return (i);
-	else if (code == 5 && ft_strncmp(parsing->file[i], "C", 2) == 0)
+	else if (code == 5 && ft_strncmp(parsing->file[i], "C", 1) == 0)
 		return (i);
 	return (ERROR_TEXTURE);
 }
@@ -89,13 +92,11 @@ int	retrieve_texture(t_parsing_data *parsing)
 		line = extract_texture_path(parsing, i, stat_i);
 		stat_i = line + 1;
 		if (line == ERROR_TEXTURE)
-		{
-			printf("DEBUG\n");
 			return (error_texture_message(line));
-		}
 		parsing->texture[i] = ft_strdup(parsing->file[line]);
 		i++;
 	}
+	printf("\n -- print tab texture -- \n");
 	print_tab(parsing->texture);
 	return (SUCCESS);
 }
