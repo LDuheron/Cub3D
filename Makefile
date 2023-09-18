@@ -21,7 +21,7 @@ SRCS := main.c								\
 		utils/libft/libft_utils.c			\
 		utils/debug_function.c				\
 		utils/error_management.c			\
-		utils/is_something.cc				\
+		utils/is_something.c				\
 
 #############################################
 

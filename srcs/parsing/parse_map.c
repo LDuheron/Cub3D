@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 14:54:00 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:18:46 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int	retrieve_map(t_parsing_data *parsing)
 {
+	(void)parsing;
 	return (SUCCESS);
 }

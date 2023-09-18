@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:47:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 14:46:49 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:19:05 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 int	sort_input_file(t_parsing_data *parsing)
 {
 	if (retrieve_texture(parsing) == SUCCESS)
-		if (is_valid_texture(parsing) == SUCCESS)
-			return (SUCCESS);
+		return (SUCCESS);
 	return (ERROR);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 14:58:19 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:18:30 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_parsing_data
 //////////////////////////////////////////////////////////////////
 
 // Main.c
-int			main(int argc, char **argv);
+int		main(int argc, char **argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -91,27 +91,27 @@ int			main(int argc, char **argv);
 //////////////////////////////////////////////////////////////////
 
 // is_valid.c
-int			is_valid_char(t_parsing_data *parsing);
-int			is_valid_extension(char *file, char *format);
-static int	is_valid_path(char *path);
-int			is_valid_texture(t_parsing_data *parsing);
+int		is_valid_char(t_parsing_data *parsing);
+int		is_valid_extension(char *file, char *format);
+int		is_valid_texture(t_parsing_data *parsing);
 
 // Is_something.c
-int			is_space(char c);
-int			is_empty_line(char *line);
-int			is_valid_char(t_parsing_data *parsing);
+int		is_space(char c);
+int		is_empty_line(char *line);
+int		is_valid_char(t_parsing_data *parsing);
 
 // Parse_map.c
+int		retrieve_map(t_parsing_data *parsing);
 
 // Parse_texture.c
-int			retrieve_texture(t_parsing_data *parsing);
+int		retrieve_texture(t_parsing_data *parsing);
 
 // Parsing.c
-int			parsing(char *map);
+int		parsing(char *map);
 
 // Read_input.c
-int			sort_input_file(t_parsing_data *parsing);
-int			read_input_file(t_parsing_data *parsing, char *argv);
+int		sort_input_file(t_parsing_data *parsing);
+int		read_input_file(t_parsing_data *parsing, char *argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -122,13 +122,13 @@ int			read_input_file(t_parsing_data *parsing, char *argv);
 //////////////////////////////////////////////////////////////////
 
 // Error_management.c
-int			error_message(int code);
-int			error_texture_message(int code);
-void		ft_putstr_fd(char *s, int fd);
+int		error_message(int code);
+int		error_texture_message(int code);
+void	ft_putstr_fd(char *s, int fd);
 
 // Is_something.c
-int			is_space(char c);
-int			is_empty_line(char *line);
+int		is_space(char c);
+int		is_empty_line(char *line);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -137,10 +137,10 @@ int			is_empty_line(char *line);
 //////////////////////////////////////////////////////////////////
 
 // Get_next_line.c
-char		*get_next_line(int fd);
-char		*cut_after_end_line(char *remains, int end_line);
-char		*cut_before_end_line(char *remains, int end_line);
-char		*ft_read(int fd, char *remains);
+char	*get_next_line(int fd);
+char	*cut_after_end_line(char *remains, int end_line);
+char	*cut_before_end_line(char *remains, int end_line);
+char	*ft_read(int fd, char *remains);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -149,30 +149,30 @@ char		*ft_read(int fd, char *remains);
 //////////////////////////////////////////////////////////////////
 
 // Ft_calloc.c
-void		*ft_calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 // Ft_split.c
-char		**ft_split(char *s, char c);
+char	**ft_split(char *s, char c);
 
 // Ft_strdup.c
-char		*ft_strdup(char *src);
+char	*ft_strdup(char *src);
 
 // Ft_substr.c
-char		*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 
 // Libft_utils.c
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-char		*ft_strchr(char *s, int c);
-char		*ft_strjoin(char *s1, char *s2);
-int			ft_strlen(char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_strlen(char *str);
 
 //////////////////////////////////////////////////////////////////
 
 // Debug_function.c
-void		free_tab(char **str);
-void		free_char_tab(char **tab);
-void		print_tab(char **tab);
-void		print_int(int **tab);
+void	free_tab(char **str);
+void	free_char_tab(char **tab);
+void	print_tab(char **tab);
+void	print_int(int **tab);
 
 //////////////////////////////////////////////////////////////////
 

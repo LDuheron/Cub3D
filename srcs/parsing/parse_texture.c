@@ -6,11 +6,27 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 14:56:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:15:16 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	is_valid_path(char *path)
+{
+	int	len;
+	int	fd;
+
+	len = ft_strlen(path);
+	if (is_valid_extension(path, ".xpm") != SUCCESS)
+		return (error_texture_message(ERROR_EXTENSION));
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (error_texture_message(ERROR_T_OPEN));
+	if (close (fd) == -1)
+		return (error_message(ERROR_CLOSE));
+	return (SUCCESS);
+}
 
 // FIRST_C_TO_EXTRACT : this function retrieves the first character of 
 // the path by passing upon the first characters that are letters 
@@ -43,6 +59,8 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 	tmp_path = ft_substr(parsing->file[line], start, len);
 	parsing->texture[i] = ft_strdup(tmp_path);
 	free(tmp_path);
+	if (is_valid_path(parsing->texture[i]) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
 
