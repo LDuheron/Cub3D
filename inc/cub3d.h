@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/14 12:18:17 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:30:07 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@
 # define ERROR 0
 # define SUCCESS 1
 
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
+
+# define RED_PIXEL 0xFF0000
+# define GREEN_PIXEL 0x00FF00
+# define WHITE_PIXEL 0xFFFFFF
+# define BLACK_PIXEL 0x000000
+
 //////////////////////////////////////////////////////////////////
 //																//
 //																//
@@ -75,11 +83,18 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_player
+{
+	double	posX;
+	double	posY;
+}			t_player;
+
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		img;
+	t_player	player;
 }			t_data;
 
 //////////////////////////////////////////////////////////////////
@@ -91,7 +106,7 @@ typedef struct s_data
 //////////////////////////////////////////////////////////////////
 
 // Main.c
-int		main(int argc, char **argv);
+// int		main(int argc, char **argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -169,6 +184,7 @@ void	print_tab(char **tab);
 
 // create_window.c
 t_data	get_data_win();
+void	img_pix_put(t_img *img, int x, int y, int color);
 int		create_window();
 
 // events.c
@@ -176,5 +192,9 @@ void	ft_exit(t_data *data);
 int		close_win_key(int keysym, t_data *data);
 int		close_win_mouse(t_data *data);
 int		handle_no_event(void *data);
+
+// draw_map.c
+int		draw_map(t_data data);
+void	draw_rect(t_data *data);
 
 #endif

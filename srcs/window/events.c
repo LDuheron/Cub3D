@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/14 12:15:39 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:41:54 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,20 @@ void	ft_exit(t_data *data)
 
 int	close_win_key(int keysym, t_data *data)
 {
+	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
 	if (keysym == XK_Escape)
 		ft_exit(data);
+	if (keysym == XK_w || keysym == XK_Up)
+		data->player.posY -= 8;
+	if (keysym == XK_s || keysym == XK_Down)
+		data->player.posY += 8;
+	if (keysym == XK_a || keysym == XK_Left)
+		data->player.posX -= 8;
+	if (keysym == XK_d || keysym == XK_Right)
+		data->player.posX += 8;
+	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
+	draw_rect(data);
+	draw_map(*data);
 	return (0);
 }
 
