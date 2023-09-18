@@ -8,8 +8,7 @@ SRC_DIR     := srcs
 OBJ_DIR     := obj
 
 SRCS := main.c								\
-		parsing/check_extension.c			\
-		parsing/is_something.c				\
+		parsing/is_valid.c					\
 		parsing/parse_map.c					\
 		parsing/parse_texture.c				\
 		parsing/parsing.c					\
@@ -22,6 +21,7 @@ SRCS := main.c								\
 		utils/libft/libft_utils.c			\
 		utils/debug_function.c				\
 		utils/error_management.c			\
+		utils/is_something.cc				\
 
 #############################################
 

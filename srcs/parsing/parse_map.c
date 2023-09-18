@@ -6,8 +6,13 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 17:10:45 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:54:00 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	retrieve_map(t_parsing_data *parsing)
+{
+	return (SUCCESS);
+}

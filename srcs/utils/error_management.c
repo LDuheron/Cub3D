@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/17 15:50:13 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:52:17 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ int	error_texture_message(int code)
 {
 	if (code == ERROR_TEXTURE)
 		ft_putstr_fd("Please enter the texture in the correct order and without spaces in front of it.\n", 2);
-	else if (code == ERROR_T_INCOMPLETE_PATH)
-		ft_putstr_fd("Error: incomplete path.\n", 2);
-	else if (code == ERROR_T_MISSING_PATH)
-		ft_putstr_fd("Error: missing path.\n", 2);
-	else if (code == ERROR_T_MISSING_TEXTURE)
-		ft_putstr_fd("Error: missing texture.\n", 2);
-	else if (code == ERROR_T_WRONG_ORDER)
-		ft_putstr_fd("Error: texture written in the wrong order.\n", 2);
 	else if (code == ERROR_EXTENSION)
 		ft_putstr_fd("Error: all textures should be .xpm format.\n", 2);
 	else if (code == ERROR_T_OPEN)

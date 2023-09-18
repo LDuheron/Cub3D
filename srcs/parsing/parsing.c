@@ -6,21 +6,20 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/16 17:05:14 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:56:39 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_parsing_data(t_parsing_data *parsing)
+static void	init_parsing_data(t_parsing_data *parsing)
 {
 	parsing->file = NULL;
 	parsing->map = NULL;
 	parsing->texture = NULL;
-	parsing->cpt_line = 0;
 }
 
-void	free_parsing_data(t_parsing_data *parsing)
+static void	free_parsing_data(t_parsing_data *parsing)
 {
 	if (parsing->file)
 		free_char_tab(parsing->file);
@@ -41,7 +40,6 @@ int	parsing(char *argv)
 	init_parsing_data(&parsing);
 	if (read_input_file(&parsing, argv) == SUCCESS)
 	{
-		print_tab(parsing.map);
 		if (sort_input_file(&parsing) == SUCCESS)
 		{
 			free_parsing_data(&parsing);

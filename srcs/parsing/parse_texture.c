@@ -6,51 +6,52 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/17 16:02:12 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:56:07 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	is_valid_path(char *path)
-{
-	int	len;
-	int	fd;
-
-	len = ft_strlen(path);
-	if (check_extension(path, ".xpm") != SUCCESS)
-		return (error_texture_message(ERROR_EXTENSION));
-	fd = open(path, O_RDONLY);
-	if (fd != 0)
-		return (error_texture_message(ERROR_T_OPEN));
-	if (close (fd) != 0)
-		return (error_message(ERROR_CLOSE));
-	return (SUCCESS);
-}
-
-int	is_valid_texture(t_parsing_data *parsing)
+// FIRST_C_TO_EXTRACT : this function retrieves the first character of 
+// the path by passing upon the first characters that are letters 
+// (NO, SO, SE, WE, F, C), then by passing upon the spaces that separates
+// the direction with the path.
+static int	first_c_to_extract(char *path)
 {
 	int	i;
 
 	i = 0;
-	printf("\n -- is valid texture -- \n");
-	while (parsing->texture[i])
-	{
-		// printf("%s\n", parsing->texture[i]);
-		if (is_valid_path(parsing->texture[i]) == ERROR)
-			return (ERROR);
+	while (path[i] && is_space(path[i]) == 0)
 		i++;
-	}
-	printf("Exit with success is_valid_texture\n");
+	while (path[i] && is_space(path[i]) == 1)
+		i++;
+	return (i);
+}
+
+// EXTRACT_TEXTURE_PATH : This function 
+// parsing->texture[i] = ft_strdup(parsing->file[line]);
+// i : indicate which direction we are working on.
+// line : line number in the file.
+static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
+{
+	int		len;
+	int		start;
+	char	*tmp_path;
+
+	start = first_c_to_extract(parsing->file[line]);
+	len = ft_strlen(parsing->file[line]) - start;
+	tmp_path = ft_substr(parsing->file[line], start, len);
+	parsing->texture[i] = ft_strdup(tmp_path);
+	free(tmp_path);
 	return (SUCCESS);
 }
 
-// EXTRACT_TEXTURE_PATH : This function extracts from file the paths of 
+// find_line_to_extract : This function extracts from file the paths of 
 // the textures.
 // return la ligne d'ou extraire dans le file pour NO etc
-static int	extract_texture_path(t_parsing_data *parsing, int code, int i)
+
+static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 {
-	// printf("%i : %s\n", code, parsing->file[i]); // DEBUG
 	while (parsing->file[i] && is_empty_line(parsing->file[i]) == EMPTY)
 		i++;
 	if (code == 0 && ft_strncmp(parsing->file[i], "NO", 2) == 0)
@@ -91,11 +92,12 @@ int	retrieve_texture(t_parsing_data *parsing)
 		return (error_message(ERROR_MALLOC));
 	while (parsing->file[i] && i < 6)
 	{
-		line = extract_texture_path(parsing, i, stat_i);
+		line = find_line_to_extract(parsing, i, stat_i);
 		stat_i = line + 1;
 		if (line == ERROR_TEXTURE)
 			return (error_texture_message(line));
-		parsing->texture[i] = ft_strdup(parsing->file[line]);
+		if (extract_texture_path(parsing, line, i) != SUCCESS)
+			return (ERROR);
 		i++;
 	}
 	printf("\n -- print tab texture -- \n");
