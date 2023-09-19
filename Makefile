@@ -1,5 +1,8 @@
 NAME = cub3d
 
+YELLOW := "\e[0;33m"
+PINK := "\e[0;95m"
+
 #############################################
 
 #############################################
@@ -46,8 +49,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME) -L/usr/local/lib -I/usr/local/inc -lreadline
-	$(info CREATED $(NAME))
-	@echo "$$GAME_INIT"
+	@echo $(YELLOW)"$$KEY" $(RESET)
+	@echo $(PINK)"$$TITLE" $(RESET)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
@@ -70,7 +73,7 @@ re:
 
 info : game_init
 
-define GAME_INIT
+define KEY
 
     .---.
    /    |\________________
@@ -78,10 +81,15 @@ define GAME_INIT
    \    |/        | | | |
     `---'         "-" |_|
 
+endef
+export KEY
+
+define TITLE
+
 - THE GRAND BUDAPEST HOTEL -
 
 endef
-export GAME_INIT
+export TITLE
 
 define HOUSE_INIT
 

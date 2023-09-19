@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/19 20:00:43 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/19 20:11:46 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int	check_map_empty(t_parsing_data *parsing, char *argv)
 	int		i;
 	int		fd;
 
-	// printf(" -- in check_map_empty -- \n");
 	i = 0;
-	fd = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		return (error_message(ERROR_FD));
