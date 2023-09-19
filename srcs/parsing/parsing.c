@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 17:59:46 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:43:23 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static int	read_input_file(t_parsing_data *parsing, char *argv)
 	while (line)
 	{
 		backup = file_tmp;
-		// if (is_empty_line(line))
-		// 	line = " \n";
 		file_tmp = ft_strjoin(backup, line);
 		free(line);
 		line = get_next_line(fd);
@@ -72,15 +70,18 @@ int	parsing(char *argv)
 	init_parsing_data(&parsing);
 	if (read_input_file(&parsing, argv) == SUCCESS)
 	{
-		print_tab(parsing.file);
+		// print_tab(parsing.file);
 		if (retrieve_texture(&parsing) == SUCCESS)
 		{
-			if (retrieve_map(&parsing) == SUCCESS)
+			if (check_map_empty(&parsing, argv) == SUCCESS)
 			{
-				printf("\n -- print tab map -- \n");
-				print_tab(parsing.map);
-				free_parsing_data(&parsing);
-				return (SUCCESS);
+				if (retrieve_map(&parsing) == SUCCESS)
+				{
+					// printf("\n -- print tab map -- \n");
+					// print_tab(parsing.map);
+					free_parsing_data(&parsing);
+					return (SUCCESS);
+				}
 			}
 		}
 	}

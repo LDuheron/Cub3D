@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 14:52:17 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:49:19 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
-int	error_texture_message(int code)
+int	error_parsing_message(int code)
 {
 	if (code == ERROR_TEXTURE)
 		ft_putstr_fd("Please enter the texture in the correct order and without spaces in front of it.\n", 2);
@@ -27,6 +27,8 @@ int	error_texture_message(int code)
 		ft_putstr_fd("Error: all textures should be .xpm format.\n", 2);
 	else if (code == ERROR_T_OPEN)
 		ft_putstr_fd("Error: texture cannot be open.\n", 2);
+	else if (code == ERROR_MAP)
+		ft_putstr_fd("Error: map format invalid, no empty line in map.\n", 2);
 	return (ERROR);
 }
 

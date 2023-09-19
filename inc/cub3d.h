@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 16:23:08 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:47:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 
 # define ERROR_TEXTURE -5
 # define ERROR_T_OPEN -6
+# define ERROR_MAP -7
 
 # define ERROR_ARG -1
 # define ERROR_CHAR -2
@@ -102,6 +103,7 @@ int		is_empty_line(char *line);
 int		is_valid_char(t_parsing_data *parsing);
 
 // Parse_map.c
+int		check_map_empty(t_parsing_data *parsing, char *argv);
 int		retrieve_map(t_parsing_data *parsing);
 
 // Parse_texture.c
@@ -124,7 +126,7 @@ int		parsing(char *map);
 
 // Error_management.c
 int		error_message(int code);
-int		error_texture_message(int code);
+int		error_parsing_message(int code);
 void	ft_putstr_fd(char *s, int fd);
 
 // Is_something.c

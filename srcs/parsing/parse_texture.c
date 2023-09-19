@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 16:23:50 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:47:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	is_valid_path(char *path)
 
 	len = ft_strlen(path);
 	if (is_valid_extension(path, ".xpm") != SUCCESS)
-		return (error_texture_message(ERROR_EXTENSION));
+		return (error_parsing_message(ERROR_EXTENSION));
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (error_texture_message(ERROR_T_OPEN));
+		return (error_parsing_message(ERROR_T_OPEN));
 	if (close (fd) == -1)
 		return (error_message(ERROR_CLOSE));
 	return (SUCCESS);
@@ -113,13 +113,13 @@ int	retrieve_texture(t_parsing_data *parsing)
 		line = find_line_to_extract(parsing, i, stat_i);
 		stat_i = line + 1;
 		if (line == ERROR_TEXTURE)
-			return (error_texture_message(line));
+			return (error_parsing_message(line));
 		if (extract_texture_path(parsing, line, i) != SUCCESS)
 			return (ERROR);
 		i++;
 	}
 	parsing->line_last_texture = line;
-	printf("\n -- print tab texture -- \n"); // DEBUG
-	print_tab(parsing->texture); // DEBUG
+	// printf("\n -- print tab texture -- \n"); // DEBUG
+	// print_tab(parsing->texture); // DEBUG
 	return (SUCCESS);
 }
