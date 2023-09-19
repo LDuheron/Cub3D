@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"x.h": "c"
+		"x.h": "c",
+		"cub3d.h": "c",
+		"graph.h": "c"
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/18 17:41:54 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:18:50 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "graph.h"
 
 void	ft_exit(t_data *data)
 {

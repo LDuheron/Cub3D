@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 17:30:07 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:45:39 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,29 +73,6 @@ typedef struct s_parsing_data
 	char	**texture;
 	int		cpt_line;
 }	t_parsing_data;
-
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}			t_img;
-
-typedef struct s_player
-{
-	double	posX;
-	double	posY;
-}			t_player;
-
-typedef struct s_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		img;
-	t_player	player;
-}			t_data;
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -183,9 +160,9 @@ void	print_tab(char **tab);
 //////////////////////////////////////////////////////////////////
 
 // create_window.c
-t_data	get_data_win();
+t_data	get_data_win(unsigned char **map);
 void	img_pix_put(t_img *img, int x, int y, int color);
-int		create_window();
+int		create_window(unsigned char **map);
 
 // events.c
 void	ft_exit(t_data *data);
@@ -196,5 +173,18 @@ int		handle_no_event(void *data);
 // draw_map.c
 int		draw_map(t_data data);
 void	draw_rect(t_data *data);
+
+// GRAPH_LIB //
+
+// ft_strlen.c
+int		ft_unstrlen(unsigned char* str);
+int		ft_unstrlen_plus(unsigned char** str);
+
+// draw_utils.c
+int		ft_abs(int nb);
+void	set_line_coordinates(t_data *data, int ix, int iy, int status);
+void	draw_line(t_data *data);
+void	ft_dda(t_data *data, int ix, int iy, int status);
+void	calculate_steps(int *steps, int dx, int dy);
 
 #endif
