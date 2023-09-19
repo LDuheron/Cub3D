@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:53:03 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 16:27:24 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:40:43 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	player_pos(t_data data)
 	{
 		while (data.player.posY < sizeY)
 		{
-			img_pix_put(&data.img, data.player.posX, data.player.posY, RED_PIXEL);
+			img_pix_put(&data.img, data.player.posX, data.player.posY, BLUE_PIXEL);
 			data.player.posY += 1;
 		}
 		data.player.posY -= 8;

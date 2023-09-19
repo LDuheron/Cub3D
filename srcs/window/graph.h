@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 16:15:36 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:40:39 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0x00FF00
-# define WHITE_PIXEL 0xFFFFFF
+# define RED_PIXEL 0x8A0B0B
+# define BLUE_PIXEL 0x155DDB
+# define GREEN_PIXEL 0x77FF00
+# define WHITE_PIXEL 0xEBE9CD
 # define BLACK_PIXEL 0x000000
 
 //////////////////////////////////////////////////////////////////

@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:57 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 16:40:56 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:38:16 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_shift(int *shift_x, int *shift_y)
 {
-	*shift_x = WIN_WIDTH / 2;
-	*shift_y = WIN_HEIGHT / 10;
+	*shift_x = 1;
+	*shift_y = 1;
 }
 
 int	ft_abs(int nb)
@@ -29,13 +29,14 @@ void	set_line_coordinates(t_data *data, int ix, int iy)
 {
 	int	zoom;
 
-	zoom = 20;
+	zoom = 50;
 	data->line.x1 = ix * zoom;
 	data->line.x2 = ix + 1;
 	data->line.x2 *= zoom;
 	data->line.y1 = iy * zoom;
 	data->line.y2 = iy;
-	data->line.y2 *= zoom;}
+	data->line.y2 *= zoom;
+}
 
 void	calculate_steps(int *steps, int dx, int dy)
 {
@@ -72,14 +73,19 @@ void	ft_dda(t_data *data, int ix, int iy, int color)
 	steps = 0;
 	dx = data->line.x2 - data->line.x1;
 	dy = data->line.y2 - data->line.y1;
-	calculate_steps(&steps, dx, dy);
-	inc_x = dx / (float)steps;
-	inc_y = dy / (float)steps;
-	while (steps >= 0)
+	inc_x = data->line.x1;
+	inc_y = 0;
+	while (inc_y < 49)
 	{
-		draw_line(data, color);
-		data->line.x1 += inc_x;
-		data->line.y1 += inc_y;
-		steps--;
+		calculate_steps(&steps, dx, dy);
+		while (steps >= 2)
+		{
+			draw_line(data, color);
+			data->line.x1++;
+			steps--;
+		}
+		data->line.x1 = inc_x;
+		data->line.y1++;
+		inc_y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 14:18:55 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:19:11 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_data	get_data_win(unsigned char **map)
 {
 	t_data	data;
 
-	data.player.posX = WIN_WIDTH/2;
+	data.player.posX = WIN_WIDTH/4;
 	data.player.posY = WIN_HEIGHT/2;
 	data.map = map;
 	data.mlx_ptr = mlx_init();
@@ -72,7 +72,7 @@ int	main(void)
 	unsigned char	*map_4 = (unsigned char*)"11101111";
 	unsigned char	*map_5 = (unsigned char*)"10000001";
 	unsigned char	*map_6 = (unsigned char*)"10000001";
-	unsigned char	*map_7 = (unsigned char*)"1000000111111";
+	unsigned char	*map_7 = (unsigned char*)"1001100111111";
 	unsigned char	*map_8 = (unsigned char*)"10000000000001";
 	unsigned char	*map_9 = (unsigned char*)"1000000111111";
 	unsigned char	*map_10 = (unsigned char*)"10000001";
@@ -94,15 +94,15 @@ int	main(void)
 
 	for (int i = 0; i < ft_unstrlen_plus(map) ; i++)
 		printf("%s\n", map[i]);
-	printf("\n");
-	printf("%d\n", ft_unstrlen_plus(map));
-	printf("\n");
-	for (int i = 0; i < ft_unstrlen_plus(map) ; i++)
-	{
-		for (int j = 0; j < ft_unstrlen(map[i]) ; j++)
-			printf("%d;", map[i][j]);
-		printf("\n");
-	}
+	// printf("\n");
+	// printf("%d\n", ft_unstrlen_plus(map));
+	// printf("\n");
+	// for (int i = 0; i < ft_unstrlen_plus(map) ; i++)
+	// {
+	// 	for (int j = 0; j < ft_unstrlen(map[i]) ; j++)
+	// 		printf("%d;", map[i][j]);
+	// 	printf("\n");
+	// }
 	// char	*no;
 	// char	*so;
 	// char	*we;
