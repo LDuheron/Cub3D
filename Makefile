@@ -70,16 +70,16 @@ re:
 
 info : game_init
 
-define GAME_INIT	
+define GAME_INIT
 
-  ooo,    .---.
- o`  o   /    |\________________
-o`   'oooo()  | ________   _   _)
-`oo   o` \    |/        | | | |
-  `ooo'   `---'         "-" |_|
-                                  
- 		THE GRAND BUDAPEST HOTEL	   
-                                    	 
+    .---.
+   /    |\________________
+  ( ()  | ________   _   _)
+   \    |/        | | | |
+    `---'         "-" |_|
+
+- THE GRAND BUDAPEST HOTEL -
+
 endef
 export GAME_INIT
 
