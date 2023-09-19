@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 15:18:46 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:59:12 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,28 @@
 
 int	retrieve_map(t_parsing_data *parsing)
 {
-	(void)parsing;
+	int	i;
+	int	start;
+	int	end;
+
+	i = 0;
+	start = parsing->line_last_texture + 1;
+	while (is_empty_line(parsing->file[start]))
+		start++;
+	end = start;
+	while (parsing->file[end])
+		end++;
+	parsing->map = ft_calloc(sizeof(char *), (end - start + 1));
+	if (!parsing->map)
+		return (error_message(ERROR_MALLOC));
+	// printf("First line map : %i, %s\n", start, parsing->file[start]); // DEBUG
+	while (parsing->file[start])
+	{
+		parsing->map[i] = ft_strdup(parsing->file[start]);
+		if (parsing->map[i] == NULL)
+			return (error_message(ERROR_MALLOC));
+		i++;
+		start++;
+	}
 	return (SUCCESS);
 }

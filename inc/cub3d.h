@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 15:18:30 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:23:08 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_parsing_data
 	char	**file;
 	char	**texture;
 	char	**map;
+	int		line_last_texture;
 }	t_parsing_data;
 
 //////////////////////////////////////////////////////////////////
@@ -110,8 +111,8 @@ int		retrieve_texture(t_parsing_data *parsing);
 int		parsing(char *map);
 
 // Read_input.c
-int		sort_input_file(t_parsing_data *parsing);
-int		read_input_file(t_parsing_data *parsing, char *argv);
+// int		sort_input_file(t_parsing_data *parsing);
+// int		read_input_file(t_parsing_data *parsing, char *argv);
 
 //////////////////////////////////////////////////////////////////
 //																//

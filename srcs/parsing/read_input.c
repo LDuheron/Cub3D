@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:47:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 15:19:05 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:53:54 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,10 @@
 	// put map in map.
 	// check_char(parsing);
 
-int	sort_input_file(t_parsing_data *parsing)
-{
-	if (retrieve_texture(parsing) == SUCCESS)
-		return (SUCCESS);
-	return (ERROR);
-}
-
-// READ_INPUT_FILE : This function reads the input and stores
-// it in the parsing structure under the variable map.
-int	read_input_file(t_parsing_data *parsing, char *argv)
-{
-	char	*file_tmp;
-	char	*line;
-	char	*backup;
-	int		fd;
-
-	if (is_valid_extension(argv, ".cub") != SUCCESS)
-		return (error_message(ERROR_EXTENSION));
-	fd = open(argv, O_RDONLY);
-	if (fd == -1)
-		return (error_message(ERROR_FD));
-	file_tmp = ft_strdup("");
-	line = get_next_line(fd);
-	while (line)
-	{
-		backup = file_tmp;
-		file_tmp = ft_strjoin(backup, line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	parsing->file = ft_split(file_tmp, '\n');
-	free(file_tmp);
-	close(fd);
-	return (SUCCESS);
-}
+// int	sort_input_file(t_parsing_data *parsing)
+// {
+// 	if (retrieve_texture(parsing) == SUCCESS)
+// 		(retrieve_map)
+// 		return (SUCCESS);
+// 	return (ERROR);
+// }

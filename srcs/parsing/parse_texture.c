@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 15:15:16 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:23:50 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ int	retrieve_texture(t_parsing_data *parsing)
 			return (ERROR);
 		i++;
 	}
-	printf("\n -- print tab texture -- \n");
-	print_tab(parsing->texture);
+	parsing->line_last_texture = line;
+	printf("\n -- print tab texture -- \n"); // DEBUG
+	print_tab(parsing->texture); // DEBUG
 	return (SUCCESS);
 }
