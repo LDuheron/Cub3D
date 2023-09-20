@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 17:40:39 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:09:02 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,18 @@ typedef struct s_dda
 	float	x2;
 	float	y2;
 }	t_dda;
+
+typedef struct s_raycasting
+{
+	double	posX; // posX & posY are the player vector
+	double	posY;
+	double	dirX; // dirX & dirY are the direction vector
+	double	dirY;
+	double	planeX; //planeX & planeY are the camera plane
+	double	planeY;
+	double	time;
+	double	oldTime;
+}			t_raycasting;
 
 typedef struct s_data
 {
