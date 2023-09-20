@@ -16,7 +16,6 @@ SRCS := main.c								\
 		parsing/parse_map.c					\
 		parsing/parse_texture.c				\
 		parsing/parsing.c					\
-		parsing/read_input.c				\
 		utils/gnl/get_next_line.c			\
 		utils/libft/ft_calloc.c				\
 		utils/libft/ft_strdup.c				\

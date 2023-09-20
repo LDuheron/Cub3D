@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 15:53:49 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:43:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define TEXTURE -12
 # define EMPTY_L -11
 # define MAP -10
+# define TOO_BIG -9
 
 # define M_TEXTURE -11
 # define EMPTY_LINE_IN_MAP -10
@@ -85,7 +86,7 @@ typedef struct s_parsing_data
 typedef struct s_parsing_first_r
 {
 	int	cpt_texture;
-	int	status;
+	int	size;
 	int	is_map;
 }	t_parsing_first_r;
 

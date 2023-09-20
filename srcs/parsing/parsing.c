@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 15:57:22 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:47:27 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	parsing(char *argv)
 	t_parsing_data	parsing;
 
 	init_parsing_data(&parsing);
-	first_reading(argv);
 	if (first_reading(argv) == SUCCESS)
 	{
 		if (read_input_file(&parsing, argv) == SUCCESS)

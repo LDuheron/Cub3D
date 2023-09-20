@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:50:32 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 15:54:08 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:51:07 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	error_message_first_reading(int code)
 		ft_putstr_fd("Missing texture\n", 2);
 	else if (code == EMPTY_LINE_IN_MAP)
 		ft_putstr_fd("No empty lines in map\n", 2);
+	else if (code == TOO_BIG)
+		ft_putstr_fd("Map too big.\n", 2);
 	return (ERROR);
 }
 
@@ -25,10 +27,14 @@ static void	init_parsing_first_r(t_parsing_first_r *data)
 {
 	data->cpt_texture = 0;
 	data->is_map = 0; // si > 0 on est sur la map
+	data->size = 0;
 }
 
 static int	is_valid_line(t_parsing_first_r *data, char *line)
 {
+	data->size += 1;
+	if (data->size >= 1000)
+		return (error_message_first_reading(TOO_BIG));
 	if (data->cpt_texture < 6)
 	{
 		if (ft_isalpha(line[0]) == 1)
