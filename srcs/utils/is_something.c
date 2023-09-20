@@ -6,11 +6,16 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:00:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 14:58:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:28:54 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_isalpha(int c)
+{
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+}
 
 int	is_space(char c)
 {

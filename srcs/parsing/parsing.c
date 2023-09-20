@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:19:22 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/19 19:43:23 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:57:22 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,19 @@ int	parsing(char *argv)
 	t_parsing_data	parsing;
 
 	init_parsing_data(&parsing);
-	if (read_input_file(&parsing, argv) == SUCCESS)
+	first_reading(argv);
+	if (first_reading(argv) == SUCCESS)
 	{
-		// print_tab(parsing.file);
-		if (retrieve_texture(&parsing) == SUCCESS)
+		if (read_input_file(&parsing, argv) == SUCCESS)
 		{
-			if (check_map_empty(&parsing, argv) == SUCCESS)
+			if (retrieve_texture(&parsing) == SUCCESS)
 			{
 				if (retrieve_map(&parsing) == SUCCESS)
 				{
 					// printf("\n -- print tab map -- \n");
 					// print_tab(parsing.map);
 					free_parsing_data(&parsing);
+					printf("Great map !\n");
 					return (SUCCESS);
 				}
 			}

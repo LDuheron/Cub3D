@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/19 19:47:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:53:49 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@
 #  define BUFFER_SIZE 10
 # endif
 
+// FIRST READING STATUS
+# define TEXTURE -12
+# define EMPTY_L -11
+# define MAP -10
+
+# define M_TEXTURE -11
+# define EMPTY_LINE_IN_MAP -10
 // ERROR TEXTURE
 
 # define ERROR_EXTENSION -9
@@ -75,6 +82,13 @@ typedef struct s_parsing_data
 	int		line_last_texture;
 }	t_parsing_data;
 
+typedef struct s_parsing_first_r
+{
+	int	cpt_texture;
+	int	status;
+	int	is_map;
+}	t_parsing_first_r;
+
 //////////////////////////////////////////////////////////////////
 //																//
 //																//
@@ -91,6 +105,9 @@ int		main(int argc, char **argv);
 //                 	  	IN PARSING DIR   	  		            //
 //																//
 //////////////////////////////////////////////////////////////////
+
+// First_reading.c
+int		first_reading(char *argv);
 
 // is_valid.c
 int		is_valid_char(t_parsing_data *parsing);
@@ -130,6 +147,7 @@ int		error_parsing_message(int code);
 void	ft_putstr_fd(char *s, int fd);
 
 // Is_something.c
+int		ft_isalpha(int c);
 int		is_space(char c);
 int		is_empty_line(char *line);
 
