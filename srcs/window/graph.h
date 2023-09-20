@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/20 12:09:02 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:32:24 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 # define WHITE_PIXEL 0xEBE9CD
 # define BLACK_PIXEL 0x000000
 
+# define	X_SIDE 0
+# define	Y_SIDE 1
+
 //////////////////////////////////////////////////////////////////
 //																//
 //							STRUCTURES							//
@@ -74,6 +77,7 @@ typedef struct s_dda
 
 typedef struct s_raycasting
 {
+	int		xMax;
 	double	posX; // posX & posY are the player vector
 	double	posY;
 	double	dirX; // dirX & dirY are the direction vector
@@ -82,6 +86,25 @@ typedef struct s_raycasting
 	double	planeY;
 	double	time;
 	double	oldTime;
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	//
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	//
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
 }			t_raycasting;
 
 typedef struct s_data
