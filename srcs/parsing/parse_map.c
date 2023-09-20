@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/19 20:11:46 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:56:21 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,13 @@ int	check_map_empty(t_parsing_data *parsing, char *argv)
 	}
 	if (line != NULL)
 	{
+		while (line)
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
 		free(line);
+		close(fd);
 		return (error_parsing_message(ERROR_MAP));
 	}
 	free(line);

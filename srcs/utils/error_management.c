@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/19 19:49:19 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:43:57 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	error_parsing_message(int code)
 int	error_message(int code)
 {
 	if (code == ERROR_ARG)
-		ft_putstr_fd("Error: Malloc failed.\n", 2);
+		ft_putstr_fd("Error: please insert 2 arguments.\n", 2);
 	else if (code == ERROR_CHAR)
 		ft_putstr_fd("Error: Map can only contain \" 01NSEW\".\n", 2);
 	else if (code == ERROR_CLOSE)
@@ -43,7 +43,7 @@ int	error_message(int code)
 	else if (code == ERROR_FD)
 		ft_putstr_fd("Error: an error occured when opening fd.\n", 2);
 	else if (code == ERROR_MALLOC)
-		ft_putstr_fd("Error: please insert 2 arguments.\n", 2);
+		ft_putstr_fd("Error: Malloc failed.\n", 2);
 	else if (code == ERROR_EXTENSION)
 		ft_putstr_fd("Error: map should be .cub format.\n", 2);
 	return (ERROR);
