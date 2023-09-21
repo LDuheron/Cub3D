@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 21:03:21 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:59:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,22 @@
 # define EMPTY_L -11
 # define MAP -10
 # define TOO_BIG -9
+# define COLOR -4
 
 # define MAP_OPEN -8
 # define EMPTY_MAP -7
 
-# define M_TEXTURE -11
-# define EMPTY_LINE_IN_MAP -10
+# define M_TEXTURE -16
+# define EMPTY_LINE_IN_MAP -15
 // ERROR TEXTURE
 
-# define ERROR_EXTENSION -9
+# define ERROR_EXTENSION -18
 
 # define ERROR_TEXTURE -5
 # define ERROR_T_OPEN -6
 # define ERROR_MAP -7
 # define TOO_MUCH_PLAYER -3
-# define HIDDEN_FILE -12
+# define HIDDEN_FILE -20
 
 # define ERROR_ARG -1
 # define ERROR_CHAR -2
@@ -181,6 +182,9 @@ char	*ft_read(int fd, char *remains);
 //						  IN LIBFT DIR		      				//
 //																//
 //////////////////////////////////////////////////////////////////
+
+// Ft_atoi.c
+int		ft_atoi(const char *str);
 
 // Ft_calloc.c
 void	*ft_calloc(size_t nmemb, size_t size);

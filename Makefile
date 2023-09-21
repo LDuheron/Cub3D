@@ -19,6 +19,7 @@ SRCS := main.c								\
 		parsing/parsing.c					\
 		parsing/read_input_file.c			\
 		utils/gnl/get_next_line.c			\
+		utils/libft/ft_atoi.c				\
 		utils/libft/ft_calloc.c				\
 		utils/libft/ft_strdup.c				\
 		utils/libft/ft_substr.c				\

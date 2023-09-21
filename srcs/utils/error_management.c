@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 21:52:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:22:23 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ void	ft_putstr_fd(char *s, int fd)
 int	error_message_first_reading(int code)
 {
 	if (code == M_TEXTURE)
-		ft_putstr_fd("Missing texture.\n", 2);
+		ft_putstr_fd("Error: Missing texture.\n", 2);
 	else if (code == EMPTY_LINE_IN_MAP)
-		ft_putstr_fd("No empty lines in map.\n", 2);
+		ft_putstr_fd("Error: No empty lines in map.\n", 2);
 	else if (code == TOO_BIG)
-		ft_putstr_fd("Map too big.\n", 2);
+		ft_putstr_fd("Error: Map too big.\n", 2);
 	else if (code == MAP_OPEN)
-		ft_putstr_fd("Map is open, it should be surrounded by walls.\n", 2);
+		ft_putstr_fd("Error: Map is open, it should be surrounded by walls.\n", 2);
 	else if (EMPTY_MAP)
-		ft_putstr_fd("The map is empty.\n", 2);
+		ft_putstr_fd("Error: The map is empty.\n", 2);
 	return (ERROR);
 }
 
 int	error_parsing_message(int code)
 {
 	if (code == ERROR_TEXTURE)
-		ft_putstr_fd("Please enter the texture in the correct order and without spaces in front of it.\n", 2);
+		ft_putstr_fd("Error: Please enter the texture in the correct order and without spaces in front of it.\n", 2);
 	else if (code == ERROR_EXTENSION)
 		ft_putstr_fd("Error: all textures should be .xpm format.\n", 2);
 	else if (code == ERROR_T_OPEN)
@@ -48,6 +48,8 @@ int	error_parsing_message(int code)
 		ft_putstr_fd("Error: The game can only generate one player.\n", 2);
 	else if (code == HIDDEN_FILE)
 		ft_putstr_fd("Error: Hidden file.\n", 2);
+	else if (code == COLOR)
+		ft_putstr_fd("Error: colors should be between 0 and 250.\n", 2);
 	return (ERROR);
 }
 
