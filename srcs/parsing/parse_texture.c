@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 21:00:59 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:58:34 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_valid_path(char *path)
 
 	len = ft_strlen(path);
 	if (len <= 4)
-		return (printf("error: hidden file.\n"));
+		return (error_parsing_message(HIDDEN_FILE));
 	if (is_valid_extension(path, ".xpm") != SUCCESS)
 		return (error_parsing_message(ERROR_EXTENSION));
 	fd = open(path, O_RDONLY);

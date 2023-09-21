@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 16:57:41 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:52:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	error_parsing_message(int code)
 	else if (code == ERROR_MAP)
 		ft_putstr_fd("Error: map format invalid, no empty line in map.\n", 2);
 	else if (code == TOO_MUCH_PLAYER)
-		ft_putstr_fd("The game can only generate one player.\n", 2);
+		ft_putstr_fd("Error: The game can only generate one player.\n", 2);
+	else if (code == HIDDEN_FILE)
+		ft_putstr_fd("Error: Hidden file.\n", 2);
 	return (ERROR);
 }
 
