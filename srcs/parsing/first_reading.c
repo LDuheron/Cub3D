@@ -6,17 +6,21 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:50:32 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 16:26:11 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:45:25 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	init_parsing_first_r(t_parsing_first_r *data)
+static int	init_parsing_first_r(t_parsing_first_r *data, char *argv)
 {
 	data->cpt_texture = 0;
 	data->belong_to_map = 0;
 	data->size = 0;
+	data->fd = open(argv, O_RDONLY);
+	if (data->fd == -1)
+		return (error_message(ERROR_FD));
+	return (SUCCESS);
 }
 
 static int	is_valid_line(t_parsing_first_r *data, char *line)
@@ -46,10 +50,8 @@ int	first_reading(char *argv)
 {
 	t_parsing_first_r	data;
 
-	init_parsing_first_r(&data);
-	data.fd = open(argv, O_RDONLY);
-	if (data.fd == -1)
-		return (error_message(ERROR_FD));
+	if (init_parsing_first_r(&data, argv) == ERROR)
+		return (ERROR);
 	data.line = get_next_line(data.fd);
 	if (!data.line)
 		return (error_message_first_reading(EMPTY_MAP));

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 16:31:59 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:41:38 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ int		map_management(t_parsing_data *data);
 int		retrieve_texture(t_parsing_data *parsing);
 
 // Parsing.c
-int		parsing(char *map);
+void	free_parsing_data(t_parsing_data *parsing);
+int		parsing(t_parsing_data *parsing, char *argv);
 
 // Read_input_file.c
 int		read_input_file(t_parsing_data *parsing, char *argv);
