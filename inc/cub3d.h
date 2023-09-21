@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 16:41:38 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:58:06 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@
 #  define BUFFER_SIZE 10
 # endif
 
+# define N 0
+# define S 1
+# define E 2
+# define W 3 
+
 // FIRST READING STATUS
 # define TEXTURE -12
 # define EMPTY_L -11
@@ -57,6 +62,7 @@
 # define ERROR_TEXTURE -5
 # define ERROR_T_OPEN -6
 # define ERROR_MAP -7
+# define TOO_MUCH_PLAYER -3
 
 # define ERROR_ARG -1
 # define ERROR_CHAR -2
@@ -83,6 +89,7 @@ typedef struct s_parsing_data
 	char	**file;
 	char	**texture;
 	char	**map;
+	int		pos_type;
 	int		pos_p_x;
 	int		pos_p_y;
 	int		line_last_texture;
