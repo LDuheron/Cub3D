@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 16:58:06 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:03:21 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@
 # define ERROR_T_OPEN -6
 # define ERROR_MAP -7
 # define TOO_MUCH_PLAYER -3
+# define HIDDEN_FILE -12
 
 # define ERROR_ARG -1
 # define ERROR_CHAR -2

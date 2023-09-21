@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 15:56:56 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:00:59 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	is_valid_path(char *path)
 	int	fd;
 
 	len = ft_strlen(path);
+	if (len <= 4)
+		return (printf("error: hidden file.\n"));
 	if (is_valid_extension(path, ".xpm") != SUCCESS)
 		return (error_parsing_message(ERROR_EXTENSION));
 	fd = open(path, O_RDONLY);
@@ -78,7 +80,7 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 		return (i);
 	else if (code == 2 && ft_strncmp(parsing->file[i], "WE", 2) == 0)
 		return (i);
-	else if (code == 3 && ft_strncmp(parsing->file[i], "SE", 2) == 0)
+	else if (code == 3 && ft_strncmp(parsing->file[i], "EA", 2) == 0)
 		return (i);
 	else if (code == 4 && ft_strncmp(parsing->file[i], "F", 1) == 0)
 		return (i);

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 17:01:40 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:31:42 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ int	map_management(t_parsing_data *parsing)
 	if (retrieve_map(parsing) == SUCCESS)
 		if (is_surrounded_by_walls(parsing) == SUCCESS)
 			if (find_player_position(parsing) == SUCCESS)
-			return (SUCCESS);
+				return (SUCCESS);
 	return (ERROR);
 }
