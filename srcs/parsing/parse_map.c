@@ -6,13 +6,13 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 15:49:52 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:32:31 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	retrieve_map(t_parsing_data *parsing)
+static int	retrieve_map(t_parsing_data *parsing)
 {
 	int	i;
 	int	start;
@@ -37,4 +37,14 @@ int	retrieve_map(t_parsing_data *parsing)
 		start++;
 	}
 	return (SUCCESS);
+}
+
+// check character
+int	map_management(t_parsing_data *parsing)
+{
+	if (retrieve_map(parsing) == SUCCESS)
+		if (is_surrounded_by_walls(parsing) == SUCCESS)
+			// if (find_player_position(parisng) == SUCCESS)
+			return (SUCCESS);
+	return (ERROR);
 }

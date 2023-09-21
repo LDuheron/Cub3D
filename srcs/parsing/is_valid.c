@@ -6,30 +6,21 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:17:06 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/18 15:17:08 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:32:18 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// PB CAR SPACE DANS LA MAP ? RETIRER
-
-int	is_valid_char(t_parsing_data *parsing)
+int	is_valid_char(char *line)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (parsing->map && parsing->map[i])
+	while (line && line[i])
 	{
-		j = 0;
-		while (parsing->map[i] && parsing->map[i][j])
-		{
-			if (ft_strchr(" 01NSEW", parsing->map[i][j]) == NULL)
-				return (error_message(ERROR_CHAR));
-			j++;
-		}
+		if (ft_strchr(" 01NSEW\n", line[i]) == NULL)
+			return (error_message(ERROR_CHAR));
 		i++;
 	}
 	return (SUCCESS);

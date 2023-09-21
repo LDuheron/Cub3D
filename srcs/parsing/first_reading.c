@@ -6,27 +6,16 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:50:32 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 17:51:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:26:11 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	error_message_first_reading(int code)
-{
-	if (code == M_TEXTURE)
-		ft_putstr_fd("Missing texture\n", 2);
-	else if (code == EMPTY_LINE_IN_MAP)
-		ft_putstr_fd("No empty lines in map\n", 2);
-	else if (code == TOO_BIG)
-		ft_putstr_fd("Map too big.\n", 2);
-	return (ERROR);
-}
-
 static void	init_parsing_first_r(t_parsing_first_r *data)
 {
 	data->cpt_texture = 0;
-	data->is_map = 0; // si > 0 on est sur la map
+	data->belong_to_map = 0;
 	data->size = 0;
 }
 
@@ -43,8 +32,12 @@ static int	is_valid_line(t_parsing_first_r *data, char *line)
 			return (error_message_first_reading(M_TEXTURE));
 	}
 	else if (is_empty_line(line) == NOT_EMPTY)
-		data->is_map += 1;
-	else if (is_empty_line(line) == EMPTY && data->is_map > 0)
+	{
+		data->belong_to_map += 1;
+		if (is_valid_char(line) == ERROR)
+			return (ERROR);
+	}
+	else if (is_empty_line(line) == EMPTY && data->belong_to_map > 0)
 		return (error_message_first_reading(EMPTY_LINE_IN_MAP));
 	return (SUCCESS);
 }
@@ -52,28 +45,29 @@ static int	is_valid_line(t_parsing_first_r *data, char *line)
 int	first_reading(char *argv)
 {
 	t_parsing_first_r	data;
-	char				*line;
-	int					fd;
 
 	init_parsing_first_r(&data);
-	fd = open(argv, O_RDONLY);
-	if (fd == -1)
+	data.fd = open(argv, O_RDONLY);
+	if (data.fd == -1)
 		return (error_message(ERROR_FD));
-	line = get_next_line(fd);
-	while (line)
+	data.line = get_next_line(data.fd);
+	if (!data.line)
+		return (error_message_first_reading(EMPTY_MAP));
+	while (data.line)
 	{
-		if (is_valid_line(&data, line) == ERROR)
+		if (is_valid_line(&data, data.line) == ERROR)
 		{
-			while (line)
+			while (data.line)
 			{
-				free(line);
-				line = get_next_line(fd);
+				free(data.line);
+				data.line = get_next_line(data.fd);
 			}
 			return (ERROR);
 		}
-		free(line);
-		line = get_next_line(fd);
+		free(data.line);
+		data.line = get_next_line(data.fd);
 	}
-	free(line);
+	free(data.line);
+	close(data.fd);
 	return (SUCCESS);
 }

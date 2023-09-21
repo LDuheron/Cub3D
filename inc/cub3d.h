@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 17:43:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:31:59 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@
 # define MAP -10
 # define TOO_BIG -9
 
+# define MAP_OPEN -8
+# define EMPTY_MAP -7
+
 # define M_TEXTURE -11
 # define EMPTY_LINE_IN_MAP -10
 // ERROR TEXTURE
@@ -80,14 +83,18 @@ typedef struct s_parsing_data
 	char	**file;
 	char	**texture;
 	char	**map;
+	int		pos_p_x;
+	int		pos_p_y;
 	int		line_last_texture;
 }	t_parsing_data;
 
 typedef struct s_parsing_first_r
 {
-	int	cpt_texture;
-	int	size;
-	int	is_map;
+	int		belong_to_map;
+	int		cpt_texture;
+	int		fd;
+	int		size;
+	char	*line;
 }	t_parsing_first_r;
 
 //////////////////////////////////////////////////////////////////
@@ -110,19 +117,15 @@ int		main(int argc, char **argv);
 // First_reading.c
 int		first_reading(char *argv);
 
-// is_valid.c
-int		is_valid_char(t_parsing_data *parsing);
-int		is_valid_extension(char *file, char *format);
-int		is_valid_texture(t_parsing_data *parsing);
+// Is_surrounded_by_walls.c
+int		is_surrounded_by_walls(t_parsing_data *parsing);
 
-// Is_something.c
-int		is_space(char c);
-int		is_empty_line(char *line);
-int		is_valid_char(t_parsing_data *parsing);
+// is_valid.c
+int		is_valid_char(char *line);
+int		is_valid_extension(char *file, char *format);
 
 // Parse_map.c
-int		check_map_empty(t_parsing_data *parsing, char *argv);
-int		retrieve_map(t_parsing_data *parsing);
+int		map_management(t_parsing_data *data);
 
 // Parse_texture.c
 int		retrieve_texture(t_parsing_data *parsing);
@@ -130,9 +133,8 @@ int		retrieve_texture(t_parsing_data *parsing);
 // Parsing.c
 int		parsing(char *map);
 
-// Read_input.c
-// int		sort_input_file(t_parsing_data *parsing);
-// int		read_input_file(t_parsing_data *parsing, char *argv);
+// Read_input_file.c
+int		read_input_file(t_parsing_data *parsing, char *argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -144,6 +146,7 @@ int		parsing(char *map);
 
 // Error_management.c
 int		error_message(int code);
+int		error_message_first_reading(int code);
 int		error_parsing_message(int code);
 void	ft_putstr_fd(char *s, int fd);
 

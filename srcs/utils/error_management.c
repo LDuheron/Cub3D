@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/20 13:43:57 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:29:24 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@ void	ft_putstr_fd(char *s, int fd)
 	if (!s || !fd)
 		return ;
 	write(fd, s, ft_strlen(s));
+}
+
+int	error_message_first_reading(int code)
+{
+	if (code == M_TEXTURE)
+		ft_putstr_fd("Missing texture.\n", 2);
+	else if (code == EMPTY_LINE_IN_MAP)
+		ft_putstr_fd("No empty lines in map.\n", 2);
+	else if (code == TOO_BIG)
+		ft_putstr_fd("Map too big.\n", 2);
+	else if (code == MAP_OPEN)
+		ft_putstr_fd("Map is open, it should be surrounded by walls.\n", 2);
+	else if (EMPTY_MAP)
+		ft_putstr_fd("The map is empty.\n", 2);
+	return (ERROR);
 }
 
 int	error_parsing_message(int code)
