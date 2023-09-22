@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/22 14:52:14 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:07:01 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,35 @@ void	ray_dda(t_raycasting *ray, char **map)
 	}
 }
 
+void	wall_coordinates(t_raycasting *ray)
+{
+		if (ray->side == X_SIDE)
+			ray->perpWallDist = (ray->sideDistX - ray->deltaDistX);
+		else
+			ray->perpWallDist = (ray->sideDistY - ray->deltaDistY);
+		//Calculate height of line to draw on screen
+		ray->lineHeight = (int)(WIN_HEIGHT / ray->perpWallDist);
+		//calculate lowest and highest pixel to fill in current stripe
+		ray->drawStart = (-ray->lineHeight / 2) + (WIN_HEIGHT / 2);
+		if (ray->drawStart < 0)
+			ray->drawStart = 0;
+		ray->drawEnd = (ray->lineHeight / 2) + (WIN_HEIGHT / 2);
+		if (ray->drawEnd >= WIN_HEIGHT)
+			ray->drawEnd = WIN_HEIGHT - 1;
+}
+
+void	draw_wall(t_raycasting ray, t_data data, int x)
+{
+	while (ray.drawStart < ray.drawEnd)
+	{
+		if (ray.side == X_SIDE)
+			img_pix_put(&data.img, x, ray.drawStart, RED_PIXEL);
+		else
+			img_pix_put(&data.img, x, ray.drawStart, BLUE_PIXEL);
+		ray.drawStart++;
+	}
+}
+
 int	ft_raycasting(char **map, t_data *data)
 {
 	t_raycasting	ray;
@@ -105,33 +134,11 @@ int	ft_raycasting(char **map, t_data *data)
 		else
 			ray.deltaDistY = ft_abs(1 / ray.rayDirY);
 		//calculate step and initial sideDist
-		nb_steps_n_sideDst(&ray);
-		ray_dda(&ray, map);
-		if (ray.side == X_SIDE)
-			ray.perpWallDist = (ray.sideDistX - ray.deltaDistX);
-		else
-			ray.perpWallDist = (ray.sideDistY - ray.deltaDistY);
-		//Calculate height of line to draw on screen
-		ray.lineHeight = (int)(WIN_HEIGHT / ray.perpWallDist);
-		//calculate lowest and highest pixel to fill in current stripe
-		ray.drawStart = (-ray.lineHeight / 2) + (WIN_HEIGHT / 2);
-		if (ray.drawStart < 0)
-			ray.drawStart = 0;
-		ray.drawEnd = (ray.lineHeight / 2) + (WIN_HEIGHT / 2);
-		if (ray.drawEnd >= WIN_HEIGHT)
-			ray.drawEnd = WIN_HEIGHT - 1;
+		(nb_steps_n_sideDst(&ray), ray_dda(&ray, map),
+			wall_coordinates(&ray), draw_wall(ray, *data, x));
 		printf("start = %d, end = %d\n", ray.drawStart, ray.drawEnd);
-		while (ray.drawStart < ray.drawEnd)
-		{
-			if (ray.side == X_SIDE)
-				img_pix_put(&data->img, x, ray.drawStart, RED_PIXEL);
-			else
-				img_pix_put(&data->img, x, ray.drawStart, BLUE_PIXEL);
-			ray.drawStart++;
-		}
 		x++;
 	}
-	printf("je suis la\n");
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ptr, 0, 0);
 	return (SUCCESS);
 }
