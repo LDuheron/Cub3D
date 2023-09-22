@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 23:00:21 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:23:07 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,25 @@ static int	first_c_to_extract(char *path)
 	return (i);
 }
 
-// static int	is_valid_color(char *line)
-// {
-// 	int	nb;
+static int	is_valid_color(char *line)
+{
+	int	nb;
+	int	i;
 
-// 	nb = ft_atoi(line);
-// 	if (nb >= 0 && nb <= 250)
-// 		return (SUCCESS);
-// 	return (error_message(COLOR));
-// }
+	i = 0;
+	if (ft_strlen(line) > 3)
+		return (error_parsing_message(COLOR));
+	while (line[i])
+	{
+		if (ft_isdigit(line[i]) != 1)
+			return (error_parsing_message(COLOR));
+		i++;
+	}
+	nb = ft_atoi(line);
+	if (nb >= 0 && nb <= 250)
+		return (SUCCESS);
+	return (error_parsing_message(COLOR));
+}
 
 // EXTRACT_TEXTURE_PATH : This function 
 // parsing->texture[i] = ft_strdup(parsing->file[line]);
@@ -71,17 +81,16 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 	tmp_path = ft_substr(parsing->file[line], start, len);
 	parsing->texture[i] = ft_strdup(tmp_path);
 	free(tmp_path);
+	if (i < 4)
+	{
 	if (is_valid_path(parsing->texture[i]) == ERROR)
+		return (ERROR);
+	}
+	else
+	{
+		if (is_valid_color(parsing->texture[i]) == ERROR)
 			return (ERROR);
-	// if (i < 6)
-	// {
-	
-	// }
-	// else
-	// {
-	// 	if (is_valid_color(parsing->texture[i]) == ERROR)
-	// 		return (ERROR);
-	// }
+	}
 	return (SUCCESS);
 }
 
@@ -93,18 +102,19 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 {
 	while (parsing->file[i] && is_empty_line(parsing->file[i]) == EMPTY)
 		i++;
-	if (code == 0 && ft_strncmp(parsing->file[i], "NO ", 2) == 0)
+	if (code == 0 && ft_strncmp(parsing->file[i], "NO ", 3) == 0)
 		return (i);
-	else if (code == 1 && ft_strncmp(parsing->file[i], "SO ", 2) == 0)
+	else if (code == 1 && ft_strncmp(parsing->file[i], "SO ", 3) == 0)
 		return (i);
-	else if (code == 2 && ft_strncmp(parsing->file[i], "WE ", 2) == 0)
+	else if (code == 2 && ft_strncmp(parsing->file[i], "WE ",3) == 0)
 		return (i);
-	else if (code == 3 && ft_strncmp(parsing->file[i], "EA ", 2) == 0)
+	else if (code == 3 && ft_strncmp(parsing->file[i], "EA ", 3) == 0)
 		return (i);
-	else if (code == 4 && ft_strncmp(parsing->file[i], "F ", 1) == 0)
+	else if (code == 4 && ft_strncmp(parsing->file[i], "F ", 2) == 0)
 		return (i);
-	else if (code == 5 && ft_strncmp(parsing->file[i], "C ", 1) == 0)
+	else if (code == 5 && ft_strncmp(parsing->file[i], "C ", 2) == 0)
 		return (i);
+	printf("PB HERE : %i\n", i);
 	return (ERROR_TEXTURE);
 }
 

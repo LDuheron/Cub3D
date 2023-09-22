@@ -1,9 +1,9 @@
 NO ./image/carpet.xpm
 SO ./image/carpet.xpm
 WE ./image/carpet.xpm
-SE ./image/carpet.xpm
-F ./image/carpet.xpm
-C ./image/carpet.xpm
+EA ./image/carpet.xpm
+F 250
+C 100
 
 
 111 111

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 22:59:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:18:35 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ void	ft_putstr_fd(char *s, int fd);
 
 // Is_something.c
 int		ft_isalpha(int c);
+int		ft_isdigit(int c);
 int		is_space(char c);
 int		is_empty_line(char *line);
 
