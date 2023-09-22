@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/22 16:18:35 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:28:03 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,9 @@ int		is_surrounded_by_walls(t_parsing_data *parsing);
 
 // is_valid.c
 int		is_valid_char(char *line);
+int		is_valid_color(char *line);
 int		is_valid_extension(char *file, char *format);
+int		is_valid_path(char *path);
 
 // Parse_map.c
 int		map_management(t_parsing_data *data);
