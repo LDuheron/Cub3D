@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 14:18:50 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:26:36 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	close_win_key(int keysym, t_data *data)
 		data->player.posX += 8;
 	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
 	draw_rect(data);
-	draw_map(*data);
+	// draw_map(*data);
+	// ft_raycasting(map, data);
 	return (0);
 }
 

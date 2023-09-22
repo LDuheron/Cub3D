@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 17:19:11 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:51:03 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	create_window(unsigned char **map)
 	t_data	data;
 
 	data = get_data_win(map);
-	draw_map(data);
+	// draw_map(data);
+	ft_raycasting((char **)map, &data);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, 0, &close_win_mouse, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &close_win_key, &data);

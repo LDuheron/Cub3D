@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/20 17:32:24 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:26:31 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,11 @@ void	set_line_coordinates(t_data *data, int ix, int iy);
 void	draw_line(t_data *data, int color);
 void	ft_dda(t_data *data, int ix, int iy, int color);
 void	calculate_steps(int *steps, int dx, int dy);
+
+// raycasting.c
+t_raycasting	init_data_rc(char **map);
+void			nb_steps_n_sideDst(t_raycasting *ray);
+void			ray_dda(t_raycasting *ray, char **map);
+int				ft_raycasting(char **map, t_data *data);
 
 #endif

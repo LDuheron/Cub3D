@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:57 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 17:38:16 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:59:59 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ void	ft_dda(t_data *data, int ix, int iy, int color)
 	dy = data->line.y2 - data->line.y1;
 	inc_x = data->line.x1;
 	inc_y = 0;
-	while (inc_y < 49)
-	{
+	// while (inc_y < 49)
+	// {
 		calculate_steps(&steps, dx, dy);
-		while (steps >= 2)
-		{
+		// while (steps >= 2)
+		// {
 			draw_line(data, color);
 			data->line.x1++;
 			steps--;
-		}
-		data->line.x1 = inc_x;
-		data->line.y1++;
-		inc_y++;
-	}
+	// 	}
+	// 	data->line.x1 = inc_x;
+	// 	data->line.y1++;
+	// 	inc_y++;
+	// }
 }

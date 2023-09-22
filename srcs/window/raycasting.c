@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/20 18:02:09 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:52:14 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_raycasting	init_data_rc(char **map)
 {
 	t_raycasting	ray;
 
-	ray.xMax = ft_unstrlen_plus(map);
-	ray.posX = 22;
-	ray.posY = 12;
+	ray.xMax = ft_unstrlen_plus((unsigned char**)map);
+	ray.posX = ray.xMax/2;
+	ray.posY = ray.xMax/2;
 	ray.dirX = -1;
 	ray.dirY = 0;
 	ray.planeX = 0;
@@ -26,7 +26,7 @@ t_raycasting	init_data_rc(char **map)
 	// the FOV is 2*atan(0.66/1.0), so 66 degrees
 	ray.time = 0;
 	ray.oldTime = 0;
-	ray.hit = 0;
+	return (ray);
 }
 
 void	nb_steps_n_sideDst(t_raycasting *ray)
@@ -34,22 +34,22 @@ void	nb_steps_n_sideDst(t_raycasting *ray)
 	if (ray->rayDirX < 0)
 	{
 		ray->stepX = -1;
-		ray->sideDistX = (ray->posX - (double)ray->mapX) * ray->deltaDistX;
+		ray->sideDistX = (ray->posX - ray->mapX) * ray->deltaDistX;
 	}
 	else
 	{
 		ray->stepX = 1;
-		ray->sideDistX = ((double)ray->mapX + 1 - ray->posX) * ray->deltaDistX;
+		ray->sideDistX = (ray->mapX + 1.0 - ray->posX) * ray->deltaDistX;
 	}
 	if (ray->rayDirY < 0)
 	{
 		ray->stepY = -1;
-		ray->sideDistY = (ray->posY - (double)ray->mapY) * ray->deltaDistY;
+		ray->sideDistY = (ray->posY - ray->mapY) * ray->deltaDistY;
 	}
 	else
 	{
 		ray->stepY = 1;
-		ray->sideDistY = ((double)ray->mapY + 1 - ray->posY) * ray->deltaDistY;
+		ray->sideDistY = (ray->mapY + 1.0 - ray->posY) * ray->deltaDistY;
 	}
 }
 
@@ -71,7 +71,8 @@ void	ray_dda(t_raycasting *ray, char **map)
 			ray->side = Y_SIDE;
 		}
 		//Check if ray has hit a wall
-		if (map[ray->mapX][ray->mapY] > 0)
+		printf("wall = %c\n", map[ray->mapX][ray->mapY]);
+		if ((map[ray->mapX][ray->mapY]) > 48)
 			ray->hit = 1;
 	}
 }
@@ -82,6 +83,8 @@ int	ft_raycasting(char **map, t_data *data)
 	int	x;
 
 	x = 0;
+	ray = init_data_rc(map);
+	printf("x = %d, xmax = %d\n", x, ray.xMax);
 	while (x < ray.xMax)
 	{
 		//calculate ray position and direction
@@ -91,6 +94,7 @@ int	ft_raycasting(char **map, t_data *data)
 		//which box of the map we're in
 		ray.mapX = (int)ray.posX;
 		ray.mapY = (int)ray.posY;
+		ray.hit = 0;
 		//length of ray from one x or y-side to next x or y-side
 		if (ray.rayDirX == 0)
 			ray.deltaDistX = 1e30;
@@ -110,18 +114,25 @@ int	ft_raycasting(char **map, t_data *data)
 		//Calculate height of line to draw on screen
 		ray.lineHeight = (int)(WIN_HEIGHT / ray.perpWallDist);
 		//calculate lowest and highest pixel to fill in current stripe
-		ray.drawStart = -ray.lineHeight / 2 + WIN_HEIGHT / 2;
+		ray.drawStart = (-ray.lineHeight / 2) + (WIN_HEIGHT / 2);
 		if (ray.drawStart < 0)
 			ray.drawStart = 0;
-		ray.drawEnd = ray.lineHeight / 2 + WIN_HEIGHT / 2;
+		ray.drawEnd = (ray.lineHeight / 2) + (WIN_HEIGHT / 2);
 		if (ray.drawEnd >= WIN_HEIGHT)
 			ray.drawEnd = WIN_HEIGHT - 1;
+		printf("start = %d, end = %d\n", ray.drawStart, ray.drawEnd);
 		while (ray.drawStart < ray.drawEnd)
 		{
-			img_pix_put(&data->img, x, ray.drawStart, RED_PIXEL);
+			if (ray.side == X_SIDE)
+				img_pix_put(&data->img, x, ray.drawStart, RED_PIXEL);
+			else
+				img_pix_put(&data->img, x, ray.drawStart, BLUE_PIXEL);
 			ray.drawStart++;
 		}
 		x++;
 	}
+	printf("je suis la\n");
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ptr, 0, 0);
+	return (SUCCESS);
 }
 

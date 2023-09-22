@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:53:03 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/19 17:40:43 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:25:08 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_rect(t_data *data)
 		i++;
 	}
 }
-
+/*
 int	player_pos(t_data data)
 {
 	double	sizeX = data.player.posX + 8;
@@ -77,7 +77,7 @@ int	draw_map(t_data data)
 		}
 		iy++;
 	}
-	player_pos(data);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img.ptr, 0, 0);
+	// player_pos(data);
+	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img.ptr, 0, 0);
 	return (SUCCESS);
-}
+} */
