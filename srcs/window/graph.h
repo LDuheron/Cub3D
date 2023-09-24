@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/24 16:55:20 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:58:27 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@
 
 # define	X_SIDE 0
 # define	Y_SIDE 1
+
+# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.05
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -86,6 +89,9 @@ typedef struct s_raycasting
 	double	planeY;
 	double	time;
 	double	oldTime;
+	double	frameTime;
+	double	moveSpeed;
+	double	rotSpeed;
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;
