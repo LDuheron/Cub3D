@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/22 11:26:31 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:55:20 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_data
 	t_img			img;
 	t_dda			line;
 	t_player		player;
+	t_raycasting	ray;
 }					t_data;
 
 //////////////////////////////////////////////////////////////////
@@ -143,7 +144,7 @@ int		ft_unstrlen(unsigned char* str);
 int		ft_unstrlen_plus(unsigned char** str);
 
 // draw_utils.c
-int		ft_abs(int nb);
+double	ft_abs(double nb);
 void	set_line_coordinates(t_data *data, int ix, int iy);
 void	draw_line(t_data *data, int color);
 void	ft_dda(t_data *data, int ix, int iy, int color);

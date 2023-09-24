@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:57 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/22 13:59:59 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:54:46 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_shift(int *shift_x, int *shift_y)
 	*shift_y = 1;
 }
 
-int	ft_abs(int nb)
+double	ft_abs(double nb)
 {
 	if (nb < 0)
 		nb *= -1;

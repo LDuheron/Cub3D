@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/22 11:26:36 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:09:44 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,29 @@ void	ft_exit(t_data *data)
 
 int	close_win_key(int keysym, t_data *data)
 {
+	double	oldDirX;
+	double	oldPlaneX;
+
 	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
 	if (keysym == XK_Escape)
 		ft_exit(data);
 	if (keysym == XK_w || keysym == XK_Up)
-		data->player.posY -= 8;
+		data->ray.posX -= 1;
 	if (keysym == XK_s || keysym == XK_Down)
-		data->player.posY += 8;
+		data->ray.posX += 1;
 	if (keysym == XK_a || keysym == XK_Left)
-		data->player.posX -= 8;
+	{
+		oldDirX = data->ray.dirX;
+		data->ray.dirX =
+	}
 	if (keysym == XK_d || keysym == XK_Right)
-		data->player.posX += 8;
+	{
+
+	}
 	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
 	draw_rect(data);
 	// draw_map(*data);
-	// ft_raycasting(map, data);
+	ft_raycasting((char**)data->map, data);
 	return (0);
 }
 

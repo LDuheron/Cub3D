@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/22 14:51:03 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:56:23 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_data	get_data_win(unsigned char **map)
 	data.player.posX = WIN_WIDTH/4;
 	data.player.posY = WIN_HEIGHT/2;
 	data.map = map;
+	data.ray = init_data_rc((char**)map);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (data);
@@ -67,17 +68,29 @@ int	create_window(unsigned char **map)
 
 int	main(void)
 {
-	unsigned char	*map_1 = (unsigned char*)"   1    ";
-	unsigned char	*map_2 = (unsigned char*)"  101    ";
-	unsigned char	*map_3 = (unsigned char*)"  101    ";
-	unsigned char	*map_4 = (unsigned char*)"11101111";
-	unsigned char	*map_5 = (unsigned char*)"10000001";
-	unsigned char	*map_6 = (unsigned char*)"10000001";
-	unsigned char	*map_7 = (unsigned char*)"1001100111111";
-	unsigned char	*map_8 = (unsigned char*)"10000000000001";
-	unsigned char	*map_9 = (unsigned char*)"1000000111111";
-	unsigned char	*map_10 = (unsigned char*)"10000001";
-	unsigned char	*map_11 = (unsigned char*)"11111111";
+	// unsigned char	*map_1 = (unsigned char*)"   1    ";
+	// unsigned char	*map_2 = (unsigned char*)"  101    ";
+	// unsigned char	*map_3 = (unsigned char*)"  101    ";
+	// unsigned char	*map_4 = (unsigned char*)"11101111";
+	// unsigned char	*map_5 = (unsigned char*)"10000001";
+	// unsigned char	*map_6 = (unsigned char*)"10000001";
+	// unsigned char	*map_7 = (unsigned char*)"1001100111111";
+	// unsigned char	*map_8 = (unsigned char*)"10000000000001";
+	// unsigned char	*map_9 = (unsigned char*)"1000000111111";
+	// unsigned char	*map_10 = (unsigned char*)"10000001";
+	// unsigned char	*map_11 = (unsigned char*)"11111111";
+
+	unsigned char	*map_1 = (unsigned char*)"111111111111111111111111";
+	unsigned char	*map_2 = (unsigned char*)"100010000000000000000001";
+	unsigned char	*map_3 = (unsigned char*)"100000100000000000000001";
+	unsigned char	*map_4 = (unsigned char*)"100000000100000000000001";
+	unsigned char	*map_5 = (unsigned char*)"100000000000000000000001";
+	unsigned char	*map_6 = (unsigned char*)"100000000000000000000001";
+	unsigned char	*map_7 = (unsigned char*)"100010000000000000000001";
+	unsigned char	*map_8 = (unsigned char*)"100000000000000000000001";
+	unsigned char	*map_9 = (unsigned char*)"100000000000000000000001";
+	unsigned char	*map_10 = (unsigned char*)"100000000000000000000001";
+	unsigned char	*map_11 = (unsigned char*)"111111111111111111111111";
 
 	unsigned char	*map[12];
 	map[0] = map_1;
