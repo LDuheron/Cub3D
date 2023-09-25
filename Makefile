@@ -11,6 +11,7 @@ SRC_DIR     := srcs
 OBJ_DIR     := obj
 
 SRCS := main.c								\
+		parsing/color.c						\
 		parsing/first_reading.c				\
 		parsing/is_surrounded_by_walls.c	\
 		parsing/is_valid.c					\
