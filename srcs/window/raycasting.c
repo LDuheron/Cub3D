@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/24 19:16:55 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:14:28 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_raycasting	init_data_rc(char **map)
 	ray.xMax = ft_unstrlen_plus((unsigned char**)map);
 	ray.posX = 15;
 	ray.posY = 6;
-	ray.dirX = -1;
+	ray.dirX = 1;
 	ray.dirY = 0;
 	ray.planeX = 0;
 	ray.planeY = 0.66;
@@ -100,7 +100,7 @@ void	draw_wall(t_raycasting ray, t_data data, int x)
 		if (ray.side == X_SIDE)
 			img_pix_put(&data.img, x, ray.drawStart, RED_PIXEL);
 		else
-			img_pix_put(&data.img, x, ray.drawStart, BLUE_PIXEL);
+			img_pix_put(&data.img, x, ray.drawStart, WHITE_PIXEL);
 		ray.drawStart++;
 	}
 }
