@@ -1,7 +1,8 @@
 NO ./image/carpet.xpm
 SO ./image/carpet.xpm
-WE ./image/carpet.xpm
 EA ./image/carpet.xpm
+WE ./image/carpet.xpm
+
 F 250
 C 100
 

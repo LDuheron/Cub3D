@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/22 16:27:37 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:20:04 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 		return (i);
 	else if (code == 5 && ft_strncmp(parsing->file[i], "C ", 2) == 0)
 		return (i);
-	printf("PB HERE : %i\n", i);
 	return (ERROR_TEXTURE);
 }
 
