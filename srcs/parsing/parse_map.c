@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 18:31:42 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:15:48 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	find_player_position(t_parsing_data *parsing)
 		}
 		i++;
 	}
+	if (cpt == 0)
+		return (error_parsing_message(NO_PLAYER));
 	return (SUCCESS);
 }
 

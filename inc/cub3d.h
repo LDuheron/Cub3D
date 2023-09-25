@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 12:42:55 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:13:03 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,15 @@
 
 # define M_TEXTURE -16
 # define EMPTY_LINE_IN_MAP -15
-// ERROR TEXTURE
 
+// ERROR TEXTURE
 # define ERROR_EXTENSION -18
 
 # define ERROR_TEXTURE -5
 # define ERROR_T_OPEN -6
 # define ERROR_MAP -7
 # define TOO_MUCH_PLAYER -3
+# define NO_PLAYER -42
 # define HIDDEN_FILE -20
 
 # define ERROR_ARG -1
@@ -213,6 +214,10 @@ typedef struct s_graph
 //																//
 //////////////////////////////////////////////////////////////////
 
+// Colors.c
+int		is_color_code(char *line);
+int		is_valid_color(char *line);
+
 // First_reading.c
 int		first_reading(char *argv);
 
@@ -221,7 +226,6 @@ int		is_surrounded_by_walls(t_parsing_data *parsing);
 
 // is_valid.c
 int		is_valid_char(char *line);
-int		is_valid_color(char *line);
 int		is_valid_extension(char *file, char *format);
 int		is_valid_path(char *path);
 

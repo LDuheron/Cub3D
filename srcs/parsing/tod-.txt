@@ -1,0 +1,7 @@
+- gerer couleur 
+- changer messages d'erreurs
+
+- gerer deplacements gauche droite
+- afficher textures au lieu des couleurs
+- norme
+- 

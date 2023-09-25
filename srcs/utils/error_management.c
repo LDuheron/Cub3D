@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 22:22:23 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:15:21 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	error_parsing_message(int code)
 		ft_putstr_fd("Error: Hidden file.\n", 2);
 	else if (code == COLOR)
 		ft_putstr_fd("Error: colors should be between 0 and 250.\n", 2);
+	else if (code == NO_PLAYER)
+		ft_putstr_fd("Error: No player in map.\n", 2);
 	return (ERROR);
 }
 

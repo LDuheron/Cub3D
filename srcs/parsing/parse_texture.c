@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/22 17:20:04 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:10:07 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	first_c_to_extract(char *path)
 // parsing->texture[i] = ft_strdup(parsing->file[line]);
 // i : indicate which direction we are working on.
 // line : line number in the file.
+
 static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 {
 	int		len;
@@ -47,7 +48,7 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 		if (is_valid_path(parsing->texture[i]) == ERROR)
 			return (ERROR);
 	if (i >= 4)
-		if (is_valid_color(parsing->texture[i]) == ERROR)
+		if (is_color_code(parsing->texture[i]) == ERROR)
 			return (ERROR);
 	return (SUCCESS);
 }
