@@ -6,29 +6,29 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:57:32 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:11:41 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_count_coma(char *line)
+int	ft_count_comma(char *line)
 {
-	int	cpt_coma;
+	int	cpt_comma;
 	int	i;
 
-	cpt_coma = 0;
+	cpt_comma = 0;
 	i = 0;
 	while (line && line[i])
 	{
 		if (ft_strncmp(&line[i], ",", 1) == 0)
 		{
-			cpt_coma += 1;
+			cpt_comma += 1;
 			printf("-- virgule : %c --\n", line[i]);
 		}
 		i++;
 	}
-	if (cpt_coma != 2)
+	if (cpt_comma != 2)
 		return (error_parsing_message(COLOR));
 	return (SUCCESS);
 }
@@ -44,7 +44,7 @@ int	is_valid_color(char *line)
 	cpt_color = 0;
 	i = 0;
 	len = ft_strlen(line);
-	if (ft_count_coma(line) == ERROR)
+	if (ft_count_comma(line) == ERROR)
 		return (ERROR);
 	// while (i <= len)
 	// {
