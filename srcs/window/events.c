@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 12:38:49 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:13:13 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ void	ft_exit(t_graph *data)
 
 int	close_win_key(int keysym, t_graph *data)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	old_dir_x;
+	double	old_plane_x;
 
-	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
 	if (keysym == XK_Escape)
 		ft_exit(data);
 	if (keysym == XK_w || keysym == XK_Up)
@@ -46,26 +45,24 @@ int	close_win_key(int keysym, t_graph *data)
 	}
 	if (keysym == XK_a || keysym == XK_Left)
 	{
-		oldDirX = data->ray.dirX;
+		old_dir_x = data->ray.dirX;
 		data->ray.dirX = data->ray.dirX * cos(-ROT_SPEED) - data->ray.dirY * sin(-ROT_SPEED);
-		data->ray.dirY = oldDirX * sin(-ROT_SPEED) + data->ray.dirY * cos(-ROT_SPEED);
-		oldPlaneX = data->ray.planeX;
+		data->ray.dirY = old_dir_x * sin(-ROT_SPEED) + data->ray.dirY * cos(-ROT_SPEED);
+		old_plane_x = data->ray.planeX;
 		data->ray.planeX = data->ray.planeX * cos(-ROT_SPEED) - data->ray.planeY * sin(-ROT_SPEED);
-		data->ray.planeY = oldPlaneX * sin(-ROT_SPEED) + data->ray.planeY * cos(-ROT_SPEED);
+		data->ray.planeY = old_plane_x * sin(-ROT_SPEED) + data->ray.planeY * cos(-ROT_SPEED);
 	}
 	if (keysym == XK_d || keysym == XK_Right)
 	{
-		oldDirX = data->ray.dirX;
+		old_dir_x = data->ray.dirX;
 		data->ray.dirX = data->ray.dirX * cos(ROT_SPEED) - data->ray.dirY * sin(ROT_SPEED);
-		data->ray.dirY = oldDirX * sin(ROT_SPEED) + data->ray.dirY * cos(ROT_SPEED);
-		oldPlaneX = data->ray.planeX;
+		data->ray.dirY = old_dir_x * sin(ROT_SPEED) + data->ray.dirY * cos(ROT_SPEED);
+		old_plane_x = data->ray.planeX;
 		data->ray.planeX = data->ray.planeX * cos(ROT_SPEED) - data->ray.planeY * sin(ROT_SPEED);
-		data->ray.planeY = oldPlaneX * sin(ROT_SPEED) + data->ray.planeY * cos(ROT_SPEED);
+		data->ray.planeY = old_plane_x * sin(ROT_SPEED) + data->ray.planeY * cos(ROT_SPEED);
 	}
-	// printf("x = %f, y = %f\n", data->player.posX, data->player.posY);
 	draw_rect(data);
-	// draw_map(*data);
-	ft_raycasting((char**)data->map, data);
+	ft_raycasting(data);
 	return (0);
 }
 

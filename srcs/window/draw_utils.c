@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:57 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 12:38:46 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:08:53 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	set_line_coordinates(t_graph *data, int ix, int iy)
 {
 	int	zoom;
 
-	zoom = 50;
+	zoom = 10;
 	data->line.x1 = ix * zoom;
 	data->line.x2 = ix + 1;
 	data->line.x2 *= zoom;
