@@ -6,50 +6,47 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 12:39:07 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:26:13 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_raycasting	init_data_rc(char **map)
+t_raycasting	init_data_rc(t_parsing_data parsing)
 {
 	t_raycasting	ray;
 
-	ray.xMax = ft_unstrlen_plus((unsigned char**)map);
-	ray.posX = 15;
-	ray.posY = 6;
-	ray.dirX = 1;
-	ray.dirY = 0;
-	ray.planeX = 0;
-	ray.planeY = 0.66;
+	ray.pos_x = parsing.pos_p_x;
+	ray.pos_y = parsing.pos_p_y;
+	ray.dir_x = 1;
+	ray.dir_y = 0;
+	ray.plane_x = 0;
+	ray.plane_y = 0.66;
 	// the FOV is 2*atan(0.66/1.0), so 66 degrees
-	ray.time = 0;
-	ray.oldTime = 0;
 	return (ray);
 }
 
 void	nb_steps_n_sideDst(t_raycasting *ray)
 {
-	if (ray->rayDirX < 0)
+	if (ray->ray_dir_x < 0)
 	{
-		ray->stepX = -1;
-		ray->sideDistX = (ray->posX - ray->mapX) * ray->deltaDistX;
+		ray->step_x = -1;
+		ray->side_dist_x = (ray->pos_x - ray->map_x) * ray->delta_dist_x;
 	}
 	else
 	{
-		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - ray->posX) * ray->deltaDistX;
+		ray->step_x = 1;
+		ray->side_dist_x = (ray->map_x + 1.0 - ray->pos_x) * ray->delta_dist_x;
 	}
-	if (ray->rayDirY < 0)
+	if (ray->ray_dir_y < 0)
 	{
-		ray->stepY = -1;
-		ray->sideDistY = (ray->posY - ray->mapY) * ray->deltaDistY;
+		ray->step_y = -1;
+		ray->side_dist_y = (ray->pos_y - ray->map_y) * ray->delta_dist_y;
 	}
 	else
 	{
-		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - ray->posY) * ray->deltaDistY;
+		ray->step_y = 1;
+		ray->side_dist_y = (ray->map_y + 1.0 - ray->pos_y) * ray->delta_dist_y;
 	}
 }
 
@@ -58,15 +55,15 @@ void	ray_dda(t_raycasting *ray, char **map)
 	while (ray->hit == 0)
 	{
 		//jump to next map square, either in x-direction, or in y-direction
-		if (ray->sideDistX < ray->sideDistY)
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->sideDistX += ray->deltaDistX;
-			ray->mapX += ray->stepX;
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
 			ray->side = X_SIDE;
 		}
 		else
 		{
-			ray->sideDistY += ray->deltaDistY;
+			ray->side_dist_y += ray->deltaDistY;
 			ray->mapY += ray->stepY;
 			ray->side = Y_SIDE;
 		}
@@ -79,33 +76,33 @@ void	ray_dda(t_raycasting *ray, char **map)
 void	wall_coordinates(t_raycasting *ray)
 {
 		if (ray->side == X_SIDE)
-			ray->perpWallDist = (ray->sideDistX - ray->deltaDistX);
+			ray->perpWallDist = (ray->side_dist_x - ray->delat_dist_x);
 		else
-			ray->perpWallDist = (ray->sideDistY - ray->deltaDistY);
+			ray->perpWallDist = (ray->side_dist_y - ray->delat_dist_y);
 		//Calculate height of line to draw on screen
 		ray->lineHeight = (int)(WIN_HEIGHT / ray->perpWallDist);
 		//calculate lowest and highest pixel to fill in current stripe
-		ray->drawStart = -ray->lineHeight / 2 + WIN_HEIGHT / 2;
-		if (ray->drawStart < 0)
-			ray->drawStart = 0;
-		ray->drawEnd = ray->lineHeight / 2 + WIN_HEIGHT / 2;
-		if (ray->drawEnd >= WIN_HEIGHT)
-			ray->drawEnd = WIN_HEIGHT - 1;
+		ray->draw_start = -ray->lineHeight / 2 + WIN_HEIGHT / 2;
+		if (ray->draw_start < 0)
+			ray->draw_start = 0;
+		ray->draw_end = ray->lineHeight / 2 + WIN_HEIGHT / 2;
+		if (ray->draw_end >= WIN_HEIGHT)
+			ray->draw_end = WIN_HEIGHT - 1;
 }
 
 void	draw_wall(t_raycasting ray, t_graph data, int x)
 {
-	while (ray.drawStart < ray.drawEnd)
+	while (ray.draw_start < ray.draw_end)
 	{
 		if (ray.side == X_SIDE)
-			img_pix_put(&data.img, x, ray.drawStart, RED_PIXEL);
+			img_pix_put(&data.img, x, ray.draw_start, RED_PIXEL);
 		else
-			img_pix_put(&data.img, x, ray.drawStart, WHITE_PIXEL);
-		ray.drawStart++;
+			img_pix_put(&data.img, x, ray.draw_start, WHITE_PIXEL);
+		ray.draw_start++;
 	}
 }
 
-int	ft_raycasting(char **map, t_graph *data)
+int	ft_raycasting(t_graph *data)
 {
 	int				x;
 	t_raycasting	ray;
@@ -115,24 +112,24 @@ int	ft_raycasting(char **map, t_graph *data)
 	while (x < WIN_WIDTH)
 	{
 		//calculate ray position and direction
-		ray.cameraX = 2 * x / (double)WIN_WIDTH - 1;
-		ray.rayDirX = ray.dirX + ray.planeX * ray.cameraX;
-		ray.rayDirY = ray.dirY + ray.planeY * ray.cameraX;
+		ray.camera_x = 2 * x / (double)WIN_WIDTH - 1;
+		ray.ray_dir_x = ray.dirX + ray.plane_x * ray.camera_x;
+		ray.ray_dir_y = ray.dirY + ray.plane_y * ray.camera_x;
 		//which box of the map we're in
 		ray.mapX = (int)ray.posX;
 		ray.mapY = (int)ray.posY;
 		ray.hit = 0;
 		//length of ray from one x or y-side to next x or y-side
-		if (ray.rayDirX == 0)
-			ray.deltaDistX = 1e30;
+		if (ray.ray_dir_x == 0)
+			ray.delta_dist_x = 1e30;
 		else
-			ray.deltaDistX = ft_abs(1 / ray.rayDirX);
-		if (ray.rayDirY == 0)
-			ray.deltaDistY = 1e30;
+			ray.delta_dist_x = ft_abs(1 / ray.ray_dir_x);
+		if (ray.ray_dir_y == 0)
+			ray.delta_dist_y = 1e30;
 		else
-			ray.deltaDistY = ft_abs(1 / ray.rayDirY);
+			ray.delta_dist_y = ft_abs(1 / ray.ray_dir_y);
 		//calculate step and initial sideDist
-		(nb_steps_n_sideDst(&ray), ray_dda(&ray, map),
+		(nb_steps_n_sideDst(&ray), ray_dda(&ray, data->map),
 		wall_coordinates(&ray), draw_wall(ray, *data, x));
 		x++;
 	}

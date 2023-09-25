@@ -60,7 +60,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MLX)
-	$(CC) $(OBJS) -o $(NAME) -L/usr/local/lib -I/usr/local/inc -lreadline -L./mlx -lmlx -lXext -lX11 -lm
+	@clear && $(CC) $(OBJS) -o $(NAME) -L/usr/local/lib -I/usr/local/inc -lreadline -L./mlx -lmlx -lXext -lX11 -lm
 	@echo $(YELLOW)"$$KEY" $(RESET)
 	@echo $(PINK)"$$TITLE" $(RESET)
 

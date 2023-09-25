@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:13:03 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:31:02 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@
 # define NOT_EMPTY 0
 # define EMPTY 1
 
-# define	X_SIDE 0
-# define	Y_SIDE 1
+# define X_SIDE 0
+# define Y_SIDE 1
 
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.05
@@ -137,12 +137,6 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct s_player
-{
-	double	posX;
-	double	posY;
-}			t_player;
-
 typedef struct s_dda
 {
 	float	x1;
@@ -153,48 +147,40 @@ typedef struct s_dda
 
 typedef struct s_raycasting
 {
-	int		xMax;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	double	time;
-	double	oldTime;
-	double	frameTime;
-	double	moveSpeed;
-	double	rotSpeed;
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	//
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
 	int		hit;
 	int		side;
-	//
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 }			t_raycasting;
 
 typedef struct s_graph
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
-	unsigned char	**map;
+	char			**map;
 	t_img			img;
 	t_dda			line;
-	t_player		player;
 	t_raycasting	ray;
+	t_parsing_data	pars;
 }					t_graph;
 
 //////////////////////////////////////////////////////////////////
@@ -318,9 +304,9 @@ void	print_int(int **tab);
 //////////////////////////////////////////////////////////////////
 
 // create_window.c
-t_graph			get_data_win(unsigned char **map);
+t_graph			get_data_win(t_parsing_data parsing);
 void			img_pix_put(t_img *img, int x, int y, int color);
-int				create_window(unsigned char **map);
+int				create_window(t_parsing_data parsing);
 
 // events.c
 void			ft_exit(t_graph *data);
@@ -329,7 +315,6 @@ int				close_win_mouse(t_graph *data);
 int				handle_no_event(void *data);
 
 // draw_map.c
-int				draw_map(t_graph data);
 void			draw_rect(t_graph *data);
 
 // ft_strlen.c
@@ -344,9 +329,9 @@ void			ft_dda(t_graph *data, int ix, int iy, int color);
 void			calculate_steps(int *steps, int dx, int dy);
 
 // raycasting.c
-t_raycasting	init_data_rc(char **map);
+t_raycasting	init_data_rc(t_parsing_data parsing);
 void			nb_steps_n_sideDst(t_raycasting *ray);
 void			ray_dda(t_raycasting *ray, char **map);
-int				ft_raycasting(char **map, t_graph *data);
+int				ft_raycasting(t_graph *data);
 
 #endif
