@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/24 19:19:55 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:21:28 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	close_win_key(int keysym, t_data *data)
 		// if (data->map[(int)data->ray.posX][(int)(data->ray.posY - data->ray.dirY * MOVE_SPEED)] == 0)
 			data->ray.posY -= data->ray.dirY * MOVE_SPEED;
 	}
-	if (keysym == XK_d || keysym == XK_Right)
+	if (keysym == XK_a || keysym == XK_Left)
 	{
 		oldDirX = data->ray.dirX;
 		data->ray.dirX = data->ray.dirX * cos(-ROT_SPEED) - data->ray.dirY * sin(-ROT_SPEED);
@@ -53,7 +53,7 @@ int	close_win_key(int keysym, t_data *data)
 		data->ray.planeX = data->ray.planeX * cos(-ROT_SPEED) - data->ray.planeY * sin(-ROT_SPEED);
 		data->ray.planeY = oldPlaneX * sin(-ROT_SPEED) + data->ray.planeY * cos(-ROT_SPEED);
 	}
-	if (keysym == XK_a || keysym == XK_Left)
+	if (keysym == XK_d || keysym == XK_Right)
 	{
 		oldDirX = data->ray.dirX;
 		data->ray.dirX = data->ray.dirX * cos(ROT_SPEED) - data->ray.dirY * sin(ROT_SPEED);

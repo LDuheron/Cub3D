@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/24 15:56:23 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:14:37 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int	main(void)
 	unsigned char	*map_2 = (unsigned char*)"100010000000000000000001";
 	unsigned char	*map_3 = (unsigned char*)"100000100000000000000001";
 	unsigned char	*map_4 = (unsigned char*)"100000000100000000000001";
-	unsigned char	*map_5 = (unsigned char*)"100000000000000000000001";
-	unsigned char	*map_6 = (unsigned char*)"100000000000000000000001";
-	unsigned char	*map_7 = (unsigned char*)"100010000000000000000001";
+	unsigned char	*map_5 = (unsigned char*)"100000000100000000000001";
+	unsigned char	*map_6 = (unsigned char*)"100000000100000000000001";
+	unsigned char	*map_7 = (unsigned char*)"100010000100000000000001";
 	unsigned char	*map_8 = (unsigned char*)"100000000000000000000001";
 	unsigned char	*map_9 = (unsigned char*)"100000000000000000000001";
 	unsigned char	*map_10 = (unsigned char*)"100000000000000000000001";
