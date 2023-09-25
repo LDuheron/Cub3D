@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:21 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/24 18:58:27 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:32:11 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct s_raycasting
 	int		drawEnd;
 }			t_raycasting;
 
-typedef struct s_data
+typedef struct s_graph
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -122,7 +122,7 @@ typedef struct s_data
 	t_dda			line;
 	t_player		player;
 	t_raycasting	ray;
-}					t_data;
+}					t_graph;
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -131,19 +131,19 @@ typedef struct s_data
 //////////////////////////////////////////////////////////////////
 
 // create_window.c
-t_data	get_data_win(unsigned char **map);
+t_graph	get_data_win(unsigned char **map);
 void	img_pix_put(t_img *img, int x, int y, int color);
 int		create_window(unsigned char **map);
 
 // events.c
-void	ft_exit(t_data *data);
-int		close_win_key(int keysym, t_data *data);
-int		close_win_mouse(t_data *data);
+void	ft_exit(t_graph *data);
+int		close_win_key(int keysym, t_graph *data);
+int		close_win_mouse(t_graph *data);
 int		handle_no_event(void *data);
 
 // draw_map.c
-int		draw_map(t_data data);
-void	draw_rect(t_data *data);
+int		draw_map(t_graph data);
+void	draw_rect(t_graph *data);
 
 // ft_strlen.c
 int		ft_unstrlen(unsigned char* str);
@@ -151,15 +151,15 @@ int		ft_unstrlen_plus(unsigned char** str);
 
 // draw_utils.c
 double	ft_abs(double nb);
-void	set_line_coordinates(t_data *data, int ix, int iy);
-void	draw_line(t_data *data, int color);
-void	ft_dda(t_data *data, int ix, int iy, int color);
+void	set_line_coordinates(t_graph *data, int ix, int iy);
+void	draw_line(t_graph *data, int color);
+void	ft_dda(t_graph *data, int ix, int iy, int color);
 void	calculate_steps(int *steps, int dx, int dy);
 
 // raycasting.c
-t_raycasting	init_data_rc(char **map);
+t_raycasting	init_graph_rc(char **map);
 void			nb_steps_n_sideDst(t_raycasting *ray);
 void			ray_dda(t_raycasting *ray, char **map);
-int				ft_raycasting(char **map, t_data *data);
+int				ft_raycasting(char **map, t_graph *data);
 
 #endif

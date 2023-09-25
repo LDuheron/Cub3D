@@ -6,13 +6,13 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:53:03 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/22 11:25:08 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:38:34 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph.h"
+#include "cub3d.h"
 
-void	draw_rect(t_data *data)
+void	draw_rect(t_graph *data)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ void	draw_rect(t_data *data)
 	}
 }
 /*
-int	player_pos(t_data data)
+int	player_pos(t_graph data)
 {
 	double	sizeX = data.player.posX + 8;
 	double	sizeY = data.player.posY + 8;
@@ -48,7 +48,7 @@ int	player_pos(t_data data)
 	return (SUCCESS);
 }
 
-int	draw_map(t_data data)
+int	draw_map(t_graph data)
 {
 	int	ix;
 	int	iy;

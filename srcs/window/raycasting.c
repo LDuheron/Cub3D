@@ -6,11 +6,11 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 12:14:28 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:39:07 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph.h"
+#include "cub3d.h"
 
 t_raycasting	init_data_rc(char **map)
 {
@@ -93,7 +93,7 @@ void	wall_coordinates(t_raycasting *ray)
 			ray->drawEnd = WIN_HEIGHT - 1;
 }
 
-void	draw_wall(t_raycasting ray, t_data data, int x)
+void	draw_wall(t_raycasting ray, t_graph data, int x)
 {
 	while (ray.drawStart < ray.drawEnd)
 	{
@@ -105,7 +105,7 @@ void	draw_wall(t_raycasting ray, t_data data, int x)
 	}
 }
 
-int	ft_raycasting(char **map, t_data *data)
+int	ft_raycasting(char **map, t_graph *data)
 {
 	int				x;
 	t_raycasting	ray;

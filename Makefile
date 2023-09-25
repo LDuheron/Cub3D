@@ -28,6 +28,12 @@ SRCS := main.c								\
 		utils/debug_function.c				\
 		utils/error_management.c			\
 		utils/is_something.c				\
+		window/create_window.c				\
+		window/draw_map.c					\
+		window/draw_utils.c					\
+		window/events.c						\
+		window/ft_unstrlen.c				\
+		window/raycasting.c					\
 
 #############################################
 
@@ -45,13 +51,15 @@ CPPFLAGS    := -I inc
 RM          := rm -f
 MAKEFLAGS   += --no-print-directory
 DIR_DUP     = mkdir -p $(@D)
+MLX = make -C ./mlx
 
 #############################################
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) -L/usr/local/lib -I/usr/local/inc -lreadline
+	$(MLX)
+	$(CC) $(OBJS) -o $(NAME) -L/usr/local/lib -I/usr/local/inc -lreadline -L./mlx -lmlx -lXext -lX11 -lm
 	@echo $(YELLOW)"$$KEY" $(RESET)
 	@echo $(PINK)"$$TITLE" $(RESET)
 
@@ -64,6 +72,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	@cd ./mlx && make clean
 
 re:
 	$(MAKE) fclean

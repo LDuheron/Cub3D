@@ -6,13 +6,13 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 11:21:28 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:38:49 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph.h"
+#include "cub3d.h"
 
-void	ft_exit(t_data *data)
+void	ft_exit(t_graph *data)
 {
 	mlx_loop_end(data->mlx_ptr);
 	mlx_destroy_image(data->mlx_ptr, data->img.ptr);
@@ -22,7 +22,7 @@ void	ft_exit(t_data *data)
 	exit(1);
 }
 
-int	close_win_key(int keysym, t_data *data)
+int	close_win_key(int keysym, t_graph *data)
 {
 	double	oldDirX;
 	double	oldPlaneX;
@@ -69,7 +69,7 @@ int	close_win_key(int keysym, t_data *data)
 	return (0);
 }
 
-int	close_win_mouse(t_data *data)
+int	close_win_mouse(t_graph *data)
 {
 	ft_exit(data);
 	return (0);

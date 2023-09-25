@@ -6,11 +6,11 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:57 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/24 16:54:46 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:38:46 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graph.h"
+#include "cub3d.h"
 
 void	set_shift(int *shift_x, int *shift_y)
 {
@@ -25,7 +25,7 @@ double	ft_abs(double nb)
 	return (nb);
 }
 
-void	set_line_coordinates(t_data *data, int ix, int iy)
+void	set_line_coordinates(t_graph *data, int ix, int iy)
 {
 	int	zoom;
 
@@ -46,7 +46,7 @@ void	calculate_steps(int *steps, int dx, int dy)
 		*steps = ft_abs(dy);
 }
 
-void	draw_line(t_data *data, int color)
+void	draw_line(t_graph *data, int color)
 {
 	int	shift_x;
 	int	shift_y;
@@ -61,7 +61,7 @@ void	draw_line(t_data *data, int color)
 	}
 }
 
-void	ft_dda(t_data *data, int ix, int iy, int color)
+void	ft_dda(t_graph *data, int ix, int iy, int color)
 {
 	int		dx;
 	int		dy;
