@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:16:29 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:23:13 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	{
 		if (parsing(&parsing_data, argv[1]) == SUCCESS)
 			printf("Great map !\n");
-		create_window((unsigned char**)parsing_data.map);
+		// create_window((unsigned char**)parsing_data.map);
 		free_parsing_data(&parsing_data);
 	}
 	else
