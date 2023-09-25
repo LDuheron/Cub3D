@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/22 16:28:03 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:04:59 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "../mlx/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -75,6 +78,14 @@
 # define ERROR 0
 # define SUCCESS 1
 
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
+
+# define RED_PIXEL 0xFF0000
+# define GREEN_PIXEL 0x00FF00
+# define WHITE_PIXEL 0xFFFFFF
+# define BLACK_PIXEL 0x000000
+
 # define NOT_EMPTY 0
 # define EMPTY 1
 
@@ -115,7 +126,7 @@ typedef struct s_parsing_first_r
 //////////////////////////////////////////////////////////////////
 
 // Main.c
-int		main(int argc, char **argv);
+// int		main(int argc, char **argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -216,5 +227,39 @@ void	print_tab(char **tab);
 void	print_int(int **tab);
 
 //////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////
+//																//
+//						  IN WINDOW DIR		      				//
+//																//
+//////////////////////////////////////////////////////////////////
+
+// create_window.c
+t_data	get_data_win(unsigned char **map);
+void	img_pix_put(t_img *img, int x, int y, int color);
+int		create_window(unsigned char **map);
+
+// events.c
+void	ft_exit(t_data *data);
+int		close_win_key(int keysym, t_data *data);
+int		close_win_mouse(t_data *data);
+int		handle_no_event(void *data);
+
+// draw_map.c
+int		draw_map(t_data data);
+void	draw_rect(t_data *data);
+
+// GRAPH_LIB //
+
+// ft_strlen.c
+int		ft_unstrlen(unsigned char* str);
+int		ft_unstrlen_plus(unsigned char** str);
+
+// draw_utils.c
+int		ft_abs(int nb);
+void	set_line_coordinates(t_data *data, int ix, int iy, int status);
+void	draw_line(t_data *data);
+void	ft_dda(t_data *data, int ix, int iy, int status);
+void	calculate_steps(int *steps, int dx, int dy);
 
 #endif
