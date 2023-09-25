@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 16:26:13 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:34:06 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void	ray_dda(t_raycasting *ray, char **map)
 		}
 		else
 		{
-			ray->side_dist_y += ray->deltaDistY;
-			ray->mapY += ray->stepY;
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
 			ray->side = Y_SIDE;
 		}
 		//Check if ray has hit a wall
-		if ((map[ray->mapX][ray->mapY]) > 48)
+		if ((map[ray->map_x][ray->map_y]) > 48)
 			ray->hit = 1;
 	}
 }
@@ -76,16 +76,16 @@ void	ray_dda(t_raycasting *ray, char **map)
 void	wall_coordinates(t_raycasting *ray)
 {
 		if (ray->side == X_SIDE)
-			ray->perpWallDist = (ray->side_dist_x - ray->delat_dist_x);
+			ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
 		else
-			ray->perpWallDist = (ray->side_dist_y - ray->delat_dist_y);
+			ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
 		//Calculate height of line to draw on screen
-		ray->lineHeight = (int)(WIN_HEIGHT / ray->perpWallDist);
+		ray->line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
 		//calculate lowest and highest pixel to fill in current stripe
-		ray->draw_start = -ray->lineHeight / 2 + WIN_HEIGHT / 2;
+		ray->draw_start = -ray->line_height / 2 + WIN_HEIGHT / 2;
 		if (ray->draw_start < 0)
 			ray->draw_start = 0;
-		ray->draw_end = ray->lineHeight / 2 + WIN_HEIGHT / 2;
+		ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
 		if (ray->draw_end >= WIN_HEIGHT)
 			ray->draw_end = WIN_HEIGHT - 1;
 }
@@ -113,11 +113,11 @@ int	ft_raycasting(t_graph *data)
 	{
 		//calculate ray position and direction
 		ray.camera_x = 2 * x / (double)WIN_WIDTH - 1;
-		ray.ray_dir_x = ray.dirX + ray.plane_x * ray.camera_x;
-		ray.ray_dir_y = ray.dirY + ray.plane_y * ray.camera_x;
+		ray.ray_dir_x = ray.dir_x + ray.plane_x * ray.camera_x;
+		ray.ray_dir_y = ray.dir_y + ray.plane_y * ray.camera_x;
 		//which box of the map we're in
-		ray.mapX = (int)ray.posX;
-		ray.mapY = (int)ray.posY;
+		ray.map_x = (int)ray.pos_x;
+		ray.map_y = (int)ray.pos_y;
 		ray.hit = 0;
 		//length of ray from one x or y-side to next x or y-side
 		if (ray.ray_dir_x == 0)
