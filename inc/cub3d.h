@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:56:42 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:11:00 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,34 +43,7 @@
 #  define BUFFER_SIZE 10
 # endif
 
-# define N 0
-# define S 1
-# define E 2
-# define W 3
-
-// FIRST READING STATUS
-# define TEXTURE -12
-# define EMPTY_L -11
-# define MAP -10
-# define TOO_BIG -9
-# define COLOR -4
-
-# define MAP_OPEN -8
-# define EMPTY_MAP -7
-
-# define M_TEXTURE -16
-# define EMPTY_LINE_IN_MAP -15
-
-// ERROR TEXTURE
-# define ERROR_EXTENSION -18
-
-# define ERROR_TEXTURE -16
-# define ERROR_T_OPEN -6
-# define ERROR_MAP -7
-# define TOO_MUCH_PLAYER -3
-# define NO_PLAYER -42
-# define HIDDEN_FILE -20
-
+// ERROR CODE
 # define ERROR_ARG -1
 # define ERROR_CHAR -2
 # define ERROR_CLOSE -3
@@ -80,6 +53,24 @@
 # define ERROR 0
 # define SUCCESS 1
 
+// ERROR CODE PARSING 
+# define ERROR_EXTENSION -18
+
+# define TOO_BIG -10
+# define EMPTY_MAP -11
+# define M_TEXTURE -12
+# define MAP_OPEN -13
+# define EMPTY_LINE_IN_MAP -14
+
+# define COLOR -15
+# define ERROR_TEXTURE -16
+# define ERROR_T_OPEN -17
+# define HIDDEN_FILE -18
+
+# define NO_PLAYER -19
+# define TOO_MUCH_PLAYER -20
+
+// RAYCASTING
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
@@ -201,7 +192,6 @@ typedef struct s_graph
 //////////////////////////////////////////////////////////////////
 
 // Colors.c
-// int				is_rgb_format(char *line);
 int				is_valid_color(char *line);
 
 // initial_reading.c
@@ -240,7 +230,6 @@ int				store_input_file(t_parsing_data *parsing, char *argv);
 int				error_message(int code);
 int				error_message_initial_reading(int code);
 int				error_parsing_message(int code);
-void			ft_putstr_fd(char *s, int fd);
 
 // Is_something.c
 int				ft_isalpha(int c);

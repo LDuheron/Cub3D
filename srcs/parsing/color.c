@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:57:01 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:58:10 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	is_valid_color(char *line)
 	int		len;
 	int		start;
 
-	printf("%s\n", line);
 	cpt_color = 0;
 	i = 0;
 	len = ft_strlen(line);

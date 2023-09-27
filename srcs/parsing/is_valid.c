@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:17:06 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:56:42 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:59:00 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,6 @@ int	is_valid_char(char *line)
 	}
 	return (SUCCESS);
 }
-
-// int	is_rgb_format(char *line)
-// {
-// 	int	nb;
-// 	int	i;
-
-// 	i = 0;
-// 	if (ft_strlen(line) > 3)
-// 		return (error_parsing_message(COLOR));
-// 	while (line[i])
-// 	{
-// 		if (ft_isdigit(line[i]) != 1)
-// 			return (error_parsing_message(COLOR));
-// 		i++;
-// 	}
-// 	nb = ft_atoi(line);
-// 	if (nb >= 0 && nb <= 250)
-// 		return (SUCCESS);
-// 	return (error_parsing_message(COLOR));
-// }
 
 int	is_valid_extension(char *file, char *format)
 {

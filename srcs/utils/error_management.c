@@ -6,13 +6,13 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 14:34:33 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:08:47 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_putstr_fd(char *s, int fd)
+static void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s || !fd)
 		return ;
@@ -42,8 +42,6 @@ int	error_parsing_message(int code)
 		ft_putstr_fd("Error: all textures should be .xpm format.\n", 2);
 	else if (code == ERROR_T_OPEN)
 		ft_putstr_fd("Error: texture cannot be open.\n", 2);
-	else if (code == ERROR_MAP)
-		ft_putstr_fd("Error: map format invalid, no empty line in map.\n", 2);
 	else if (code == TOO_MUCH_PLAYER)
 		ft_putstr_fd("Error: The game can only generate one player.\n", 2);
 	else if (code == HIDDEN_FILE)
