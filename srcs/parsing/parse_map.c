@@ -6,11 +6,19 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 11:34:28 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:34:56 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	fill_player_information(t_parsing_data *parsing, int i, int j)
+{
+	parsing->pos_p_x = i;
+	parsing->pos_p_y = j;
+	parsing->pos_type = parsing->map[i][j];
+	parsing->map[i][j] = '0';
+}
 
 static int	find_player_position(t_parsing_data *parsing)
 {
@@ -30,12 +38,7 @@ static int	find_player_position(t_parsing_data *parsing)
 				cpt += 1;
 				if (cpt > 1)
 					return (error_message(TOO_MUCH_PLAYER));
-				// if (is_valid_player_position(i, j) == ERROR)
-				// 	return (ERROR);
-				parsing->pos_p_x = i;
-				parsing->pos_p_y = j;
-				parsing->pos_type = parsing->map[i][j];
-				parsing->map[i][j] = '0';
+				fill_player_information(parsing, i, j);
 			}
 			j++;
 		}
@@ -77,8 +80,8 @@ static int	retrieve_map(t_parsing_data *parsing)
 int	map_management(t_parsing_data *parsing)
 {
 	if (retrieve_map(parsing) == SUCCESS)
-		if (is_surrounded_by_walls(parsing) == SUCCESS)
-			if (find_player_position(parsing) == SUCCESS)
+		if (find_player_position(parsing) == SUCCESS)
+			if (is_surrounded_by_walls(parsing) == SUCCESS)
 				return (SUCCESS);
 	return (ERROR);
 }
