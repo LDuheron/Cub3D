@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:59:56 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 12:10:35 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:11:53 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static int	is_zero_next_to_space(char **map, int i, int j)
 		return (error_message_first_reading(MAP_OPEN));
 	return (SUCCESS);
 }
-
 
 int	is_surrounded_by_walls(t_parsing_data *parsing)
 {
