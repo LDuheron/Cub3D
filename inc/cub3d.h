@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 12:19:48 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:34:33 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,8 +204,8 @@ typedef struct s_graph
 int				is_color_code(char *line);
 int				is_valid_color(char *line);
 
-// First_reading.c
-int				first_reading(char *argv);
+// initial_reading.c
+int				initial_reading(char *argv);
 
 // Is_surrounded_by_walls.c
 int				is_surrounded_by_walls(t_parsing_data *parsing);
@@ -225,8 +225,8 @@ int				retrieve_texture(t_parsing_data *parsing);
 void			free_parsing_data(t_parsing_data *parsing);
 int				parsing(t_parsing_data *parsing, char *argv);
 
-// Read_input_file.c
-int				read_input_file(t_parsing_data *parsing, char *argv);
+// store_input_file.c
+int				store_input_file(t_parsing_data *parsing, char *argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -238,7 +238,7 @@ int				read_input_file(t_parsing_data *parsing, char *argv);
 
 // Error_management.c
 int				error_message(int code);
-int				error_message_first_reading(int code);
+int				error_message_initial_reading(int code);
 int				error_parsing_message(int code);
 void			ft_putstr_fd(char *s, int fd);
 

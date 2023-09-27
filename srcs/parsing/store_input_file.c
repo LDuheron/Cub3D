@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_input_file.c                                  :+:      :+:    :+:   */
+/*   store_input_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,8 @@
 
 #include "cub3d.h"
 
-// READ_INPUT_FILE : This function reads the input and stores
-// it in the parsing structure under the variable map.
-int	read_input_file(t_parsing_data *parsing, char *argv)
+// STORE_INPUT_FILE: This function allocates the input in parsing->file.
+int	store_input_file(t_parsing_data *parsing, char *argv)
 {
 	char	*file_tmp;
 	char	*line;

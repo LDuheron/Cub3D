@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 12:34:56 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:22:14 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static int	find_player_position(t_parsing_data *parsing)
 	return (SUCCESS);
 }
 
+// RETRIEVE_MAP: This function extracts from parsing->file the lines
+// corresponding to the map and allocates it in parsing->map.
 static int	retrieve_map(t_parsing_data *parsing)
 {
 	int	i;
@@ -76,7 +78,6 @@ static int	retrieve_map(t_parsing_data *parsing)
 	return (SUCCESS);
 }
 
-// check character
 int	map_management(t_parsing_data *parsing)
 {
 	if (retrieve_map(parsing) == SUCCESS)

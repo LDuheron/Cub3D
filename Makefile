@@ -12,13 +12,13 @@ OBJ_DIR     := obj
 
 SRCS := main.c								\
 		parsing/color.c						\
-		parsing/first_reading.c				\
+		parsing/initial_reading.c				\
 		parsing/is_surrounded_by_walls.c	\
 		parsing/is_valid.c					\
 		parsing/parse_map.c					\
 		parsing/parse_texture.c				\
 		parsing/parsing.c					\
-		parsing/read_input_file.c			\
+		parsing/store_input_file.c			\
 		utils/gnl/get_next_line.c			\
 		utils/libft/ft_atoi.c				\
 		utils/libft/ft_calloc.c				\

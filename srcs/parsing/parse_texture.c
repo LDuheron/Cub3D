@@ -6,16 +6,14 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 11:32:31 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:56:58 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// FIRST_C_TO_EXTRACT : this function retrieves the first character of 
-// the path by passing upon the first characters that are letters 
-// (NO, SO, SE, WE, F, C), then by passing upon the spaces that separates
-// the direction with the path.
+// FIRST_C_TO_EXTRACT: This function extracts the first path character by
+// skipping direction indicators (NO, SO, SE, WE, F, C) and leading spaces.
 static int	first_c_to_extract(char *path)
 {
 	int	i;
@@ -28,11 +26,11 @@ static int	first_c_to_extract(char *path)
 	return (i);
 }
 
-// EXTRACT_TEXTURE_PATH : This function 
-// parsing->texture[i] = ft_strdup(parsing->file[line]);
-// i : indicate which direction we are working on.
-// line : line number in the file.
-
+// EXTRACT_TEXTURE_PATH: This function extracts the texture path or color 
+// code from the given line and stores it in parsing->texture.
+// i : indicates the line of parsing->texture we are working on :
+// NO, SO, WE, EA, F or C.
+// line : indicates the line of parsing->file we are working on.
 static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 {
 	int		len;
@@ -53,10 +51,8 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 	return (SUCCESS);
 }
 
-// find_line_to_extract : This function extracts from file the paths of 
-// the textures.
-// return la ligne d'ou extraire dans le file pour NO etc
-
+// FIND_LINE_TO_EXTRACT: This function returns the line number in parsing->file 
+// from which to extract the paths of textures or color codes.
 static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 {
 	while (parsing->file[i] && is_empty_line(parsing->file[i]) == EMPTY)
@@ -76,8 +72,9 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 	return (ERROR_TEXTURE);
 }
 
-// RETRIEVE_TEXTURE : Retrieves from parsing->file the path of textures 
-// and stores it the following way :
+// RETRIEVE_TEXTURE: This function extracts the lines corresponding to the 
+// texture's path and color code from parsing->file and allocates them in 
+// parsing->texture as follows:
 // texture[0] = NO
 // texture[1] = SO
 // texture[2] = WE
@@ -88,10 +85,10 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 int	retrieve_texture(t_parsing_data *parsing)
 {
 	int	i;
-	int	stat_i;
+	int	static_i;
 	int	line;
 
-	stat_i = 0;
+	static_i = 0;
 	i = 0;
 	line = 0;
 	parsing->texture = ft_calloc(sizeof(char *), 7);
@@ -99,8 +96,8 @@ int	retrieve_texture(t_parsing_data *parsing)
 		return (error_message(ERROR_MALLOC));
 	while (parsing->file[i] && i < 6)
 	{
-		line = find_line_to_extract(parsing, i, stat_i);
-		stat_i = line + 1;
+		line = find_line_to_extract(parsing, i, static_i);
+		static_i = line + 1;
 		if (line == ERROR_TEXTURE)
 			return (error_parsing_message(line));
 		if (extract_texture_path(parsing, line, i) == ERROR)

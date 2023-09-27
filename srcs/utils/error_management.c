@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:55:48 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:34:33 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
-int	error_message_first_reading(int code)
+int	error_message_initial_reading(int code)
 {
 	if (code == M_TEXTURE)
 		ft_putstr_fd("Error: Missing texture.\n", 2);
