@@ -6,13 +6,15 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:45:45 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:57:01 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_count_comma(char *line)
+// IS_VALID_COLOR_CODE: This function checks that the given code contains only
+// digits and precisely two commas.
+static int	is_valid_color_code(char *line)
 {
 	int	cpt_comma;
 	int	i;
@@ -23,6 +25,8 @@ static int	ft_count_comma(char *line)
 	{
 		if (ft_strncmp(&line[i], ",", 1) == 0)
 			cpt_comma += 1;
+		else if (ft_isdigit(line[i]) == 0)
+			return (error_parsing_message(COLOR));
 		i++;
 	}
 	if (cpt_comma != 2)
@@ -30,12 +34,13 @@ static int	ft_count_comma(char *line)
 	return (SUCCESS);
 }
 
-static int	is_color_code(char *line, int start, int len)
+// IS_RGB_FORMAT: This function ensures that the given number is within the 
+// range [0,250] as requested by the RGB format.
+static int	is_rgb_format(char *line, int start, int len)
 {
 	int	nb;
 	int	i;
 
-	printf("color is checked !\n");
 	i = start;
 	if (len == 0 || len > 3)
 		return (error_parsing_message(COLOR));
@@ -62,20 +67,20 @@ int	is_valid_color(char *line)
 	cpt_color = 0;
 	i = 0;
 	len = ft_strlen(line);
-	if (ft_count_comma(line) == ERROR)
+	if (is_valid_color_code(line) == ERROR)
 		return (ERROR);
 	while (cpt_color < 2)
 	{
 		start = i;
 		while (ft_strncmp(&line[i], ",", 1) != 0)
 			i++;
-		if (is_color_code(line, start, i - start) == ERROR)
+		if (is_rgb_format(line, start, i - start) == ERROR)
 			return (ERROR);
 		cpt_color++;
 		i++;
 	}
 	start = i;
-	if (is_color_code(line, start, len - start) == ERROR)
+	if (is_rgb_format(line, start, len - start) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }
