@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 14:34:33 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:06:49 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ typedef struct s_graph
 //////////////////////////////////////////////////////////////////
 
 // Colors.c
-int				is_color_code(char *line);
+// int				is_color_code(char *line);
 int				is_valid_color(char *line);
 
 // initial_reading.c

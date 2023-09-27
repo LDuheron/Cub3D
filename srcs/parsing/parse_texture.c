@@ -6,14 +6,14 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 13:56:58 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:43:26 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 // FIRST_C_TO_EXTRACT: This function extracts the first path character by
-// skipping direction indicators (NO, SO, SE, WE, F, C) and leading spaces.
+// skipping direction indicators (NO, SO, WE, EA, F, C) and leading spaces.
 static int	first_c_to_extract(char *path)
 {
 	int	i;
@@ -45,9 +45,9 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 	if (i < 4)
 		if (is_valid_path(parsing->texture[i]) == ERROR)
 			return (ERROR);
-	// if (i >= 4)
-	// 	if (is_color_code(parsing->texture[i]) == ERROR)
-	// 		return (ERROR);
+	if (i >= 4)
+		if (is_valid_color(parsing->texture[i]) == ERROR)
+			return (ERROR);
 	return (SUCCESS);
 }
 
@@ -78,7 +78,7 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 // texture[0] = NO
 // texture[1] = SO
 // texture[2] = WE
-// texture[3] = SE
+// texture[3] = EA
 // texture[4] = F
 // texture[5] = C
 

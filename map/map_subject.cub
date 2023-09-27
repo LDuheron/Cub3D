@@ -2,8 +2,8 @@ NO ./image/carpet.xpm
 SO ./image/carpet.xpm
 WE ./image/carpet.xpm
 EA ./image/carpet.xpm
-F 200,,
-C 100,,
+F 055,122,222
+C 100,011,111
 
 111 111
  101101
