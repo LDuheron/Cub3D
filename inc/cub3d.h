@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:31:02 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:15:31 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@
 // ERROR TEXTURE
 # define ERROR_EXTENSION -18
 
-# define ERROR_TEXTURE -5
+# define ERROR_TEXTURE -16
 # define ERROR_T_OPEN -6
 # define ERROR_MAP -7
 # define TOO_MUCH_PLAYER -3
