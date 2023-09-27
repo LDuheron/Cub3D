@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:59:56 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/21 16:11:17 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:10:35 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,20 @@ static int	is_zero_next_to_space(char **map, int i, int j)
 	len = ft_strlen(map[i]);
 	next_len = ft_strlen(map[i + 1]);
 	// haut
-	if (j < previous_len && map[i - 1][j] && map[i - 1][j] == '0')
+	if (j < previous_len && map[i - 1][j] && is_space(map[i - 1][j]) == 1)
 		return (error_message_first_reading(MAP_OPEN));
 	// bas
-	if (j < next_len && map[i + 1][j] && map[i + 1][j] == '0')
+	if (j < next_len && map[i + 1][j] && is_space(map[i + 1][j]) == 1)
 		return (error_message_first_reading(MAP_OPEN));
 	// gauche
-	if (j != 0 && map[i][j - 1] && map[i][j - 1] == '0')
+	if (j != 0 && map[i][j - 1] && is_space(map[i][j - 1]) == 1)
 		return (error_message_first_reading(MAP_OPEN));
 	// droite
-	if ((j + 1) <= len && map[i][j + 1] && map[i][j + 1] == '0')
+	if ((j + 1) <= len && map[i][j + 1] && is_space(map[i][j + 1]) == 1)
 		return (error_message_first_reading(MAP_OPEN));
 	return (SUCCESS);
 }
+
 
 int	is_surrounded_by_walls(t_parsing_data *parsing)
 {
@@ -64,7 +65,7 @@ int	is_surrounded_by_walls(t_parsing_data *parsing)
 		j = 0;
 		while (parsing->map && parsing->map[i][j])
 		{
-			if (parsing->map[i][j] == ' ')
+			if (parsing->map[i][j] == '0')
 				if (is_zero_next_to_space(parsing->map, i, j) == ERROR)
 					return (ERROR);
 			j++;

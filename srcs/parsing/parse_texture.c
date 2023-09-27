@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:10:07 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 11:32:31 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 	if (i < 4)
 		if (is_valid_path(parsing->texture[i]) == ERROR)
 			return (ERROR);
-	if (i >= 4)
-		if (is_color_code(parsing->texture[i]) == ERROR)
-			return (ERROR);
+	// if (i >= 4)
+	// 	if (is_color_code(parsing->texture[i]) == ERROR)
+	// 		return (ERROR);
 	return (SUCCESS);
 }
 
@@ -103,7 +103,7 @@ int	retrieve_texture(t_parsing_data *parsing)
 		stat_i = line + 1;
 		if (line == ERROR_TEXTURE)
 			return (error_parsing_message(line));
-		if (extract_texture_path(parsing, line, i) != SUCCESS)
+		if (extract_texture_path(parsing, line, i) == ERROR)
 			return (ERROR);
 		i++;
 	}

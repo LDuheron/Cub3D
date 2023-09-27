@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:15:48 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 11:34:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ static int	find_player_position(t_parsing_data *parsing)
 				cpt += 1;
 				if (cpt > 1)
 					return (error_message(TOO_MUCH_PLAYER));
+				// if (is_valid_player_position(i, j) == ERROR)
+				// 	return (ERROR);
 				parsing->pos_p_x = i;
 				parsing->pos_p_y = j;
 				parsing->pos_type = parsing->map[i][j];
+				parsing->map[i][j] = '0';
 			}
 			j++;
 		}

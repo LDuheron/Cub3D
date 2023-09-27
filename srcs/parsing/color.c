@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 17:11:41 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:29:17 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_count_comma(char *line)
 	int	cpt_comma;
 	int	i;
 
+	printf("ENTER F_COUNT COMMA -- \n");
 	cpt_comma = 0;
 	i = 0;
 	while (line && line[i])
@@ -53,7 +54,6 @@ int	is_valid_color(char *line)
 	// 		i++;
 	// 	color_code = ft_substr(line, start, i - len);
 	// 	if (str[i] == ",")
-			
 	// 	i++;
 	// }
 	// if (cpt != 3)
@@ -69,7 +69,6 @@ int	is_color_code(char *line)
 	int	i;
 
 	i = 0;
-	is_valid_color(line);
 	if (ft_strlen(line) > 3)
 		return (error_parsing_message(COLOR));
 	while (line[i])
@@ -104,4 +103,3 @@ int	is_color_code(char *line)
 // 		return (SUCCESS);
 // 	return (error_parsing_message(COLOR));
 // }
-
