@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 12:15:31 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:19:48 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,32 +201,32 @@ typedef struct s_graph
 //////////////////////////////////////////////////////////////////
 
 // Colors.c
-int		is_color_code(char *line);
-int		is_valid_color(char *line);
+int				is_color_code(char *line);
+int				is_valid_color(char *line);
 
 // First_reading.c
-int		first_reading(char *argv);
+int				first_reading(char *argv);
 
 // Is_surrounded_by_walls.c
-int		is_surrounded_by_walls(t_parsing_data *parsing);
+int				is_surrounded_by_walls(t_parsing_data *parsing);
 
 // is_valid.c
-int		is_valid_char(char *line);
-int		is_valid_extension(char *file, char *format);
-int		is_valid_path(char *path);
+int				is_valid_char(char *line);
+int				is_valid_extension(char *file, char *format);
+int				is_valid_path(char *path);
 
 // Parse_map.c
-int		map_management(t_parsing_data *data);
+int				map_management(t_parsing_data *data);
 
 // Parse_texture.c
-int		retrieve_texture(t_parsing_data *parsing);
+int				retrieve_texture(t_parsing_data *parsing);
 
 // Parsing.c
-void	free_parsing_data(t_parsing_data *parsing);
-int		parsing(t_parsing_data *parsing, char *argv);
+void			free_parsing_data(t_parsing_data *parsing);
+int				parsing(t_parsing_data *parsing, char *argv);
 
 // Read_input_file.c
-int		read_input_file(t_parsing_data *parsing, char *argv);
+int				read_input_file(t_parsing_data *parsing, char *argv);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -237,16 +237,16 @@ int		read_input_file(t_parsing_data *parsing, char *argv);
 //////////////////////////////////////////////////////////////////
 
 // Error_management.c
-int		error_message(int code);
-int		error_message_first_reading(int code);
-int		error_parsing_message(int code);
-void	ft_putstr_fd(char *s, int fd);
+int				error_message(int code);
+int				error_message_first_reading(int code);
+int				error_parsing_message(int code);
+void			ft_putstr_fd(char *s, int fd);
 
 // Is_something.c
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		is_space(char c);
-int		is_empty_line(char *line);
+int				ft_isalpha(int c);
+int				ft_isdigit(int c);
+int				is_space(char c);
+int				is_empty_line(char *line);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -255,10 +255,10 @@ int		is_empty_line(char *line);
 //////////////////////////////////////////////////////////////////
 
 // Get_next_line.c
-char	*get_next_line(int fd);
-char	*cut_after_end_line(char *remains, int end_line);
-char	*cut_before_end_line(char *remains, int end_line);
-char	*ft_read(int fd, char *remains);
+char			*get_next_line(int fd);
+char			*cut_after_end_line(char *remains, int end_line);
+char			*cut_before_end_line(char *remains, int end_line);
+char			*ft_read(int fd, char *remains);
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -267,33 +267,33 @@ char	*ft_read(int fd, char *remains);
 //////////////////////////////////////////////////////////////////
 
 // Ft_atoi.c
-int		ft_atoi(const char *str);
+int				ft_atoi(const char *str);
 
 // Ft_calloc.c
-void	*ft_calloc(size_t nmemb, size_t size);
+void			*ft_calloc(size_t nmemb, size_t size);
 
 // Ft_split.c
-char	**ft_split(char *s, char c);
+char			**ft_split(char *s, char c);
 
 // Ft_strdup.c
-char	*ft_strdup(char *src);
+char			*ft_strdup(char *src);
 
 // Ft_substr.c
-char	*ft_substr(char *s, unsigned int start, size_t len);
+char			*ft_substr(char *s, unsigned int start, size_t len);
 
 // Libft_utils.c
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlen(char *str);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+char			*ft_strchr(char *s, int c);
+char			*ft_strjoin(char *s1, char *s2);
+int				ft_strlen(char *str);
 
 //////////////////////////////////////////////////////////////////
 
 // Debug_function.c
-void	free_tab(char **str);
-void	free_char_tab(char **tab);
-void	print_tab(char **tab);
-void	print_int(int **tab);
+void			free_tab(char **str);
+void			free_char_tab(char **tab);
+void			print_tab(char **tab);
+void			print_int(int **tab);
 
 //////////////////////////////////////////////////////////////////
 
@@ -318,8 +318,8 @@ int				handle_no_event(void *data);
 void			draw_rect(t_graph *data);
 
 // ft_strlen.c
-int				ft_unstrlen(unsigned char* str);
-int				ft_unstrlen_plus(unsigned char** str);
+int				ft_unstrlen(unsigned char *str);
+int				ft_unstrlen_plus(unsigned char **str);
 
 // draw_utils.c
 double			ft_abs(double nb);
