@@ -6,13 +6,13 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:50:32 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 14:35:03 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:04:23 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	init_parsing_first_r(t_parsing_first_r *data, char *argv)
+static int	init_parsing_initial_r(t_parsing_initial_r *data, char *argv)
 {
 	data->cpt_texture = 0;
 	data->belong_to_map = 0;
@@ -23,14 +23,20 @@ static int	init_parsing_first_r(t_parsing_first_r *data, char *argv)
 	return (SUCCESS);
 }
 
-static int	is_valid_line(t_parsing_first_r *data, char *line)
+static int	is_valid_line(t_parsing_initial_r *data, char *line)
 {
+	int	i;
+
+	i = 0;
 	data->size += 1;
 	if (data->size >= 1000)
 		return (error_message_initial_reading(TOO_BIG));
 	if (data->cpt_texture < 6)
 	{
-		if (ft_isalpha(line[0]) == 1)
+
+		while (line && is_space(line[i]) == 1)
+			i++;
+		if (ft_isalpha(line[i]) == 1)
 			data->cpt_texture += 1;
 		else if (is_empty_line(line) == NOT_EMPTY)
 			return (error_message_initial_reading(M_TEXTURE));
@@ -51,9 +57,10 @@ static int	is_valid_line(t_parsing_first_r *data, char *line)
 // than 1000 lines, without any empty lines in the map.
 int	initial_reading(char *argv)
 {
-	t_parsing_first_r	data;
+	t_parsing_initial_r	data;
 
-	if (init_parsing_first_r(&data, argv) == ERROR)
+
+	if (init_parsing_initial_r(&data, argv) == ERROR)
 		return (ERROR);
 	data.line = get_next_line(data.fd);
 	if (!data.line)
@@ -73,6 +80,7 @@ int	initial_reading(char *argv)
 		data.line = get_next_line(data.fd);
 	}
 	free(data.line);
-	close(data.fd);
+	close(data.fd);	
+
 	return (SUCCESS);
 }
