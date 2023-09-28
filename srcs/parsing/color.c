@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:58:10 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/28 17:29:32 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	is_rgb_format(char *line, int start, int len)
 		i++;
 	}
 	nb = ft_atoi(line);
-	if (nb >= 0 && nb <= 250)
+	if (nb >= 0 && nb <= 255)
 		return (SUCCESS);
 	return (error_parsing_message(COLOR));
 }

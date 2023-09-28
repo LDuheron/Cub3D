@@ -12,7 +12,7 @@ OBJ_DIR     := obj
 
 SRCS := main.c								\
 		parsing/color.c						\
-		parsing/initial_reading.c				\
+		parsing/initial_reading.c			\
 		parsing/is_surrounded_by_walls.c	\
 		parsing/is_valid.c					\
 		parsing/parse_map.c					\
@@ -35,6 +35,7 @@ SRCS := main.c								\
 		window/events.c						\
 		window/ft_unstrlen.c				\
 		window/raycasting.c					\
+		xpm_to_image.c						\
 
 #############################################
 
