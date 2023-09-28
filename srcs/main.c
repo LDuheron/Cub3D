@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 17:48:00 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:35:28 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 		error_message(ERROR_ARG);
 	return (0);
 }
-
 
 // faire colision dans le madatory ou 
 // mlx_get_addr -> recuperer et stocker
