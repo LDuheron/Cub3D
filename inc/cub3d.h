@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 14:31:58 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:39:12 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@
 # define X_SIDE 0
 # define Y_SIDE 1
 
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.045
+# define ROT_SPEED 0.0125
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -176,10 +176,14 @@ typedef struct s_raycasting
 
 typedef struct	s_ray_utils
 {
-	int	key_w;
-	int	key_s;
-	int	key_a;
-	int	key_d;
+	int		key_w;
+	int		key_s;
+	int		key_a;
+	int		key_d;
+	int		key_left;
+	int		key_right;
+	double	rot_speed;
+	double	move_speed;
 }		t_ray_utils;
 
 typedef struct s_graph
@@ -321,7 +325,9 @@ int				create_window(t_parsing_data parsing);
 
 // events.c
 void			ft_exit(t_graph *data);
-int				close_win_key(int keysym, t_graph *data);
+int				key_release(int keysym, t_graph *data);
+int				key_press(int keysym, t_graph *data);
+int				move_it(t_graph *data);
 int				close_win_mouse(t_graph *data);
 int				handle_no_event(void *data);
 

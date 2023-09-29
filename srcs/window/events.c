@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 14:25:27 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:51:45 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,54 +22,89 @@ void	ft_exit(t_graph *data)
 	exit(1);
 }
 
-int	close_win_key(int keysym, t_graph *data)
+int	key_release(int keysym, t_graph *data)
 {
-	double	old_dir_x;
-	double	old_plane_x;
+	if (keysym == XK_w || keysym == XK_Up)
+		data->utils.key_w = 0;
+	if (keysym == XK_s || keysym == XK_Down)
+		data->utils.key_s = 0;
+	if (keysym == XK_d)
+		data->utils.key_d = 0;
+	if (keysym == XK_a)
+		data->utils.key_a = 0;
+	if (keysym == XK_Right)
+		data->utils.key_right = 0;
+	if (keysym == XK_Left)
+		data->utils.key_left = 0;
+	return (0);
+}
 
+int	key_press(int keysym, t_graph *data)
+{
 	if (keysym == XK_Escape)
 		ft_exit(data);
 	if (keysym == XK_w || keysym == XK_Up)
-	{
-		printf("position = %d\n", data->map[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)][(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)]);
-		if (data->map[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)]
-			[(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 48)
-		{
-			data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
-			data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
-		}
-	}
+		data->utils.key_w = 1;
 	if (keysym == XK_s || keysym == XK_Down)
-	{
-		printf("position = %d\n", data->map[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)][(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)]);
-		if (data->map[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)]
-			[(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 48)
-		{
-			data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
-			data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
-		}
-	}
+		data->utils.key_s = 1;
 	if (keysym == XK_d)
-	{
-		printf("position = %d\n", data->map[(int)(data->ray.pos_x + data->ray.plane_x * MOVE_SPEED)][(int)(data->ray.pos_y + data->ray.plane_y * MOVE_SPEED)]);
-		if (data->map[(int)(data->ray.pos_x + data->ray.plane_x * MOVE_SPEED)]
-			[(int)(data->ray.pos_y + data->ray.plane_y * MOVE_SPEED)] == 48)
-		{
-			data->ray.pos_x += data->ray.plane_x * MOVE_SPEED;
-			data->ray.pos_y += data->ray.plane_y * MOVE_SPEED;
-		}
-	}
+		data->utils.key_d = 1;
 	if (keysym == XK_a)
-	{
-		printf("position = %d\n", data->map[(int)(data->ray.pos_x - data->ray.plane_x * MOVE_SPEED)][(int)(data->ray.pos_y - data->ray.plane_y * MOVE_SPEED)]);
-		if (data->map[(int)(data->ray.pos_x - data->ray.plane_x * MOVE_SPEED)]
-			[(int)(data->ray.pos_y - data->ray.plane_y * MOVE_SPEED)] == 48)
-		{
-			data->ray.pos_x -= data->ray.plane_x * MOVE_SPEED;
-			data->ray.pos_y -= data->ray.plane_y * MOVE_SPEED;
-		}
-	}
+		data->utils.key_a = 1;
 	if (keysym == XK_Right)
+		data->utils.key_right = 1;
+	if (keysym == XK_Left)
+		data->utils.key_left = 1;
+	return (0);
+}
+
+void	lateral_moves(t_graph *data)
+{
+	if (data->utils.key_d == 1 && data->map
+		[(int)(data->ray.pos_x + data->ray.plane_x * MOVE_SPEED)]
+		[(int)(data->ray.pos_y + data->ray.plane_y * MOVE_SPEED)] == 48)
+	{
+		data->ray.pos_x += data->ray.plane_x * MOVE_SPEED;
+		data->ray.pos_y += data->ray.plane_y * MOVE_SPEED;
+		draw_background(data);
+		ft_raycasting(data);
+	}
+	if (data->utils.key_a == 1 && data->map
+		[(int)(data->ray.pos_x - data->ray.plane_x * MOVE_SPEED)]
+		[(int)(data->ray.pos_y - data->ray.plane_y * MOVE_SPEED)] == 48)
+	{
+		data->ray.pos_x -= data->ray.plane_x * MOVE_SPEED;
+		data->ray.pos_y -= data->ray.plane_y * MOVE_SPEED;
+		draw_background(data);
+		ft_raycasting(data);
+	}
+}
+
+void	front_n_back(t_graph *data)
+{
+	if (data->utils.key_w == 1 && data->map
+		[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)]
+		[(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 48)
+	{
+		data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
+		data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
+		draw_background(data);
+		ft_raycasting(data);
+	}
+	if (data->utils.key_s == 1 && data->map
+		[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)]
+		[(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 48)
+	{
+		data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
+		data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
+		draw_background(data);
+		ft_raycasting(data);
+	}
+}
+
+void	rotations_right(double old_dir_x, double old_plane_x, t_graph *data)
+{
+	if (data->utils.key_right == 1)
 	{
 		old_dir_x = data->ray.dir_x;
 		data->ray.dir_x = data->ray.dir_x * cos(-ROT_SPEED)
@@ -82,7 +117,19 @@ int	close_win_key(int keysym, t_graph *data)
 		data->ray.plane_y = old_plane_x * sin(-ROT_SPEED)
 			+ data->ray.plane_y * cos(-ROT_SPEED);
 	}
-	if (keysym == XK_Left)
+}
+
+int	move_it(t_graph *data)
+{
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = 0.0;
+	old_plane_x = 0.0;
+	front_n_back(data);
+	lateral_moves(data);
+	rotations_right(old_dir_x, old_plane_x, data);
+	if (data->utils.key_left == 1)
 	{
 		old_dir_x = data->ray.dir_x;
 		data->ray.dir_x = data->ray.dir_x * cos(ROT_SPEED)
@@ -95,10 +142,7 @@ int	close_win_key(int keysym, t_graph *data)
 		data->ray.plane_y = old_plane_x * sin(ROT_SPEED)
 			+ data->ray.plane_y * cos(ROT_SPEED);
 	}
-	printf("dir_x = %f, dir_y = %f\n", data->ray.dir_x, data->ray.dir_y);
-	printf("plane_x = %f, plane_y = %f\n", data->ray.plane_x, data->ray.plane_y);
 	draw_background(data);
-	// draw_rect(data);
 	ft_raycasting(data);
 	return (0);
 }
