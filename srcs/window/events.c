@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/26 11:28:48 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 12:02:39 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	close_win_key(int keysym, t_graph *data)
 	}
 	if (keysym == XK_a)
 	{
-		data->ray.pos_x += MOVE_SPEED;
+		// data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
 		data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
 	}
 	if (keysym == XK_d)
 	{
-		data->ray.pos_x -= MOVE_SPEED;
+		// data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
 		data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
 	}
 	if (keysym == XK_Right)
@@ -79,6 +79,8 @@ int	close_win_key(int keysym, t_graph *data)
 		data->ray.plane_y = old_plane_x * sin(ROT_SPEED)
 			+ data->ray.plane_y * cos(ROT_SPEED);
 	}
+	printf("dir_x = %f, dir_y = %f\n", data->ray.dir_x, data->ray.dir_y);
+	printf("plane_x = %f, plane_y = %f\n", data->ray.plane_x, data->ray.plane_y);
 	draw_rect(data);
 	ft_raycasting(data);
 	return (0);

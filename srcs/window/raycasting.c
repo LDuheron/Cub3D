@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/26 13:34:31 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 12:16:23 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,34 @@ t_raycasting	init_data_rc(t_parsing_data parsing)
 
 	ray.pos_x = parsing.pos_p_x;
 	ray.pos_y = parsing.pos_p_y;
-	ray.dir_x = 1;
-	ray.dir_y = 0;
-	ray.plane_x = 0;
-	ray.plane_y = -0.66;
+	if (parsing.pos_type == 78)
+	{
+		ray.dir_x = -1;
+		ray.dir_y = 0;
+		ray.plane_x = 0;
+		ray.plane_y = 0.66;
+	}
+	if (parsing.pos_type == 83)
+	{
+		ray.dir_x = 1;
+		ray.dir_y = 0;
+		ray.plane_x = 0;
+		ray.plane_y = -0.66;
+	}
+	if (parsing.pos_type == 69)
+	{
+		ray.dir_x = 0;
+		ray.dir_y = 1;
+		ray.plane_x = 0.66;
+		ray.plane_y = 0;
+	}
+	if (parsing.pos_type == 87)
+	{
+		ray.dir_x = 0;
+		ray.dir_y = -1;
+		ray.plane_x = -0.66;
+		ray.plane_y = 0;
+	}
 	// the FOV is 2*atan(0.66/1.0), so 66 degrees
 	return (ray);
 }
