@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 14:06:01 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:25:27 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ int	close_win_key(int keysym, t_graph *data)
 	}
 	printf("dir_x = %f, dir_y = %f\n", data->ray.dir_x, data->ray.dir_y);
 	printf("plane_x = %f, plane_y = %f\n", data->ray.plane_x, data->ray.plane_y);
-	draw_rect(data);
+	draw_background(data);
+	// draw_rect(data);
 	ft_raycasting(data);
 	return (0);
 }

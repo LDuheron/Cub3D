@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 14:17:34 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:31:58 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@
 # define GREEN_PIXEL 0x77FF00
 # define WHITE_PIXEL 0xEBE9CD
 # define BLACK_PIXEL 0x000000
+# define MID_BLUE 0x191970
+# define WOOD 0xA0522D
 
 # define NOT_EMPTY 0
 # define EMPTY 1
@@ -325,6 +327,7 @@ int				handle_no_event(void *data);
 
 // draw_map.c
 void			draw_rect(t_graph *data);
+void			draw_background(t_graph *data);
 
 // ft_strlen.c
 int				ft_unstrlen(unsigned char* str);

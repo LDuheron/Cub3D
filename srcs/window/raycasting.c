@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 12:16:23 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:37:42 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ void	draw_wall(t_raycasting ray, t_graph data, int x)
 	while (ray.draw_start < ray.draw_end)
 	{
 		if (ray.side == X_SIDE)
-			img_pix_put(&data.img, x, ray.draw_start, RED_PIXEL);
+			img_pix_put(&data.img, x, ray.draw_start, WHITE_PIXEL-30);
 		else
-			img_pix_put(&data.img, x, ray.draw_start, WHITE_PIXEL);
+			img_pix_put(&data.img, x, ray.draw_start, WHITE_PIXEL+30);
 		ray.draw_start++;
 	}
 }
