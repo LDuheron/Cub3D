@@ -1,7 +1,7 @@
-NO 
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO image/carpet.xpm
+SO image/carpet.xpm
+WE image/carpet.xpm
+EA image/carpet.xpm
 
 F 1,2,3,4
 C 225,30,0
