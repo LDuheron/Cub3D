@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 17:23:22 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:28:48 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	close_win_key(int keysym, t_graph *data)
 		data->ray.pos_x -= MOVE_SPEED;
 		data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
 	}
-	if (keysym == XK_Left)
+	if (keysym == XK_Right)
 	{
 		old_dir_x = data->ray.dir_x;
 		data->ray.dir_x = data->ray.dir_x * cos(-ROT_SPEED)
@@ -66,7 +66,7 @@ int	close_win_key(int keysym, t_graph *data)
 		data->ray.plane_y = old_plane_x * sin(-ROT_SPEED)
 			+ data->ray.plane_y * cos(-ROT_SPEED);
 	}
-	if (keysym == XK_Right)
+	if (keysym == XK_Left)
 	{
 		old_dir_x = data->ray.dir_x;
 		data->ray.dir_x = data->ray.dir_x * cos(ROT_SPEED)
