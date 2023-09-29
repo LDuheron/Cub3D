@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:50:32 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 21:04:23 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:00:56 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	is_valid_line(t_parsing_initial_r *data, char *line)
 		return (error_message_initial_reading(TOO_BIG));
 	if (data->cpt_texture < 6)
 	{
-
 		while (line && is_space(line[i]) == 1)
 			i++;
 		if (ft_isalpha(line[i]) == 1)
@@ -59,7 +58,6 @@ int	initial_reading(char *argv)
 {
 	t_parsing_initial_r	data;
 
-
 	if (init_parsing_initial_r(&data, argv) == ERROR)
 		return (ERROR);
 	data.line = get_next_line(data.fd);
@@ -80,7 +78,6 @@ int	initial_reading(char *argv)
 		data.line = get_next_line(data.fd);
 	}
 	free(data.line);
-	close(data.fd);	
-
+	close(data.fd);
 	return (SUCCESS);
 }
