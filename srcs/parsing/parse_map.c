@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 20:02:38 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:57:37 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ static void	fill_player_information(t_parsing_data *parsing, int i, int j)
 	parsing->pos_p_y = j;
 	parsing->pos_type = parsing->map[i][j];
 	parsing->map[i][j] = '0';
+}
+
+static int	error_player(int i)
+{
+	if (i == 0)
+		return (error_message_initial_reading(EMPTY_MAP));
+	return (error_parsing_message(NO_PLAYER));
 }
 
 static int	find_player_position(t_parsing_data *parsing)
@@ -37,7 +44,7 @@ static int	find_player_position(t_parsing_data *parsing)
 			{
 				cpt += 1;
 				if (cpt > 1)
-					return (error_message(TOO_MUCH_PLAYER));
+					return (error_parsing_message(TOO_MUCH_PLAYER));
 				fill_player_information(parsing, i, j);
 			}
 			j++;
@@ -45,7 +52,7 @@ static int	find_player_position(t_parsing_data *parsing)
 		i++;
 	}
 	if (cpt == 0)
-		return (error_parsing_message(NO_PLAYER));
+		return (error_player(i));
 	return (SUCCESS);
 }
 

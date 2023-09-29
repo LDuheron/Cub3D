@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 14:00:58 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:30:22 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_putstr_fd(char *s, int fd)
 int	error_message_initial_reading(int code)
 {
 	if (code == M_TEXTURE)
-		ft_putstr_fd("Error: Missing texture.\n", 2);
+		ft_putstr_fd("Error: Missing texture or color code.\n", 2);
 	else if (code == EMPTY_LINE_IN_MAP)
 		ft_putstr_fd("Error: No empty lines in map.\n", 2);
 	else if (code == TOO_BIG)
@@ -37,7 +37,7 @@ int	error_message_initial_reading(int code)
 int	error_parsing_message(int code)
 {
 	if (code == ERROR_TEXTURE)
-		ft_putstr_fd("Error: Texture and color are strictly order : NO,SO, WE, EA, F, C.\n", 2);
+		ft_putstr_fd("Error: Texture and color are strictly order : NO, SO, WE, EA, F, C.\n", 2);
 	else if (code == ERROR_EXTENSION)
 		ft_putstr_fd("Error: textures have to be .xpm format\n", 2);
 	else if (code == ERROR_T_OPEN)
@@ -58,7 +58,7 @@ int	error_message(int code)
 	if (code == ERROR_ARG)
 		ft_putstr_fd("Error: please insert 2 arguments.\n", 2);
 	else if (code == ERROR_CHAR)
-		ft_putstr_fd("Error: Map is composed by characters \" 01NSEW\" only.\n", 2);
+		ft_putstr_fd("Error: Map is composed by 4 textures, 2 colors and a map composed with characters \" 01NSEW\" only.\n", 2);
 	else if (code == ERROR_CLOSE)
 		ft_putstr_fd("Error: Error occured when closing fd.\n", 2);
 	else if (code == ERROR_FD)
