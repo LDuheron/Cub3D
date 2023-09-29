@@ -1,0 +1,12 @@
+S ./texture/path_to_the_spri
+SO image/carpet.xpm
+WE image/carpet.xpm
+EA image/carpet.xpm
+
+NO image/carpet.xpm
+F 220,100,0
+C 225,30,0
+
+11111110
+1000N001
+11111111

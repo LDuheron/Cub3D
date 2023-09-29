@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 11:49:22 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:37:27 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,7 @@ int	main(int argc, char **argv)
 		error_message(ERROR_ARG);
 	return (0);
 }
+
+// faire colision dans le madatory ou 
+// mlx_get_addr -> recuperer et stocker
+//  dans une variable les pixels de couleurs.

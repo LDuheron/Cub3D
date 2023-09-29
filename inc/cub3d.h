@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 16:11:00 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:46:21 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,16 @@ typedef struct s_parsing_data
 	int		line_last_texture;
 }	t_parsing_data;
 
-typedef struct s_parsing_first_r
+typedef struct s_parsing_initial_r
 {
 	int		belong_to_map;
 	int		cpt_texture;
 	int		fd;
 	int		size;
 	char	*line;
-}	t_parsing_first_r;
+}	t_parsing_initial_r;
 
-//graph structures
+// graph structures
 
 typedef struct s_img
 {

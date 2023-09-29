@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:42:02 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 14:22:14 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:02:38 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	retrieve_map(t_parsing_data *parsing)
 
 	i = 0;
 	start = parsing->line_last_texture + 1;
-	while (is_empty_line(parsing->file[start]))
+	while (parsing->file[start] && is_empty_line(parsing->file[start]))
 		start++;
 	end = start;
 	while (parsing->file[end])
