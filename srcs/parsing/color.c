@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 17:29:32 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:19:45 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,23 @@ static int	is_valid_color_code(char *line)
 // range [0,250] as requested by the RGB format.
 static int	is_rgb_format(char *line, int start, int len)
 {
-	int	nb;
-	int	i;
+	int		nb;
+	int		i;
+	char	*nb_tmp;
 
+	nb_tmp = NULL;
 	i = start;
 	if (len == 0 || len > 3)
 		return (error_parsing_message(COLOR));
-	while (i < len)
+	while (i < start + len)
 	{
 		if (ft_isdigit(line[i]) != 1)
 			return (error_parsing_message(COLOR));
 		i++;
 	}
-	nb = ft_atoi(line);
+	nb_tmp = ft_substr(line, start, len);
+	nb = ft_atoi(nb_tmp);
+	free(nb_tmp);
 	if (nb >= 0 && nb <= 255)
 		return (SUCCESS);
 	return (error_parsing_message(COLOR));

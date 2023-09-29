@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 20:45:20 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:01:22 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,8 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 // from which to extract the paths of textures or color codes.
 static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 {
-	// int	j;
-
 	while (parsing->file[i] && is_empty_line(parsing->file[i]) == EMPTY)
 		i++;
-	// j = 0;
-	// while (parsing->file[i][j] && is_space(parsing->file[i][j]) == 1)
-	// 	j++;
-	// parsing->file[i] = ft_substr(parsing->file[i], j, ft_strlen(parsing->file[i]));
-	// printf("|%s|\n", parsing->file[i]);
 	if (code == 0 && ft_strncmp(parsing->file[i], "NO ", 3) == 0)
 		return (i);
 	else if (code == 1 && ft_strncmp(parsing->file[i], "SO ", 3) == 0)

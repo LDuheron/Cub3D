@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:59:56 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 21:17:49 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:43:30 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,21 @@ static int	is_zero_next_to_space(char **map, int i, int j)
 	previous_len = ft_strlen(map[i - 1]);
 	len = ft_strlen(map[i]);
 	next_len = ft_strlen(map[i + 1]);
-	if ((!map[i - 1][j]) || (j < previous_len && map[i - 1][j]
+	if ((j - 1) < 0 || (i - 1) < 0)
+		return (error_message_initial_reading(MAP_OPEN));
+	if ((!map[i - 1][j]) || (!map[i + 1][j]) || (!map[i][j - 1])
+		|| (!map[i][j + 1]))
+		return (error_message_initial_reading(MAP_OPEN));
+	if ((j < previous_len && map[i - 1][j]
 		&& is_space(map[i - 1][j])) == 1)
 		return (error_message_initial_reading(MAP_OPEN));
-	if ((!map[i + 1][j]) || (j < next_len && map[i + 1][j]
+	if ((j < next_len && map[i + 1][j]
 		&& is_space(map[i + 1][j]) == 1))
 		return (error_message_initial_reading(MAP_OPEN));
-	if ((!map[i][j - 1]) || (j != 0 && map[i][j - 1]
+	if ((j != 0 && map[i][j - 1]
 		&& is_space(map[i][j - 1]) == 1))
 		return (error_message_initial_reading(MAP_OPEN));
-	if ((!map[i][j + 1]) || ((j + 1) <= len && map[i][j + 1]
+	if (((j + 1) <= len && map[i][j + 1]
 		&& is_space(map[i][j + 1]) == 1))
 		return (error_message_initial_reading(MAP_OPEN));
 	return (SUCCESS);
