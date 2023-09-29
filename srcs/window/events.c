@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 12:02:39 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:06:01 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,43 @@ int	close_win_key(int keysym, t_graph *data)
 		ft_exit(data);
 	if (keysym == XK_w || keysym == XK_Up)
 	{
-		// if (data->map[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)][(int)data->ray.pos_y] == 0)
+		printf("position = %d\n", data->map[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)][(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)]);
+		if (data->map[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)]
+			[(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 48)
+		{
 			data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
-		// if (data->map[(int)data->ray.pos_x][(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 0)
 			data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
+		}
 	}
 	if (keysym == XK_s || keysym == XK_Down)
 	{
-		// if (data->map[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)][(int)data->ray.pos_y] == 0)
+		printf("position = %d\n", data->map[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)][(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)]);
+		if (data->map[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)]
+			[(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 48)
+		{
 			data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
-		// if (data->map[(int)data->ray.pos_x][(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 0)
 			data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
-	}
-	if (keysym == XK_a)
-	{
-		// data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
-		data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
+		}
 	}
 	if (keysym == XK_d)
 	{
-		// data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
-		data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
+		printf("position = %d\n", data->map[(int)(data->ray.pos_x + data->ray.plane_x * MOVE_SPEED)][(int)(data->ray.pos_y + data->ray.plane_y * MOVE_SPEED)]);
+		if (data->map[(int)(data->ray.pos_x + data->ray.plane_x * MOVE_SPEED)]
+			[(int)(data->ray.pos_y + data->ray.plane_y * MOVE_SPEED)] == 48)
+		{
+			data->ray.pos_x += data->ray.plane_x * MOVE_SPEED;
+			data->ray.pos_y += data->ray.plane_y * MOVE_SPEED;
+		}
+	}
+	if (keysym == XK_a)
+	{
+		printf("position = %d\n", data->map[(int)(data->ray.pos_x - data->ray.plane_x * MOVE_SPEED)][(int)(data->ray.pos_y - data->ray.plane_y * MOVE_SPEED)]);
+		if (data->map[(int)(data->ray.pos_x - data->ray.plane_x * MOVE_SPEED)]
+			[(int)(data->ray.pos_y - data->ray.plane_y * MOVE_SPEED)] == 48)
+		{
+			data->ray.pos_x -= data->ray.plane_x * MOVE_SPEED;
+			data->ray.pos_y -= data->ray.plane_y * MOVE_SPEED;
+		}
 	}
 	if (keysym == XK_Right)
 	{

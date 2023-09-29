@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/25 16:31:02 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:17:34 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,14 @@ typedef struct s_raycasting
 	int		draw_end;
 }			t_raycasting;
 
+typedef struct	s_ray_utils
+{
+	int	key_w;
+	int	key_s;
+	int	key_a;
+	int	key_d;
+}		t_ray_utils;
+
 typedef struct s_graph
 {
 	void			*mlx_ptr;
@@ -181,6 +189,7 @@ typedef struct s_graph
 	t_dda			line;
 	t_raycasting	ray;
 	t_parsing_data	pars;
+	t_ray_utils		utils;
 }					t_graph;
 
 //////////////////////////////////////////////////////////////////
