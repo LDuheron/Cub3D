@@ -35,7 +35,6 @@ SRCS := main.c								\
 		window/events.c						\
 		window/ft_unstrlen.c				\
 		window/raycasting.c					\
-		xpm_to_image.c						\
 
 #############################################
 
