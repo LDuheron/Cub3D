@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 18:52:59 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:04:27 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,20 @@ void	wall_coordinates(t_raycasting *ray)
 
 void	draw_wall(t_raycasting ray, t_graph data, int x)
 {
-	void	*img;
-	int		color;
-	int		img_width;
-	int		img_height;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	// void	*img;
+	// int		color;
+	// int		img_width;
+	// int		img_height;
+	// int		bpp;
+	// int		line_len;
+	// int		endian;
 
-	img = mlx_xpm_file_to_image(data.mlx_ptr, "/mnt/nfs/homes/cbernaze/Projets_42/Cercle_4/Cub3D/image/carpet.xpm", &img_width, &img_height);
-	mlx_get_data_addr(img, &bpp, &line_len, &endian);
-	color = (1 * line_len + 1 * (bpp / 8));
+	// img = mlx_xpm_file_to_image(data.mlx_ptr, "/mnt/nfs/homes/cbernaze/Projets_42/Cercle_4/Cub3D/image/carpet.xpm", &img_width, &img_height);
+	// mlx_get_data_addr(img, &bpp, &line_len, &endian);
+	// color = (1 * line_len + 1 * (bpp / 8));
+	// // printf("color = %d\n", color);
+	// color = mlx_get_color_value(data.mlx_ptr, color);
 	// printf("color = %d\n", color);
-	color = mlx_get_color_value(data.mlx_ptr, color);
-	printf("color = %d\n", color);
 	while (ray.draw_start < ray.draw_end)
 	{
 		if (ray.side == X_SIDE)
@@ -162,4 +162,3 @@ int	ft_raycasting(t_graph *data)
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ptr, 0, 0);
 	return (SUCCESS);
 }
-
