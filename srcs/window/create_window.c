@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/25 16:11:20 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:28:12 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,13 @@ int	create_window(t_parsing_data parsing)
 	t_graph	data;
 
 	data = get_data_win(parsing);
+	draw_background(&data);
 	ft_raycasting(&data);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
+	mlx_loop_hook(data.mlx_ptr, &move_it, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, 0, &close_win_mouse, &data);
-	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &close_win_key, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &key_press, &data);
+	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &key_release, &data);
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }

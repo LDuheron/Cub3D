@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 14:37:27 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:33:38 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		if (parsing(&parsing_data, argv[1]) == SUCCESS)
 		{
 			printf("Great map !\n");
-			// create_window(parsing_data);
+			create_window(parsing_data);
 		}
 		free_parsing_data(&parsing_data);
 	}
@@ -30,6 +30,5 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// faire colision dans le madatory ou 
 // mlx_get_addr -> recuperer et stocker
 //  dans une variable les pixels de couleurs.

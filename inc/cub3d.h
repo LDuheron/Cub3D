@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/28 20:46:21 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:13:18 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define ERROR 0
 # define SUCCESS 1
 
-// ERROR CODE PARSING 
+// ERROR CODE PARSING
 # define ERROR_EXTENSION -18
 
 # define TOO_BIG -10
@@ -79,6 +79,8 @@
 # define GREEN_PIXEL 0x77FF00
 # define WHITE_PIXEL 0xEBE9CD
 # define BLACK_PIXEL 0x000000
+# define MID_BLUE 0x191970
+# define WOOD 0xA0522D
 
 # define NOT_EMPTY 0
 # define EMPTY 1
@@ -86,8 +88,8 @@
 # define X_SIDE 0
 # define Y_SIDE 1
 
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.045
+# define ROT_SPEED 0.0125
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -163,6 +165,18 @@ typedef struct s_raycasting
 	int		draw_end;
 }			t_raycasting;
 
+typedef struct	s_ray_utils
+{
+	int		key_w;
+	int		key_s;
+	int		key_a;
+	int		key_d;
+	int		key_left;
+	int		key_right;
+	double	rot_speed;
+	double	move_speed;
+}		t_ray_utils;
+
 typedef struct s_graph
 {
 	void			*mlx_ptr;
@@ -172,6 +186,7 @@ typedef struct s_graph
 	t_dda			line;
 	t_raycasting	ray;
 	t_parsing_data	pars;
+	t_ray_utils		utils;
 }					t_graph;
 
 //////////////////////////////////////////////////////////////////
@@ -299,12 +314,15 @@ int				create_window(t_parsing_data parsing);
 
 // events.c
 void			ft_exit(t_graph *data);
-int				close_win_key(int keysym, t_graph *data);
+int				key_release(int keysym, t_graph *data);
+int				key_press(int keysym, t_graph *data);
+int				move_it(t_graph *data);
 int				close_win_mouse(t_graph *data);
 int				handle_no_event(void *data);
 
 // draw_map.c
 void			draw_rect(t_graph *data);
+void			draw_background(t_graph *data);
 
 // ft_strlen.c
 int				ft_unstrlen(unsigned char *str);
