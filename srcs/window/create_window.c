@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 16:28:12 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:21:10 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ t_graph	get_data_win(t_parsing_data parsing)
 
 	data.pars = parsing;
 	data.map = parsing.map;
+	data.utils.key_a = 0;
+	data.utils.key_d = 0;
+	data.utils.key_w = 0;
+	data.utils.key_s = 0;
+	data.utils.key_left = 0;
+	data.utils.key_right = 0;
+	data.utils.move_speed = 0;
+	data.utils.rot_speed = 0;
 	data.ray = init_data_rc(parsing);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
