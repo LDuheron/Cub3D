@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/09/29 16:51:45 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:08:04 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_exit(t_graph *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
+	free_parsing_data(&data->pars);
 	free(data->mlx_ptr);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/02 11:04:27 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:24:26 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,26 +111,36 @@ void	wall_coordinates(t_raycasting *ray)
 
 void	draw_wall(t_raycasting ray, t_graph data, int x)
 {
-	// void	*img;
-	// int		color;
-	// int		img_width;
-	// int		img_height;
-	// int		bpp;
-	// int		line_len;
-	// int		endian;
+	double	texPos;
+	double	wallX;
+	double	step;
+	char	*color;
+	int		texX;
+	int		texY;
 
-	// img = mlx_xpm_file_to_image(data.mlx_ptr, "/mnt/nfs/homes/cbernaze/Projets_42/Cercle_4/Cub3D/image/carpet.xpm", &img_width, &img_height);
-	// mlx_get_data_addr(img, &bpp, &line_len, &endian);
-	// color = (1 * line_len + 1 * (bpp / 8));
-	// // printf("color = %d\n", color);
-	// color = mlx_get_color_value(data.mlx_ptr, color);
-	// printf("color = %d\n", color);
+	if (data.ray.side == X_SIDE)
+		wallX = data.ray.pos_y + data.ray.perp_wall_dist * data.ray.ray_dir_y;
+	else
+		wallX = data.ray.pos_x + data.ray.perp_wall_dist * data.ray.ray_dir_x;
+	wallX -= floor(wallX);
+
+	texX = (int)(wallX * data.tx_1.width);
+	if (data.ray.side == X_SIDE && data.ray.ray_dir_x > 0)
+		texX = data.tx_1.width - texX - 1;
+	if (data.ray.side == Y_SIDE && data.ray.ray_dir_x < 0)
+		texX = data.tx_1.width - texX - 1;
+
+	step = 1.0 * data.tx_1.height / data.ray.line_height;
+	texPos = (data.ray.draw_start - WIN_HEIGHT / 2 + data.ray.line_height / 2) * step;
 	while (ray.draw_start < ray.draw_end)
 	{
+		texY = (int)texPos & (data.tx_1.height - 1);
+		texPos += step;
+		color = data.tx_1.addr + (texY * data.tx_1.line_len + texX * (data.tx_1.bpp / 8));
 		if (ray.side == X_SIDE)
-			img_pix_put(&data.img, x, ray.draw_start, WHITE_PIXEL);
+			img_pix_put(&data.img, x, ray.draw_start, *(int *)color);
 		else
-			img_pix_put(&data.img, x, ray.draw_start, WHITE_PIXEL+40);
+			img_pix_put(&data.img, x, ray.draw_start, *(int *)color+40);
 		ray.draw_start++;
 	}
 }
