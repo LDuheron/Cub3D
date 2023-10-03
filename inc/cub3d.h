@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 18:13:18 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:32:01 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,18 +125,12 @@ typedef struct s_img
 {
 	void	*ptr;
 	char	*addr;
+	int		width;
+	int		height;
 	int		bpp;
 	int		line_len;
 	int		endian;
 }			t_img;
-
-typedef struct s_dda
-{
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
-}	t_dda;
 
 typedef struct s_raycasting
 {
@@ -183,7 +177,10 @@ typedef struct s_graph
 	void			*win_ptr;
 	char			**map;
 	t_img			img;
-	t_dda			line;
+	t_img			tx_1;
+	t_img			tx_2;
+	t_img			tx_3;
+	t_img			tx_4;
 	t_raycasting	ray;
 	t_parsing_data	pars;
 	t_ray_utils		utils;
