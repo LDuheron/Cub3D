@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/03 16:24:26 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:01:47 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,30 @@ t_raycasting	init_data_rc(t_parsing_data parsing)
 {
 	t_raycasting	ray;
 
-	ray.pos_x = parsing.pos_p_x + 0.1;
-	ray.pos_y = parsing.pos_p_y + 0.1;
-	if (parsing.pos_type == 78)
+	ray.pos_x = parsing.pos_p_x + 0.5;
+	ray.pos_y = parsing.pos_p_y + 0.5;
+	if (parsing.pos_type == 'N')
 	{
 		ray.dir_x = -1;
 		ray.dir_y = 0;
 		ray.plane_x = 0;
 		ray.plane_y = 0.66;
 	}
-	if (parsing.pos_type == 83)
+	if (parsing.pos_type == 'S')
 	{
 		ray.dir_x = 1;
 		ray.dir_y = 0;
 		ray.plane_x = 0;
 		ray.plane_y = -0.66;
 	}
-	if (parsing.pos_type == 69)
+	if (parsing.pos_type == 'E')
 	{
 		ray.dir_x = 0;
 		ray.dir_y = 1;
 		ray.plane_x = 0.66;
 		ray.plane_y = 0;
 	}
-	if (parsing.pos_type == 87)
+	if (parsing.pos_type == 'W')
 	{
 		ray.dir_x = 0;
 		ray.dir_y = -1;
@@ -109,38 +109,50 @@ void	wall_coordinates(t_raycasting *ray)
 			ray->draw_end = WIN_HEIGHT - 1;
 }
 
+void	init_tx(t_texture *tx, t_graph data, t_img *tex)
+{
+	if (data.ray.side == X_SIDE)
+	{
+		if (data.ray.ray_dir_x > 0.f)
+			*tex = data.tx_1;
+		else
+			*tex = data.tx_2;
+	}
+	else
+	{
+		if (data.ray.ray_dir_y > 0.f)
+			*tex = data.tx_3;
+		else
+			*tex = data.tx_4;
+	}
+	if (data.ray.side == X_SIDE)
+		tx->wallX = data.ray.pos_y + data.ray.perp_wall_dist * data.ray.ray_dir_y;
+	else
+		tx->wallX = data.ray.pos_x + data.ray.perp_wall_dist * data.ray.ray_dir_x;
+	tx->wallX -= floor(tx->wallX);
+
+	if ((data.ray.side == X_SIDE && data.ray.ray_dir_x < 0)
+		|| (data.ray.side == Y_SIDE && data.ray.ray_dir_y < 0))
+		tx->wallX = 1.0f - tx->wallX;
+	tx->texX = (int)(tx->wallX * tex->width);
+
+	tx->step = 1.0 * tex->height / data.ray.line_height;
+	tx->texPos = (data.ray.draw_start - WIN_HEIGHT / 2 + data.ray.line_height / 2) * tx->step;
+
+}
+
 void	draw_wall(t_raycasting ray, t_graph data, int x)
 {
-	double	texPos;
-	double	wallX;
-	double	step;
-	char	*color;
-	int		texX;
-	int		texY;
+	t_texture	tx;
+	t_img		tex;
 
-	if (data.ray.side == X_SIDE)
-		wallX = data.ray.pos_y + data.ray.perp_wall_dist * data.ray.ray_dir_y;
-	else
-		wallX = data.ray.pos_x + data.ray.perp_wall_dist * data.ray.ray_dir_x;
-	wallX -= floor(wallX);
-
-	texX = (int)(wallX * data.tx_1.width);
-	if (data.ray.side == X_SIDE && data.ray.ray_dir_x > 0)
-		texX = data.tx_1.width - texX - 1;
-	if (data.ray.side == Y_SIDE && data.ray.ray_dir_x < 0)
-		texX = data.tx_1.width - texX - 1;
-
-	step = 1.0 * data.tx_1.height / data.ray.line_height;
-	texPos = (data.ray.draw_start - WIN_HEIGHT / 2 + data.ray.line_height / 2) * step;
+	init_tx(&tx, data, &tex);
 	while (ray.draw_start < ray.draw_end)
 	{
-		texY = (int)texPos & (data.tx_1.height - 1);
-		texPos += step;
-		color = data.tx_1.addr + (texY * data.tx_1.line_len + texX * (data.tx_1.bpp / 8));
-		if (ray.side == X_SIDE)
-			img_pix_put(&data.img, x, ray.draw_start, *(int *)color);
-		else
-			img_pix_put(&data.img, x, ray.draw_start, *(int *)color+40);
+		tx.texY = (int)tx.texPos & (tex.height - 1);
+		tx.texPos += tx.step;
+		tx.color = tex.addr + (tx.texY * tex.line_len + tx.texX * (tex.bpp / 8));
+		img_pix_put(&data.img, x, ray.draw_start, *(int *)tx.color);
 		ray.draw_start++;
 	}
 }

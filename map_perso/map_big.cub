@@ -1,7 +1,7 @@
 NO ./image/carpet.xpm
-SO ./image/carpet.xpm
-WE ./image/carpet.xpm
-EA ./image/carpet.xpm
+SO ./image/dark_pink_moulure_base_128.xpm
+WE ./image/pink_moulure_bridge_128.xpm
+EA ./image/pink_moulure_telecabine_128.xpm
 F 200,250,0
 C 100,240,21
                         111111111111111111111111

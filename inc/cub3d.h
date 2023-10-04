@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/03 16:58:50 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:33:34 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@
 # define BLACK_PIXEL 0x000000
 # define FLOOR 0xE66F6F
 # define CEILING 0xF59090
+# define CARPET 0xE34C4C
 
 # define NOT_EMPTY 0
 # define EMPTY 1
@@ -171,7 +172,7 @@ typedef struct	s_ray_utils
 	double	move_speed;
 }		t_ray_utils;
 
-typedef struct s_graph
+typedef struct	s_graph
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -185,6 +186,16 @@ typedef struct s_graph
 	t_parsing_data	pars;
 	t_ray_utils		utils;
 }					t_graph;
+
+typedef struct	s_texture
+{
+	double	texPos;
+	double	wallX;
+	double	step;
+	char	*color;
+	int		texX;
+	int		texY;
+}			t_texture;
 
 //////////////////////////////////////////////////////////////////
 //																//
