@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/03 15:27:12 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:58:50 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@
 # define GREEN_PIXEL 0x77FF00
 # define WHITE_PIXEL 0xEBE9CD
 # define BLACK_PIXEL 0x000000
-# define MID_BLUE 0x191970
-# define WOOD 0xA0522D
+# define FLOOR 0xE66F6F
+# define CEILING 0xF59090
 
 # define NOT_EMPTY 0
 # define EMPTY 1
