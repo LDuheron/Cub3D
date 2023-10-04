@@ -32,7 +32,8 @@ SRCS := main.c								\
 		window/create_window.c				\
 		window/draw_utils.c					\
 		window/events.c						\
-		window/ft_unstrlen.c				\
+		window/moves.c						\
+		window/ray_utils.c					\
 		window/raycasting.c					\
 
 #############################################

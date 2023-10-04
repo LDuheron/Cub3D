@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 12:33:34 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:53:45 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ typedef struct s_raycasting
 	int		draw_end;
 }			t_raycasting;
 
-typedef struct	s_ray_utils
+typedef struct s_ray_utils
 {
 	int		key_w;
 	int		key_s;
@@ -172,7 +172,7 @@ typedef struct	s_ray_utils
 	double	move_speed;
 }		t_ray_utils;
 
-typedef struct	s_graph
+typedef struct s_graph
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -187,14 +187,14 @@ typedef struct	s_graph
 	t_ray_utils		utils;
 }					t_graph;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
-	double	texPos;
-	double	wallX;
+	double	tex_pos;
+	double	wall_x;
 	double	step;
 	char	*color;
-	int		texX;
-	int		texY;
+	int		tex_x;
+	int		tex_y;
 }			t_texture;
 
 //////////////////////////////////////////////////////////////////
@@ -316,19 +316,29 @@ void			print_int(int **tab);
 //////////////////////////////////////////////////////////////////
 
 // create_window.c
+void			init_data_utils(t_graph *data);
+int				init_texture_addrs(t_graph *data);
+int				init_textures(t_graph *data);
 t_graph			get_data_win(t_parsing_data parsing);
-void			img_pix_put(t_img *img, int x, int y, int color);
 int				create_window(t_parsing_data parsing);
 
 // events.c
 void			ft_exit(t_graph *data);
 int				key_release(int keysym, t_graph *data);
 int				key_press(int keysym, t_graph *data);
-int				move_it(t_graph *data);
 int				close_win_mouse(t_graph *data);
 int				handle_no_event(void *data);
 
+// moves.c
+void			lateral_moves(t_graph *data);
+void			front_n_back(t_graph *data);
+void			rotations_right(double old_dir_x, double old_plane_x,
+					t_graph *data);
+int				move_it(t_graph *data);
+
 // draw_utils.c
+void			img_pix_put(t_img *img, int x, int y, int color);
+void			free_textures(t_graph *data);
 double			ft_abs(double nb);
 void			draw_rect(t_graph *data);
 void			draw_background(t_graph *data);
@@ -337,10 +347,16 @@ void			draw_background(t_graph *data);
 int				ft_unstrlen(unsigned char *str);
 int				ft_unstrlen_plus(unsigned char **str);
 
+// ray_utils.c
+void			init_data_rc2(t_parsing_data parsing, t_raycasting *ray);
+t_raycasting	init_data_rc(t_parsing_data parsing);
+void			init_tx2(t_graph data, t_img *tex);
+void			init_tx(t_texture *tx, t_graph data, t_img *tex);
+
 // raycasting.c
 t_raycasting	init_data_rc(t_parsing_data parsing);
-void			nb_steps_n_sideDst(t_raycasting *ray);
+void			nb_steps_n_side_dst(t_raycasting *ray);
 void			ray_dda(t_raycasting *ray, char **map);
-int				ft_raycasting(t_graph *data);
+void			ft_raycasting(t_graph *data);
 
 #endif
