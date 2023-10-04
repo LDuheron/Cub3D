@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 14:37:35 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:09:11 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_graph	get_data_win(t_parsing_data parsing)
 	data.ray = init_data_rc(parsing);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
-		return (data);
+		return (printf("Error: mlx_init failed\n"), data);
 	if (init_textures(&data) == ERROR)
 		return (mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr), data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WIN_WIDTH,
