@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:13:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/03 18:06:35 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:47:30 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void	lateral_moves(t_graph *data)
 
 void	front_n_back(t_graph *data)
 {
-	if (data->utils.key_w == 1 && data->map // changer la condition en verifiant chaque direction une par une, voir alan
-		[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)]
-		[(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 48)
+	if (data->utils.key_w == 1 && data->map
+		[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)][(int)data->ray.pos_y] == 48 &&
+		data->map[(int)data->ray.pos_x][(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 48)
 	{
 		data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
 		data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
@@ -93,8 +93,8 @@ void	front_n_back(t_graph *data)
 		ft_raycasting(data);
 	}
 	if (data->utils.key_s == 1 && data->map
-		[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)]
-		[(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 48)
+		[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)][(int)data->ray.pos_y] == 48 &&
+		data->map[(int)data->ray.pos_x][(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 48)
 	{
 		data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
 		data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
