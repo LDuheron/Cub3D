@@ -2,8 +2,10 @@ NO ./image/wall/pink_moulure_bridge_128.xpm
 SO ./image/wall/pink_moulure_telecabine_128.xpm
 WE ./image/wall/dark_pink_moulure_base_128.xpm
 EA ./image/wall/pink_moulure_base_128.xpm
-F 200,250,0
-C 100,240,21
+
+F 230,111,111
+C 245,144,144
+
                         111111111111111111111111
                         100010000000000000000001
                         100001000000000001000001

@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 14:53:45 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:37:09 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@
 # define X_SIDE 0
 # define Y_SIDE 1
 
-# define MOVE_SPEED 0.045
-# define ROT_SPEED 0.0125
+# define MOVE_SPEED 0.060
+# define ROT_SPEED 0.0175
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -182,6 +182,7 @@ typedef struct s_graph
 	t_img			tx_2;
 	t_img			tx_3;
 	t_img			tx_4;
+	int				color[2];
 	t_raycasting	ray;
 	t_parsing_data	pars;
 	t_ray_utils		utils;
@@ -330,8 +331,8 @@ int				close_win_mouse(t_graph *data);
 int				handle_no_event(void *data);
 
 // moves.c
-void			lateral_moves(t_graph *data);
-void			front_n_back(t_graph *data);
+void			set_moves(t_graph *data, double *vel_x, double *vel_y);
+void			moves(t_graph *data);
 void			rotations_right(double old_dir_x, double old_plane_x,
 					t_graph *data);
 int				move_it(t_graph *data);
@@ -342,10 +343,6 @@ void			free_textures(t_graph *data);
 double			ft_abs(double nb);
 void			draw_rect(t_graph *data);
 void			draw_background(t_graph *data);
-
-// ft_strlen.c
-int				ft_unstrlen(unsigned char *str);
-int				ft_unstrlen_plus(unsigned char **str);
 
 // ray_utils.c
 void			init_data_rc2(t_parsing_data parsing, t_raycasting *ray);

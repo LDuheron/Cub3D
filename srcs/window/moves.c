@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:39:42 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 14:43:07 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:42:46 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,52 @@
 
 /*Moves the player left or right.*/
 
-void	lateral_moves(t_graph *data)
+void	set_moves(t_graph *data, double *vel_x, double *vel_y)
 {
-	if (data->utils.key_d == 1 && data->map
-		[(int)(data->ray.pos_x + data->ray.plane_x * MOVE_SPEED)]
-		[(int)(data->ray.pos_y + data->ray.plane_y * MOVE_SPEED)] == 48)
+	if (data->utils.key_w)
 	{
-		data->ray.pos_x += data->ray.plane_x * MOVE_SPEED;
-		data->ray.pos_y += data->ray.plane_y * MOVE_SPEED;
-		draw_background(data);
-		ft_raycasting(data);
+		*vel_x += data->ray.dir_x * MOVE_SPEED;
+		*vel_y += data->ray.dir_y * MOVE_SPEED;
 	}
-	if (data->utils.key_a == 1 && data->map
-		[(int)(data->ray.pos_x - data->ray.plane_x * MOVE_SPEED)]
-		[(int)(data->ray.pos_y - data->ray.plane_y * MOVE_SPEED)] == 48)
+	if (data->utils.key_s)
 	{
-		data->ray.pos_x -= data->ray.plane_x * MOVE_SPEED;
-		data->ray.pos_y -= data->ray.plane_y * MOVE_SPEED;
-		draw_background(data);
-		ft_raycasting(data);
+		*vel_x += -data->ray.dir_x * MOVE_SPEED;
+		*vel_y += -data->ray.dir_y * MOVE_SPEED;
+	}
+	if (data->utils.key_a)
+	{
+		*vel_x += -data->ray.plane_x * MOVE_SPEED;
+		*vel_y += -data->ray.plane_y * MOVE_SPEED;
+	}
+	if (data->utils.key_d)
+	{
+		*vel_x += data->ray.plane_x * MOVE_SPEED;
+		*vel_y += data->ray.plane_y * MOVE_SPEED;
 	}
 }
 
 /*Moves the player forward or backward.*/
 
-void	front_n_back(t_graph *data)
+void	moves(t_graph *data)
 {
-	if (data->utils.key_w == 1 && data->map
-		[(int)(data->ray.pos_x + data->ray.dir_x * MOVE_SPEED)]
-		[(int)data->ray.pos_y] == 48 && data->map[(int)data->ray.pos_x]
-		[(int)(data->ray.pos_y + data->ray.dir_y * MOVE_SPEED)] == 48)
+	double	vel_x;
+	double	vel_y;
+
+	vel_x = 0.0;
+	vel_y = 0.0;
+	set_moves(data, &vel_x, &vel_y);
+	if (data->map
+		[(int)(data->ray.pos_x + vel_x)]
+		[(int)data->ray.pos_y] == '0')
 	{
-		data->ray.pos_x += data->ray.dir_x * MOVE_SPEED;
-		data->ray.pos_y += data->ray.dir_y * MOVE_SPEED;
+		data->ray.pos_x += vel_x;
 		draw_background(data);
 		ft_raycasting(data);
 	}
-	if (data->utils.key_s == 1 && data->map
-		[(int)(data->ray.pos_x - data->ray.dir_x * MOVE_SPEED)]
-		[(int)data->ray.pos_y] == 48 && data->map[(int)data->ray.pos_x]
-		[(int)(data->ray.pos_y - data->ray.dir_y * MOVE_SPEED)] == 48)
+	if (data->map[(int)data->ray.pos_x]
+		[(int)(data->ray.pos_y + vel_y)] == '0')
 	{
-		data->ray.pos_x -= data->ray.dir_x * MOVE_SPEED;
-		data->ray.pos_y -= data->ray.dir_y * MOVE_SPEED;
+		data->ray.pos_y += vel_y;
 		draw_background(data);
 		ft_raycasting(data);
 	}
@@ -91,8 +94,7 @@ int	move_it(t_graph *data)
 
 	old_dir_x = 0.0;
 	old_plane_x = 0.0;
-	front_n_back(data);
-	lateral_moves(data);
+	moves(data);
 	rotations_right(old_dir_x, old_plane_x, data);
 	if (data->utils.key_left == 1)
 	{

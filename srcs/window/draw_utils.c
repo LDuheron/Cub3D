@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:53:03 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 14:37:41 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:58:02 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	draw_background(t_graph *data)
 		j = 0;
 		while (j < WIN_HEIGHT / 2)
 		{
-			img_pix_put(&data->img, i, j, CEILING);
+			img_pix_put(&data->img, i, j, data->color[1]);
 			j++;
 		}
 		i++;
@@ -82,7 +82,7 @@ void	draw_background(t_graph *data)
 		j = WIN_HEIGHT;
 		while (j >= WIN_HEIGHT / 2)
 		{
-			img_pix_put(&data->img, i, j, CARPET);
+			img_pix_put(&data->img, i, j, data->color[0]);
 			j--;
 		}
 		i++;
