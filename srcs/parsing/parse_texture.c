@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 14:20:59 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:34:25 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	find_line_to_code_texture(t_parsing_data *parsing, int code)
 		indicator = "EA ";
 	while (parsing->file[i] && ft_strncmp(parsing->file[i], indicator, 3) != 0)
 		i++;
-	if (ft_strncmp(parsing->file[i], indicator, 3) == 0)
+	if (parsing->file[i] && ft_strncmp(parsing->file[i], indicator, 3) == 0)
 		return (i);
 	return (ERROR_TEXTURE);
 }
