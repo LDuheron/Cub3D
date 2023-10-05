@@ -1,9 +1,10 @@
-NO ./image/carpet.xpm
-SO ./image/carpet.xpm
-WE ./image/carpet.xpm
-EA ./image/carpet.xpm
-F 200,250,0
-C 100,240,21
+NO ./image/wall/pink_moulure_bridge_128.xpm
+SO ./image/wall/pink_moulure_bridge_128.xpm
+WE ./image/wall/pink_moulure_bridge_128.xpm
+EA ./image/wall/pink_moulure_bridge_128.xpm
+
+F 230,111,111
+C 245,144,144
 
    1
   101
