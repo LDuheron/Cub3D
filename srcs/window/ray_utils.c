@@ -63,19 +63,23 @@ t_raycasting	init_data_rc(t_parsing_data parsing)
 
 void	init_tx2(t_graph data, t_img *tex)
 {
-	if (data.ray.side == X_SIDE)
-	{
-		if (data.ray.ray_dir_x > 0.f)
-			*tex = data.tx_1;
-		else
-			*tex = data.tx_2;
-	}
+	if (data.map[data.ray.map_x][data.ray.map_y] == 2)
+		*tex = data.tx[4];
 	else
-	{
-		if (data.ray.ray_dir_y > 0.f)
-			*tex = data.tx_3;
+	{	if (data.ray.side == X_SIDE)
+		{
+			if (data.ray.ray_dir_x > 0.f)
+				*tex = data.tx[0];
+			else
+				*tex = data.tx[1];
+		}
 		else
-			*tex = data.tx_4;
+		{
+			if (data.ray.ray_dir_y > 0.f)
+				*tex = data.tx[2];
+			else
+				*tex = data.tx[3];
+		}
 	}
 }
 
