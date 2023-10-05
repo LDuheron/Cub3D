@@ -30,10 +30,10 @@ SRCS := main.c								\
 		utils/error_management.c			\
 		utils/is_something.c				\
 		window/create_window.c				\
-		window/draw_map.c					\
 		window/draw_utils.c					\
 		window/events.c						\
-		window/ft_unstrlen.c				\
+		window/moves.c						\
+		window/ray_utils.c					\
 		window/raycasting.c					\
 
 #############################################
