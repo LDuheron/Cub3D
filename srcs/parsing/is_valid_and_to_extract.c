@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid.c                                         :+:      :+:    :+:   */
+/*   is_valid_and_to_extract.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:17:06 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:59:00 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:21:08 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,28 @@ int	is_valid_path(char *path)
 	if (close (fd) == -1)
 		return (error_message(ERROR_CLOSE));
 	return (SUCCESS);
+}
+
+// FIRST_C_TO_EXTRACT: This function extracts the first path character by
+// skipping direction indicators (NO, SO, WE, EA, F, C) and leading spaces.
+int	first_c_to_extract(char *path)
+{
+	int	i;
+
+	i = 0;
+	while (path[i] && is_space(path[i]) == 0)
+		i++;
+	while (path[i] && is_space(path[i]) == 1)
+		i++;
+	return (i);
+}
+
+int	last_c_to_extract(char *path)
+{
+	int	i;
+
+	i = ft_strlen(path) - 1;
+	while (path[i] && is_space(path[i]) == 1)
+		i--;
+	return (i + 1);
 }

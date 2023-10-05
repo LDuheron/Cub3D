@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 16:19:45 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:17:14 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,21 @@ int	is_valid_color(char *line)
 	if (is_rgb_format(line, start, len - start) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
+}
+
+int	find_line_to_code_color(t_parsing_data *parsing, int code)
+{
+	char	*indicator;
+	int		i;
+
+	i = 0;
+	if (code == 4)
+		indicator = "F ";
+	else if (code == 5)
+		indicator = "C ";
+	while (parsing->file[i] && ft_strncmp(parsing->file[i], indicator, 2) != 0)
+		i++;
+	if (ft_strncmp(parsing->file[i], indicator, 2) == 0)
+		return (i);
+	return (ERROR_TEXTURE);
 }

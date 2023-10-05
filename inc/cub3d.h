@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 14:53:45 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:22:55 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ typedef struct s_texture
 
 // Colors.c
 int				is_valid_color(char *line);
+int				find_line_to_code_color(t_parsing_data *parsing, int code);
 
 // initial_reading.c
 int				initial_reading(char *argv);
@@ -227,6 +228,8 @@ int				is_surrounded_by_walls(t_parsing_data *parsing);
 int				is_valid_char(char *line);
 int				is_valid_extension(char *file, char *format);
 int				is_valid_path(char *path);
+int				first_c_to_extract(char *path);
+int				last_c_to_extract(char *path);
 
 // Parse_map.c
 int				map_management(t_parsing_data *data);

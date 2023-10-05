@@ -6,35 +6,11 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:43:04 by lduheron          #+#    #+#             */
-/*   Updated: 2023/09/29 16:01:22 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:20:59 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// FIRST_C_TO_EXTRACT: This function extracts the first path character by
-// skipping direction indicators (NO, SO, WE, EA, F, C) and leading spaces.
-static int	first_c_to_extract(char *path)
-{
-	int	i;
-
-	i = 0;
-	while (path[i] && is_space(path[i]) == 0)
-		i++;
-	while (path[i] && is_space(path[i]) == 1)
-		i++;
-	return (i);
-}
-
-static int	last_c_to_extract(char *path)
-{
-	int	i;
-
-	i = ft_strlen(path) - 1;
-	while (path[i] && is_space(path[i]) == 1)
-		i--;
-	return (i + 1);
-}
 
 // EXTRACT_TEXTURE_PATH: This function extracts the texture path or color 
 // code from the given line and stores it in parsing->texture.
@@ -61,25 +37,34 @@ static int	extract_texture_path(t_parsing_data *parsing, int line, int i)
 	return (SUCCESS);
 }
 
-// FIND_LINE_TO_EXTRACT: This function returns the line number in parsing->file 
-// from which to extract the paths of textures or color codes.
-static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
+static int	find_line_to_code_texture(t_parsing_data *parsing, int code)
 {
-	while (parsing->file[i] && is_empty_line(parsing->file[i]) == EMPTY)
+	char	*indicator;
+	int		i;
+
+	i = 0;
+	if (code == 0)
+		indicator = "NO ";
+	else if (code == 1)
+		indicator = "SO ";
+	else if (code == 2)
+		indicator = "WE ";
+	else if (code == 3)
+		indicator = "EA ";
+	while (parsing->file[i] && ft_strncmp(parsing->file[i], indicator, 3) != 0)
 		i++;
-	if (code == 0 && ft_strncmp(parsing->file[i], "NO ", 3) == 0)
-		return (i);
-	else if (code == 1 && ft_strncmp(parsing->file[i], "SO ", 3) == 0)
-		return (i);
-	else if (code == 2 && ft_strncmp(parsing->file[i], "WE ", 3) == 0)
-		return (i);
-	else if (code == 3 && ft_strncmp(parsing->file[i], "EA ", 3) == 0)
-		return (i);
-	else if (code == 4 && ft_strncmp(parsing->file[i], "F ", 2) == 0)
-		return (i);
-	else if (code == 5 && ft_strncmp(parsing->file[i], "C ", 2) == 0)
+	if (ft_strncmp(parsing->file[i], indicator, 3) == 0)
 		return (i);
 	return (ERROR_TEXTURE);
+}
+
+// FIND_LINE_TO_EXTRACT: This function returns the line number in parsing->file 
+// from which to extract the paths of textures or color codes.
+static int	find_line_to_extract(t_parsing_data *parsing, int code)
+{
+	if (code < 4)
+		return (find_line_to_code_texture(parsing, code));
+	return (find_line_to_code_color(parsing, code));
 }
 
 // RETRIEVE_TEXTURE: This function extracts the lines corresponding to the 
@@ -95,10 +80,8 @@ static int	find_line_to_extract(t_parsing_data *parsing, int code, int i)
 int	retrieve_texture(t_parsing_data *parsing)
 {
 	int	i;
-	int	static_i;
 	int	line;
 
-	static_i = 0;
 	i = 0;
 	line = 0;
 	parsing->texture = ft_calloc(sizeof(char *), 7);
@@ -106,14 +89,14 @@ int	retrieve_texture(t_parsing_data *parsing)
 		return (error_message(ERROR_MALLOC));
 	while (parsing->file[i] && i < 6)
 	{
-		line = find_line_to_extract(parsing, i, static_i);
-		static_i = line + 1;
+		line = find_line_to_extract(parsing, i);
+		if (line > parsing->line_last_texture)
+			parsing->line_last_texture = line;
 		if (line == ERROR_TEXTURE)
 			return (error_parsing_message(line));
 		if (extract_texture_path(parsing, line, i) == ERROR)
 			return (ERROR);
 		i++;
 	}
-	parsing->line_last_texture = line;
 	return (SUCCESS);
 }

@@ -14,7 +14,7 @@ SRCS := main.c								\
 		parsing/color.c						\
 		parsing/initial_reading.c			\
 		parsing/is_surrounded_by_walls.c	\
-		parsing/is_valid.c					\
+		parsing/is_valid_and_to_extract.c	\
 		parsing/parse_map.c					\
 		parsing/parse_texture.c				\
 		parsing/parsing.c					\
