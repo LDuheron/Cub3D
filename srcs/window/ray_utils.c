@@ -6,18 +6,11 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:47:47 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/05 12:11:24 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:45:50 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-double	ft_abs(double nb)
-{
-	if (nb < 0)
-		nb *= -1;
-	return (nb);
-}
 
 void	init_data_rc2(t_parsing_data parsing, t_raycasting *ray)
 {

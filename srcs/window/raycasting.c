@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/05 14:22:36 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:44:12 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	wall_coordinates(t_raycasting *ray)
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
 	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
-	if (ray->draw_end >= WIN_HEIGHT)
-		ray->draw_end = WIN_HEIGHT - 1;
+	if (ray->draw_end > WIN_HEIGHT)
+		ray->draw_end = WIN_HEIGHT;
 }
 
 void	draw_wall(t_raycasting ray, t_graph data, int x)
@@ -107,11 +107,11 @@ void	ft_raycasting(t_graph *data)
 		if (data->ray.ray_dir_x == 0)
 			data->ray.delta_dist_x = 1e30;
 		else
-			data->ray.delta_dist_x = ft_abs(1 / data->ray.ray_dir_x);
+			data->ray.delta_dist_x = fabs(1.0 / data->ray.ray_dir_x);
 		if (data->ray.ray_dir_y == 0)
 			data->ray.delta_dist_y = 1e30;
 		else
-			data->ray.delta_dist_y = ft_abs(1 / data->ray.ray_dir_y);
+			data->ray.delta_dist_y = fabs(1.0 / data->ray.ray_dir_y);
 		(nb_steps_n_side_dst(&data->ray), ray_dda(&data->ray, data->map),
 			wall_coordinates(&data->ray), draw_wall(data->ray, *data, x));
 	}

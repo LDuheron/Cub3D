@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 14:54:45 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:47:14 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,7 +348,6 @@ void			init_colors(t_graph *data);
 void			draw_background(t_graph *data);
 
 // ray_utils.c
-double			ft_abs(double nb);
 void			init_data_rc2(t_parsing_data parsing, t_raycasting *ray);
 t_raycasting	init_data_rc(t_parsing_data parsing);
 void			init_tx2(t_graph data, t_img *tex);
