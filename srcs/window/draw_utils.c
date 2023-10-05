@@ -25,14 +25,11 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 
 void	free_textures(t_graph *data)
 {
-	if (data->tx_1.ptr)
-		mlx_destroy_image(data->mlx_ptr, data->tx_1.ptr);
-	if (data->tx_2.ptr)
-		mlx_destroy_image(data->mlx_ptr, data->tx_2.ptr);
-	if (data->tx_3.ptr)
-		mlx_destroy_image(data->mlx_ptr, data->tx_3.ptr);
-	if (data->tx_4.ptr)
-		mlx_destroy_image(data->mlx_ptr, data->tx_4.ptr);
+	int	i;
+
+	i = -1;
+	while (data->tx[i].ptr)
+		mlx_destroy_image(data->mlx_ptr, data->tx[i].ptr);
 }
 
 int	rgb_to_hex(char **color)
