@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 15:09:11 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:51:26 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,28 @@ t_graph	get_data_win(t_parsing_data parsing)
 	return (data);
 }
 
+// int	ft_anim(t_graph *data)
+// {
+// 	static int	i;
+
+// 	while (i < 30000)
+// 	{
+// 		if (i < 15000)
+// 		{
+// 			data->tx_2.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
+// 				"./image.pink_moulure_telecabine_snow_1_128.xpm", &data->tx_2.width, &data->tx_2.height);
+// 		}
+// 		else 
+// 		{
+// 			data->tx_2.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			"./image.pink_moulure_telecabine_snow_2_128.xpm", &data->tx_2.width, &data->tx_2.height);
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
+
 /*Function that creates the window.*/
 
 int	create_window(t_parsing_data parsing)
@@ -117,6 +139,7 @@ int	create_window(t_parsing_data parsing)
 	ft_raycasting(&data);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_loop_hook(data.mlx_ptr, &move_it, &data);
+	// mlx_loop_hook(data.mlx_ptr, &ft_anim, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, 0, &close_win_mouse, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &key_press, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &key_release, &data);

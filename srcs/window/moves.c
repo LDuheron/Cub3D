@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:39:42 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 14:43:07 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:52:14 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,30 @@ void	rotations_right(double old_dir_x, double old_plane_x, t_graph *data)
 	}
 }
 
+
+int	ft_anim(t_graph *data)
+{
+	static int	i;
+
+	while (i < 30000)
+	{
+		if (i < 15000)
+		{
+			data->tx_2.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
+				"./image.pink_moulure_telecabine_snow_1_128.xpm", &data->tx_2.width, &data->tx_2.height);
+		}
+		else 
+		{
+			data->tx_2.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./image.pink_moulure_telecabine_snow_2_128.xpm", &data->tx_2.width, &data->tx_2.height);
+		}
+		i++;
+	}
+	return (0);
+}
+
+
+
 /*Function that changes the values of datas to moves or rotate
 the player, it handles the rotation to left.*/
 
@@ -109,5 +133,8 @@ int	move_it(t_graph *data)
 	}
 	draw_background(data);
 	ft_raycasting(data);
+	ft_anim(data); ///// BONUS
 	return (0);
 }
+
+
