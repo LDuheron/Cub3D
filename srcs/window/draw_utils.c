@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:53:03 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 14:37:41 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:11:10 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,45 @@ void	free_textures(t_graph *data)
 		mlx_destroy_image(data->mlx_ptr, data->tx_4.ptr);
 }
 
-double	ft_abs(double nb)
+int	rgb_to_hex(char **color)
 {
-	if (nb < 0)
-		nb *= -1;
-	return (nb);
+	int	r;
+	int	g;
+	int	b;
+
+	r = ft_atoi(color[0]);
+	g = ft_atoi(color[1]);
+	b = ft_atoi(color[2]);
+	return (r << 16 | g << 8 | b);
 }
 
-void	draw_rect(t_graph *data)
+void	init_colors(t_graph *data)
 {
-	int	i;
-	int	j;
+	char	**color_f;
+	char	**color_c;
+	int		i;
 
-	i = 0;
-	while (i < WIN_HEIGHT)
+	color_f = ft_split(data->pars.texture[4], ',');
+	if (color_f == NULL)
+		return ;
+	color_c = ft_split(data->pars.texture[5], ',');
+	if (color_c == NULL)
 	{
-		j = 0;
-		while (j < WIN_WIDTH)
-		{
-			img_pix_put(&data->img, j, i, BLACK_PIXEL);
-			j++;
-		}
-		i++;
+		i = -1;
+		while (color_f[++i])
+			free(color_f[i]);
+		free(color_f);
+		return ;
 	}
+	data->color[0] = rgb_to_hex(color_f);
+	data->color[1] = rgb_to_hex(color_c);
+	i = -1;
+	while (color_f[++i])
+		free(color_f[i]);
+	i = -1;
+	while (color_c[++i])
+		free(color_c[i]);
+	(free(color_f), free(color_c));
 }
 
 void	draw_background(t_graph *data)
@@ -71,7 +87,7 @@ void	draw_background(t_graph *data)
 		j = 0;
 		while (j < WIN_HEIGHT / 2)
 		{
-			img_pix_put(&data->img, i, j, CEILING);
+			img_pix_put(&data->img, i, j, data->color[1]);
 			j++;
 		}
 		i++;
@@ -82,7 +98,7 @@ void	draw_background(t_graph *data)
 		j = WIN_HEIGHT;
 		while (j >= WIN_HEIGHT / 2)
 		{
-			img_pix_put(&data->img, i, j, CARPET);
+			img_pix_put(&data->img, i, j, data->color[0]);
 			j--;
 		}
 		i++;

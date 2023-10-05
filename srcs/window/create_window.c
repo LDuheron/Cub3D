@@ -6,7 +6,7 @@
 /*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:40:39 by cbernaze          #+#    #+#             */
-/*   Updated: 2023/10/04 15:09:11 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:10:55 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	init_texture_addrs(t_graph *data)
 
 int	init_textures(t_graph *data)
 {
+	data->tx_1.ptr = NULL;
+	data->tx_2.ptr = NULL;
+	data->tx_3.ptr = NULL;
+	data->tx_4.ptr = NULL;
 	data->tx_1.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->pars.texture[0], &data->tx_1.width, &data->tx_1.height);
 	if (data->tx_1.ptr == NULL)
@@ -72,6 +76,7 @@ int	init_textures(t_graph *data)
 		return (free_textures(data), ERROR);
 	if (init_texture_addrs(data) == ERROR)
 		return (free_textures(data), ERROR);
+	init_colors(data);
 	return (SUCCESS);
 }
 
@@ -88,17 +93,20 @@ t_graph	get_data_win(t_parsing_data parsing)
 	data.ray = init_data_rc(parsing);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
-		return (printf("Error: mlx_init failed\n"), data);
+		return (printf("Error: mlx_init failed\n"), (t_graph){0});
 	if (init_textures(&data) == ERROR)
-		return (mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr), data);
+		return (mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr),
+			(t_graph){0});
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WIN_WIDTH,
 			WIN_HEIGHT, "Lobby Boys");
 	if (data.win_ptr == NULL)
-		return (mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr), data);
+		return (mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr),
+			(t_graph){0});
 	data.img.ptr = mlx_new_image(data.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	if (data.img.ptr == NULL)
 		return (mlx_destroy_window(data.mlx_ptr, data.win_ptr),
-			mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr), data);
+			mlx_destroy_display(data.mlx_ptr), free(data.mlx_ptr),
+			(t_graph){0});
 	data.img.addr = mlx_get_data_addr(data.img.ptr,
 			&data.img.bpp, &data.img.line_len, &data.img.endian);
 	return (data);

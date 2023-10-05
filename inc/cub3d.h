@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:04:21 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 14:22:55 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:54:45 by cbernaze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@
 # define X_SIDE 0
 # define Y_SIDE 1
 
-# define MOVE_SPEED 0.045
-# define ROT_SPEED 0.0125
+# define MOVE_SPEED 0.060
+# define ROT_SPEED 0.0175
 
 //////////////////////////////////////////////////////////////////
 //																//
@@ -182,6 +182,7 @@ typedef struct s_graph
 	t_img			tx_2;
 	t_img			tx_3;
 	t_img			tx_4;
+	int				color[2];
 	t_raycasting	ray;
 	t_parsing_data	pars;
 	t_ray_utils		utils;
@@ -333,8 +334,8 @@ int				close_win_mouse(t_graph *data);
 int				handle_no_event(void *data);
 
 // moves.c
-void			lateral_moves(t_graph *data);
-void			front_n_back(t_graph *data);
+void			set_moves(t_graph *data, double *vel_x, double *vel_y);
+void			moves(t_graph *data);
 void			rotations_right(double old_dir_x, double old_plane_x,
 					t_graph *data);
 int				move_it(t_graph *data);
@@ -342,15 +343,12 @@ int				move_it(t_graph *data);
 // draw_utils.c
 void			img_pix_put(t_img *img, int x, int y, int color);
 void			free_textures(t_graph *data);
-double			ft_abs(double nb);
-void			draw_rect(t_graph *data);
+int				rgb_to_hex(char **color);
+void			init_colors(t_graph *data);
 void			draw_background(t_graph *data);
 
-// ft_strlen.c
-int				ft_unstrlen(unsigned char *str);
-int				ft_unstrlen_plus(unsigned char **str);
-
 // ray_utils.c
+double			ft_abs(double nb);
 void			init_data_rc2(t_parsing_data parsing, t_raycasting *ray);
 t_raycasting	init_data_rc(t_parsing_data parsing);
 void			init_tx2(t_graph data, t_img *tex);
