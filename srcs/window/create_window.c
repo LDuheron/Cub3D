@@ -31,22 +31,16 @@ void	init_data_utils(t_graph *data)
 
 int	init_texture_addrs(t_graph *data)
 {
-	data->tx_1.addr = mlx_get_data_addr(data->tx_1.ptr, &data->tx_1.bpp,
-			&data->tx_1.line_len, &data->tx_1.endian);
-	if (data->tx_1.addr == NULL)
-		return (ERROR);
-	data->tx_2.addr = mlx_get_data_addr(data->tx_2.ptr, &data->tx_2.bpp,
-			&data->tx_2.line_len, &data->tx_2.endian);
-	if (data->tx_2.addr == NULL)
-		return (ERROR);
-	data->tx_3.addr = mlx_get_data_addr(data->tx_3.ptr, &data->tx_3.bpp,
-			&data->tx_3.line_len, &data->tx_3.endian);
-	if (data->tx_3.addr == NULL)
-		return (ERROR);
-	data->tx_4.addr = mlx_get_data_addr(data->tx_4.ptr, &data->tx_4.bpp,
-			&data->tx_4.line_len, &data->tx_4.endian);
-	if (data->tx_4.addr == NULL)
-		return (ERROR);
+	int	i;
+
+	i = -1;
+	while (++i < 5)
+	{
+	data->tx[i].addr = mlx_get_data_addr(data->tx[i].ptr, &data->tx[i].bpp,
+				&data->tx[i].line_len, &data->tx[i].endian);
+		if (data->tx[i].addr == NULL)
+			return (ERROR);
+	}
 	return (SUCCESS);
 }
 
@@ -54,26 +48,19 @@ int	init_texture_addrs(t_graph *data)
 
 int	init_textures(t_graph *data)
 {
-	data->tx_1.ptr = NULL;
-	data->tx_2.ptr = NULL;
-	data->tx_3.ptr = NULL;
-	data->tx_4.ptr = NULL;
-	data->tx_1.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->pars.texture[0], &data->tx_1.width, &data->tx_1.height);
-	if (data->tx_1.ptr == NULL)
-		return (ERROR);
-	data->tx_2.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->pars.texture[1], &data->tx_2.width, &data->tx_2.height);
-	if (data->tx_2.ptr == NULL)
-		return (free_textures(data), ERROR);
-	data->tx_3.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->pars.texture[2], &data->tx_3.width, &data->tx_3.height);
-	if (data->tx_3.ptr == NULL)
-		return (free_textures(data), ERROR);
-	data->tx_4.ptr = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->pars.texture[3], &data->tx_4.width, &data->tx_4.height);
-	if (data->tx_4.ptr == NULL)
-		return (free_textures(data), ERROR);
+	int	i;
+
+	i = -1;
+	while (++i < 5)
+		data->tx[i].ptr = NULL;
+	i = -1;
+	while (++i < 5)
+	{
+		data->tx[0].ptr = mlx_xpm_file_to_image(data->mlx_ptr,
+				data->pars.texture[i], &data->tx[i].width, &data->tx[i].height);
+		if (data->tx[i].ptr == NULL)
+			return (free_textures(data), ERROR);
+	}
 	if (init_texture_addrs(data) == ERROR)
 		return (free_textures(data), ERROR);
 	init_colors(data);
