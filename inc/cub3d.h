@@ -178,10 +178,7 @@ typedef struct s_graph
 	void			*win_ptr;
 	char			**map;
 	t_img			img;
-	t_img			tx_1;
-	t_img			tx_2;
-	t_img			tx_3;
-	t_img			tx_4;
+	t_img			tx[5];
 	int				color[2];
 	t_raycasting	ray;
 	t_parsing_data	pars;
