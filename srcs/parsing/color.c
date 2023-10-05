@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:59:01 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 14:17:14 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:49:17 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	find_line_to_code_color(t_parsing_data *parsing, int code)
 		indicator = "C ";
 	while (parsing->file[i] && ft_strncmp(parsing->file[i], indicator, 2) != 0)
 		i++;
-	if (ft_strncmp(parsing->file[i], indicator, 2) == 0)
+	if (parsing->file[i] && ft_strncmp(parsing->file[i], indicator, 2) == 0)
 		return (i);
 	return (ERROR_TEXTURE);
 }
