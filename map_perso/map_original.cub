@@ -1,7 +1,7 @@
-NO ./image/wall/pink_moulure_bridge_128.xpm
-SO ./image/wall/pink_moulure_bridge_128.xpm
-WE ./image/wall/pink_moulure_bridge_128.xpm
-EA ./image/wall/pink_moulure_bridge_128.xpm
+NO ./image/pink_moulure_bridge_128.xpm
+SO ./image/pink_moulure_telecabine_128.xpm
+WE ./image/dark_pink_moulure_base_128.xpm
+EA ./image/pink_moulure_base_128.xpm
 
 F 230,111,111
 C 245,144,144

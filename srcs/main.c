@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:05:50 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 14:55:55 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:30:34 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (parsing(&parsing_data, argv[1]) == SUCCESS)
-		{
-			printf("Great map !\n");
 			create_window(parsing_data);
-		}
 		free_parsing_data(&parsing_data);
 	}
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbernaze <cbernaze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:04:48 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 15:00:58 by cbernaze         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:23:48 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ walls.\n", 2);
 int	error_parsing_message(int code)
 {
 	if (code == ERROR_TEXTURE)
-		ft_putstr_fd("Error: Texture and color are strictly order : \
+		ft_putstr_fd("Error: Texture and color are : \
 NO, SO, WE, EA, F, C.\n", 2);
 	else if (code == ERROR_EXTENSION)
 		ft_putstr_fd("Error: textures have to be .xpm format\n", 2);
